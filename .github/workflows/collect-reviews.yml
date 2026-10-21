@@ -1,0 +1,74 @@
+# Collects Steam review metadata once a day.
+# First it downloads the full history month by month (this takes several runs),
+# then it only fetches new and updated reviews.
+
+name: Collect Steam reviews
+
+on:
+  schedule:
+    # Every day at 03:47 UTC, a quiet time for GitHub and Steam.
+    - cron: "47 3 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "collect = normal run; probe = test the API for Cyberpunk 2077, save nothing"
+        type: choice
+        options: [collect, probe]
+        default: collect
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect-reviews
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    # GitHub stops jobs after 6 hours. The script stops starting new work
+    # after REVIEWS_TIME_BUDGET_MIN minutes, leaving time to save and commit.
+    timeout-minutes: 340
+    env:
+      REVIEWS_TIME_BUDGET_MIN: "300"
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Probe the API (no data saved)
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'probe'
+        run: python collector/collect_reviews.py --probe 1091500
+
+      - name: Collect reviews
+        if: github.event_name == 'schedule' || inputs.mode == 'collect'
+        run: python collector/collect_reviews.py
+
+      - name: Summary
+        if: github.event_name == 'schedule' || inputs.mode == 'collect'
+        run: python collector/check_reviews.py
+
+      - name: Commit and push new data
+        # always(): save whatever was collected, even if a later step failed.
+        if: always() && (github.event_name == 'schedule' || inputs.mode == 'collect')
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -d data/raw/reviews ]; then git add data/raw/reviews; fi
+          if [ -d state ]; then git add state; fi
+          if git diff --cached --quiet; then
+            echo "Nothing new to commit."
+            exit 0
+          fi
+          git commit -m "data: reviews $(date -u +'%Y-%m-%d %H:%M') UTC"
+          for i in 1 2 3; do
+            if git push; then exit 0; fi
+            git pull --rebase
+          done
+          echo "Push failed after 3 attempts" >&2
+          exit 1
