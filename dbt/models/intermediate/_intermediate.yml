@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: int_reviews_latest
+    description: One row per review - its latest version (deduplicated).
+    columns:
+      - name: recommendation_id
+        description: Steam review ID. Unique here, unlike in stg_reviews.
+        data_tests: [unique, not_null]
+      - name: appid
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('stg_games')
+                field: appid
+
+  - name: int_players_hourly
+    description: One successful player snapshot per game per UTC hour.
+    columns:
+      - name: player_count
+        data_tests: [not_null]

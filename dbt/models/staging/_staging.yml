@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: stg_players
+    description: Hourly player snapshots with types. Failed requests kept with null player_count.
+    columns:
+      - name: collected_at
+        data_tests: [not_null]
+      - name: appid
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_games')
+                field: appid
+      - name: status
+        data_tests: [not_null]
+
+  - name: stg_reviews
+    description: Review metadata with types; duplicates expected (see int_reviews_latest).
+    columns:
+      - name: recommendation_id
+        data_tests: [not_null]
+      - name: created_at
+        data_tests: [not_null]
+      - name: updated_at
+        data_tests: [not_null]
+
+  - name: stg_games
+    columns:
+      - name: appid
+        data_tests: [unique, not_null]
+      - name: role
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["cdpr", "control"]
+
+  - name: stg_events
+    columns:
+      - name: event_id
+        data_tests: [unique, not_null]
+      - name: event_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["release", "expansion", "major_update", "patch", "transmedia",
+                         "announcement", "platform_sale", "related_release", "other"]
+      - name: magnitude
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["major", "minor"]

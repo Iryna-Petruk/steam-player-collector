@@ -1,0 +1,5 @@
+# Python packages for the local warehouse (loader + dbt).
+# The collectors in collector/ need no packages.
+psycopg[binary]==3.3.6
+dbt-core==1.12.6
+dbt-postgres==1.11.0

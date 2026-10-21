@@ -1,0 +1,29 @@
+name: cdpr_hub
+version: "1.0.0"
+config-version: 2
+profile: cdpr_hub
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  cdpr_hub:
+    # Staging: one model per raw table; types, names and simple cleaning only.
+    staging:
+      +schema: staging
+      +materialized: view
+    # Intermediate: business logic that marts reuse (deduplication, one row per hour).
+    intermediate:
+      +schema: intermediate
+      +materialized: table
+    # Marts: tables Power BI reads.
+    marts:
+      +schema: marts
+      +materialized: table
+
+seeds:
+  cdpr_hub:
+    +schema: reference

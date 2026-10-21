@@ -1,0 +1,31 @@
+language,language_name,market,region
+english,English,English (global),Global English
+polish,Polish,Poland,Central & Eastern Europe
+russian,Russian,Russian-speaking,Central & Eastern Europe
+ukrainian,Ukrainian,Ukraine,Central & Eastern Europe
+czech,Czech,Czechia,Central & Eastern Europe
+hungarian,Hungarian,Hungary,Central & Eastern Europe
+romanian,Romanian,Romania,Central & Eastern Europe
+bulgarian,Bulgarian,Bulgaria,Central & Eastern Europe
+german,German,DACH,Western Europe
+french,French,France,Western Europe
+italian,Italian,Italy,Western Europe
+spanish,Spanish (Spain),Spain,Western Europe
+portuguese,Portuguese (Portugal),Portugal,Western Europe
+dutch,Dutch,Netherlands,Western Europe
+greek,Greek,Greece,Western Europe
+swedish,Swedish,Sweden,Nordics
+danish,Danish,Denmark,Nordics
+norwegian,Norwegian,Norway,Nordics
+finnish,Finnish,Finland,Nordics
+schinese,Chinese (Simplified),China,Asia-Pacific
+tchinese,Chinese (Traditional),Taiwan & Hong Kong,Asia-Pacific
+japanese,Japanese,Japan,Asia-Pacific
+koreana,Korean,South Korea,Asia-Pacific
+thai,Thai,Thailand,Asia-Pacific
+vietnamese,Vietnamese,Vietnam,Asia-Pacific
+indonesian,Indonesian,Indonesia,Asia-Pacific
+latam,Spanish (Latin America),Latin America,Americas
+brazilian,Portuguese (Brazil),Brazil,Americas
+turkish,Turkish,Turkey,Middle East & Africa
+arabic,Arabic,Arabic-speaking,Middle East & Africa

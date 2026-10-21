@@ -43,6 +43,27 @@ A second workflow (`collect-reviews.yml`, daily at 03:47 UTC) collects review **
 
 Output: `data/raw/reviews/<appid>/backfill/reviews_<appid>_<YYYY-MM>.csv` and `data/raw/reviews/<appid>/updates/reviews_<appid>_updates_<date>.csv`. Summary: `python collector/check_reviews.py`.
 
+## Events calendar
+
+`config/events.csv` is a hand-maintained calendar of events that may move player activity or review sentiment: releases, expansions, major updates, patches, Netflix premieres, announcements and Steam seasonal sales. Every event has a source URL. Platform-wide Steam sales use `appid = ALL` and a date range (`event_date` to `end_date`).
+
+Event types: `release`, `expansion`, `major_update`, `patch`, `transmedia`, `announcement`, `platform_sale`, `related_release`, `other`. Magnitude: `major` or `minor`, assigned before any analysis.
+
+Control-group events are included so that their own windows can be excluded when comparing against CD PROJEKT RED titles. Validate after every edit: `python collector/validate_events.py`.
+
+## Local warehouse (PostgreSQL + dbt)
+
+```
+GitHub repo (CSV) --git pull--> warehouse/load_raw.py --> PostgreSQL raw --> dbt: staging -> intermediate -> marts
+```
+
+- `warehouse/load_raw.py` loads all CSV files into the `raw` schema as text. Idempotent: unchanged files (SHA-256 in `raw.load_log`) are skipped, changed files are replaced in one transaction.
+- `dbt/` builds `staging` (types), `intermediate` (review deduplication, one player snapshot per hour) and `marts` (`fct_players_daily`, `fct_reviews_daily`, `dim_date`, `dim_games`, `dim_languages`, `dim_events`).
+- 39 data tests, including a reconciliation test (every deduplicated review counted exactly once in the daily table) and grain checks.
+- One command for the whole refresh: `./run_pipeline.sh` (Mac/Linux) or `.\run_pipeline.ps1` (Windows).
+
+Connection settings come from the standard `PGHOST`, `PGPORT`, `PGUSER`, `PGPASSWORD`, `PGDATABASE` environment variables; no secrets are stored in the repository.
+
 ## Limitations
 
 - Steam only: console, GOG and Epic players are not included.

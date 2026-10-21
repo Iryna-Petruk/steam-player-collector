@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Exact copies of the repository CSV files, loaded by warehouse/load_raw.py. All columns are text.
+    schema: raw
+    tables:
+      - name: players
+        description: Hourly Steam concurrent-player snapshots (one row per game per collector run).
+        loaded_at_field: "collected_at_utc::timestamptz"
+        freshness:
+          # The collector runs every hour; GitHub may delay a run by up to ~30 minutes.
+          warn_after: {count: 3, period: hour}
+          error_after: {count: 24, period: hour}
+      - name: reviews
+        description: Steam review metadata, append-only (backfill months + daily update files). Contains duplicates by design.
+      - name: games
+        description: config/games.csv - tracked games and their role (cdpr or control).
+      - name: events
+        description: config/events.csv - hand-maintained, sourced calendar of events.

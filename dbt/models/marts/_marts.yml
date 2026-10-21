@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: Calendar 2015-2027. Mark as date table in Power BI.
+    columns:
+      - name: date
+        data_tests: [unique, not_null]
+
+  - name: dim_games
+    description: Tracked games; role = cdpr or control.
+    columns:
+      - name: appid
+        data_tests: [unique, not_null]
+
+  - name: dim_languages
+    description: Review language -> market -> region. Region is the future RLS key.
+    columns:
+      - name: language
+        data_tests: [unique, not_null]
+      - name: region
+        data_tests: [not_null]
+
+  - name: dim_events
+    description: Sourced events calendar (single-day events have end_date = event_date).
+    columns:
+      - name: event_id
+        data_tests: [unique, not_null]
+      - name: source_url
+        data_tests: [not_null]
+
+  - name: fct_players_daily
+    description: >
+      Daily Steam concurrent players per game (UTC). Grain: appid x date.
+      Use coverage_pct / is_complete_day to exclude days with collection gaps.
+    columns:
+      - name: appid
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_games')
+                field: appid
+      - name: date
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date
+      - name: coverage_pct
+        description: Share of the 24 hourly snapshots collected that day (0-1).
+
+  - name: fct_reviews_daily
+    description: >
+      Daily review counts per game and language, by creation date (UTC),
+      using the latest version of each review. Grain: appid x date x language.
+    columns:
+      - name: appid
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_games')
+                field: appid
+      - name: date
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date
+      - name: language
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_languages')
+                field: language
