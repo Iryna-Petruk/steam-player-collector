@@ -31,6 +31,18 @@ The control group was chosen before any analysis and is kept fixed, so event-imp
 | player_count | Players currently in game on Steam; empty if the request failed |
 | status | `ok` or an error description |
 
+## Reviews
+
+A second workflow (`collect-reviews.yml`, daily at 03:47 UTC) collects review **metadata** for games marked `reviews=yes` in `config/games.csv`, using `IUserReviewsService/GetAppReviews` (no key needed).
+
+- **Backfill:** full history, one calendar month at a time by creation date. Progress is stored in `state/reviews_state.json`, so the backfill spreads over several runs within GitHub's 6-hour job limit.
+- **Incremental:** afterwards, only reviews created or updated since the last run (watermark with a 2-day overlap).
+- Raw files are append-only; duplicates from overlaps and updates are removed downstream (dbt).
+- **Privacy:** review text and author Steam IDs are not stored; only metadata and text length.
+- All languages and purchase types are collected; `steam_purchase` allows reproducing Steam's own score. Off-topic review activity ("review bombs") is excluded by Steam's default filter.
+
+Output: `data/raw/reviews/<appid>/backfill/reviews_<appid>_<YYYY-MM>.csv` and `data/raw/reviews/<appid>/updates/reviews_<appid>_updates_<date>.csv`. Summary: `python collector/check_reviews.py`.
+
 ## Limitations
 
 - Steam only: console, GOG and Epic players are not included.
