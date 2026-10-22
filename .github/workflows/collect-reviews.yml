@@ -47,7 +47,7 @@ jobs:
 
       - name: Collect reviews
         if: github.event_name == 'schedule' || inputs.mode == 'collect'
-        run: python collector/collect_reviews.py
+        run: python -u collector/collect_reviews.py
 
       - name: Summary
         if: github.event_name == 'schedule' || inputs.mode == 'collect'
