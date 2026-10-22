@@ -1,16 +1,14 @@
 {
   "1091500": {
-    "backfill_done": true,
-    "backfill_started_at": 1792583875,
+    "backfill_started_at": 1792683853,
     "game": "Cyberpunk 2077",
-    "next_month": "2026-11",
-    "watermark": 1792583875
+    "next_month": "2026-07",
+    "topics_version": "r2-b9b7752b"
   },
   "292030": {
-    "backfill_done": true,
-    "backfill_started_at": 1792601875,
+    "backfill_started_at": 1792701854,
     "game": "The Witcher 3: Wild Hunt",
-    "next_month": "2026-11",
-    "watermark": 1792601875
+    "next_month": "2015-01",
+    "topics_version": "r2-b9b7752b"
   }
 }
