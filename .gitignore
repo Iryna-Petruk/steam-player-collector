@@ -7,3 +7,7 @@ dbt/target/
 dbt/logs/
 dbt/dbt_packages/
 logs/
+
+# Review samples WITH text for manual topic checks: never commit
+local/
+dbt/.user.yml

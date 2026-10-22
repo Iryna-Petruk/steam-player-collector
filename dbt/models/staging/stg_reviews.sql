@@ -24,5 +24,14 @@ select
     has_developer_response = '1'                           as has_developer_response,
     cast(review_length as integer)                         as review_length,
     cast(fetched_at_utc as timestamptz)                    as fetched_at,
+    -- Topic flags (keyword dictionary, see config/review_topics.csv).
+    -- Files collected before topics existed have NULL here -> false / not scanned.
+    coalesce(topic_bugs = '1', false)                      as has_topic_bugs,
+    coalesce(topic_performance = '1', false)               as has_topic_performance,
+    coalesce(topic_price = '1', false)                     as has_topic_price,
+    coalesce(topic_story = '1', false)                     as has_topic_story,
+    coalesce(topic_content = '1', false)                   as has_topic_content,
+    coalesce(topics_scanned = '1', false)                  as is_topic_scanned,
+    topics_version,
     _source_file
 from {{ source('raw', 'reviews') }}

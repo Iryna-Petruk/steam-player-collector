@@ -16,8 +16,13 @@ Two phases per game, chosen automatically:
    that were created or updated since the previous run (the "watermark").
 
 Privacy and size: the review text and the author's Steam ID are NOT stored.
-Only metadata (date, language, positive/negative, playtime, votes...) and
-the length of the text are saved.
+Only metadata (date, language, positive/negative, playtime, votes...), the
+length of the text and topic flags are saved. Topics (bugs, performance,
+price, story, content) are found by keywords from config/review_topics.csv
+while the text is in memory; the text is then discarded.
+
+When the topic dictionary changes, its version changes too, and the backfill
+starts again from the beginning, so every review is tagged by the same rules.
 
 Output (append-only raw data; duplicates are removed later, in dbt):
     data/raw/reviews/<appid>/backfill/reviews_<appid>_<YYYY-MM>.csv
@@ -39,6 +44,9 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))   # find review_topics.py next to this file
+import review_topics  # noqa: E402
 
 # ---------------------------------------------------------------------------
 # Settings
@@ -75,7 +83,11 @@ OUTPUT_COLUMNS = [
     "refunded", "primarily_steam_deck",
     "playtime_at_review_min", "playtime_forever_min", "author_num_reviews",
     "has_developer_response", "review_length", "fetched_at_utc",
+    "topic_bugs", "topic_performance", "topic_price", "topic_story", "topic_content",
+    "topics_scanned", "topics_version",
 ]
+
+TOPIC_DICTIONARY, TOPICS_VERSION = review_topics.load_dictionary()
 
 
 class RateLimited(Exception):
@@ -129,13 +141,15 @@ def base_params(appid: str) -> dict:
 
 
 def to_row(r: dict, appid: str, fetched_at: str) -> dict:
-    """Keep metadata only. No review text, no author Steam ID."""
+    """Keep metadata and topic flags only. No review text, no author Steam ID."""
     author = r.get("author", {}) or {}
     b = lambda v: 1 if v else 0
+    language = r.get("language", "")
+    flags, scanned = review_topics.tag(r.get("review", ""), language, TOPIC_DICTIONARY)
     return {
         "recommendation_id": str(r.get("recommendationid", "")),
         "appid": appid,
-        "language": r.get("language", ""),
+        "language": language,
         "created_utc": iso(r.get("timestamp_created")),
         "updated_utc": iso(r.get("timestamp_updated")),
         "voted_up": b(r.get("voted_up")),
@@ -154,6 +168,9 @@ def to_row(r: dict, appid: str, fetched_at: str) -> dict:
         "has_developer_response": b(r.get("developer_response")),
         "review_length": len(r.get("review", "") or ""),
         "fetched_at_utc": fetched_at,
+        **{f"topic_{t}": flags[t] for t in review_topics.TOPICS},
+        "topics_scanned": scanned,
+        "topics_version": TOPICS_VERSION,
     }
 
 
@@ -264,10 +281,13 @@ def run_backfill(appid: str, game_state: dict, deadline: float) -> bool:
         if rows is None:
             print(f"  time budget reached; will continue from {cur:%Y-%m} next run")
             return False
+        path = OUTPUT_ROOT / appid / "backfill" / f"reviews_{appid}_{cur:%Y-%m}.csv"
         if rows:                                    # no empty files for months before release
-            path = OUTPUT_ROOT / appid / "backfill" / f"reviews_{appid}_{cur:%Y-%m}.csv"
             write_csv(path, rows, append=False)    # overwrite: a month is written whole
             print(f"  {path.name}: {len(rows)} reviews")
+        elif path.exists():
+            path.unlink()                           # a re-run found nothing left (reviews deleted)
+            print(f"  {path.name}: no reviews any more, file removed")
         cur = next_month(cur)
         game_state["next_month"] = cur.strftime("%Y-%m")
         save_state_now()                            # progress survives a crash
@@ -276,6 +296,20 @@ def run_backfill(appid: str, game_state: dict, deadline: float) -> bool:
     # Incremental runs will pick up everything created or updated after the backfill began.
     game_state["watermark"] = game_state["backfill_started_at"]
     return True
+
+
+def restart_backfill(game_state: dict) -> None:
+    """
+    The topic dictionary changed (or this game was collected before topics
+    existed): download the whole history again so every review is tagged by
+    the same rules. Month files are overwritten one by one, so the old data
+    stays usable until it is replaced.
+    """
+    old = game_state.get("topics_version", "none")
+    for key in ("backfill_started_at", "next_month", "backfill_done", "watermark"):
+        game_state.pop(key, None)
+    game_state["topics_version"] = TOPICS_VERSION
+    print(f"  topic dictionary {old} -> {TOPICS_VERSION}: backfill restarts from {BACKFILL_FROM:%Y-%m}")
 
 
 # ---------------------------------------------------------------------------
@@ -384,6 +418,9 @@ def main() -> int:
             appid = g["appid"].strip()
             game_state = _STATE.setdefault(appid, {"game": g["game"].strip()})
             print(f"{g['game']} ({appid})")
+            if game_state.get("topics_version") != TOPICS_VERSION:
+                restart_backfill(game_state)
+                save_state_now()
             if not game_state.get("backfill_done"):
                 print("  phase: backfill")
                 run_backfill(appid, game_state, deadline)

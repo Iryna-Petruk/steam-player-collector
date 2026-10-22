@@ -38,6 +38,13 @@ select
     author_num_reviews,
     has_developer_response,
     review_length,
-    fetched_at
+    fetched_at,
+    has_topic_bugs,
+    has_topic_performance,
+    has_topic_price,
+    has_topic_story,
+    has_topic_content,
+    is_topic_scanned,
+    topics_version
 from ranked
 where version_rank = 1

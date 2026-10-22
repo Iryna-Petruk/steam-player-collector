@@ -23,6 +23,9 @@ models:
     marts:
       +schema: marts
       +materialized: table
+      # Read-only role for Power BI; dbt re-applies the grant after every rebuild.
+      +grants:
+        select: ["powerbi_reader"]
 
 seeds:
   cdpr_hub:

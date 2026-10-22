@@ -68,6 +68,16 @@ create table if not exists raw.events (
     _loaded_at   timestamptz not null default now()
 );
 
+-- Topic flags were added to review files later (October 2026). On a database
+-- created before that, add the columns; on a new database this does nothing.
+alter table raw.reviews add column if not exists topic_bugs        text;
+alter table raw.reviews add column if not exists topic_performance text;
+alter table raw.reviews add column if not exists topic_price       text;
+alter table raw.reviews add column if not exists topic_story       text;
+alter table raw.reviews add column if not exists topic_content     text;
+alter table raw.reviews add column if not exists topics_scanned    text;
+alter table raw.reviews add column if not exists topics_version    text;
+
 -- Which files were loaded, with a fingerprint (SHA-256) of their content.
 -- If a file has not changed since the last load, the loader skips it.
 create table if not exists raw.load_log (

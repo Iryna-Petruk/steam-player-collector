@@ -1,6 +1,6 @@
 """
 Summarise the collected review data: backfill progress, row counts,
-date coverage and duplicates per game.
+date coverage, duplicates and topic tagging per game.
 
 Usage:
     python collector/check_reviews.py
@@ -30,6 +30,8 @@ def main() -> int:
         positive = total = 0
         first = last = ""
         months_with_data = 0
+        versions = Counter()          # topic dictionary version per row ("" = before topics existed)
+        scanned = 0
         for path in sorted(app_dir.rglob("*.csv")):
             file_rows = 0
             with path.open(newline="", encoding="utf-8") as f:
@@ -38,6 +40,8 @@ def main() -> int:
                     ids[row["recommendation_id"]] += 1
                     total += 1
                     positive += row["voted_up"] == "1"
+                    versions[row.get("topics_version") or "none"] += 1
+                    scanned += row.get("topics_scanned") == "1"
                     created = row["created_utc"]
                     first = min(first, created) if first else created
                     last = max(last, created) if last else created
@@ -53,6 +57,9 @@ def main() -> int:
         print(f"  months with data:  {months_with_data}")
         if total:
             print(f"  positive share:    {positive / total:.1%} (raw, before deduplication)")
+            print(f"  topic-scanned:     {scanned / total:.1%} of rows (language covered by the dictionary)")
+            mix = ", ".join(f"{v}: {n:,}" for v, n in versions.most_common())
+            print(f"  topic versions:    {mix}   (target: {s.get('topics_version', '?')})")
     return 0
 
 

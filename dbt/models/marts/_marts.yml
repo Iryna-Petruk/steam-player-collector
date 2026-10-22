@@ -51,6 +51,45 @@ models:
       - name: coverage_pct
         description: Share of the 24 hourly snapshots collected that day (0-1).
 
+  - name: dim_topics
+    description: Review topics (keyword dictionary) with labels and sort order.
+    columns:
+      - name: topic
+        data_tests: [unique, not_null]
+
+  - name: fct_review_topics_daily
+    description: >
+      Topic mentions in reviews. Grain: appid x date x language x topic.
+      Only languages covered by the dictionary. Not additive across topics
+      (one review can mention several); divide by topic_scanned_reviews.
+    columns:
+      - name: topic
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_topics')
+                field: topic
+      - name: date
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date
+      - name: appid
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_games')
+                field: appid
+      - name: language
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_languages')
+                field: language
+
   - name: fct_reviews_daily
     description: >
       Daily review counts per game and language, by creation date (UTC),

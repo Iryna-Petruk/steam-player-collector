@@ -1,0 +1,7 @@
+topic,topic_label,description,sort_order
+bugs,Bugs & crashes,"Bugs, glitches, crashes, freezes, broken saves",1
+performance,Performance,"FPS, stutter, lag, optimisation, ray tracing / DLSS",2
+price,Price & value,"Price, discounts, sales, refunds, value for money",3
+story,Story & characters,"Story, plot, characters, quests, dialogue, ending",4
+content,Content & features,"DLC and expansions, amount of content, features, promises, open world",5
+none,No topic found,Review in a covered language that matched no keyword,6

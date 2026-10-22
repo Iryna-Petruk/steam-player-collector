@@ -1,0 +1,728 @@
+topic,language,keyword
+bugs,english,bug*
+bugs,english,glitch*
+bugs,english,crash*
+bugs,english,broken
+bugs,english,freez*
+bugs,english,softlock*
+bugs,english,hardlock*
+bugs,english,game breaking
+bugs,english,gamebreaking
+bugs,english,corrupted save*
+bugs,english,save corrupt*
+bugs,english,t-pos*
+bugs,english,fell through
+bugs,english,falling through
+bugs,english,won't launch
+bugs,english,wont launch
+bugs,english,won't start
+bugs,english,wont start
+bugs,english,won't load
+bugs,english,wont load
+bugs,english,not launching
+bugs,english,not starting
+bugs,english,doesn't launch
+bugs,english,doesnt launch
+bugs,english,doesn't start
+bugs,english,doesnt start
+bugs,english,can't launch
+bugs,english,cant launch
+bugs,english,can't load
+bugs,english,cant load
+bugs,english,will not start
+bugs,english,will not launch
+bugs,english,fails to launch
+bugs,english,failed to launch
+bugs,english,black screen
+bugs,english,infinite loading
+bugs,english,stuck on loading
+bugs,english,launcher
+bugs,english,corrupted
+bugs,english,hotfix*
+performance,english,fps
+performance,english,frame rate*
+performance,english,framerate*
+performance,english,frame drop*
+performance,english,stutter*
+performance,english,lag
+performance,english,lags
+performance,english,laggy
+performance,english,lagging
+performance,english,optimize
+performance,english,optimise
+performance,english,optimization
+performance,english,optimisation
+performance,english,optimized
+performance,english,optimised
+performance,english,unoptimized
+performance,english,unoptimised
+performance,english,performance
+performance,english,vram
+performance,english,ray tracing
+performance,english,raytracing
+performance,english,path tracing
+performance,english,dlss
+performance,english,fsr
+performance,english,smooth
+performance,english,smoothly
+performance,english,runs smooth*
+performance,english,runs well
+performance,english,runs great
+performance,english,runs fine
+performance,english,runs poorly
+performance,english,runs bad*
+performance,english,runs like
+price,english,price*
+price,english,overpriced
+price,english,expensive
+price,english,cheap*
+price,english,discount*
+price,english,on sale
+price,english,full price
+price,english,refund*
+price,english,worth the money
+price,english,worth every penny
+price,english,money
+price,english,bucks
+price,english,dollars
+price,english,euros
+price,english,dollar
+story,english,story
+story,english,stories
+story,english,storyline*
+story,english,plot
+story,english,narrative*
+story,english,writing
+story,english,well written
+story,english,character*
+story,english,ending*
+story,english,dialog*
+story,english,dialogue*
+story,english,lore
+story,english,quest
+story,english,quests
+story,english,questline*
+story,english,romance*
+story,english,voice acting
+content,english,content
+content,english,dlc*
+content,english,expansion*
+content,english,phantom liberty
+content,english,hearts of stone
+content,english,blood and wine
+content,english,feature*
+content,english,promise
+content,english,promises
+content,english,promised
+content,english,cut content
+content,english,empty
+content,english,open world
+content,english,side activit*
+content,english,endgame
+content,english,replay*
+content,english,mod
+content,english,mods
+content,english,modding
+content,english,modded
+bugs,polish,bug*
+bugs,polish,zbugowan*
+bugs,polish,błąd
+bugs,polish,błędy
+bugs,polish,błędów
+bugs,polish,błędami
+bugs,polish,blad
+bugs,polish,bledy
+bugs,polish,bledow
+bugs,polish,glitch*
+bugs,polish,crash*
+bugs,polish,zawiesz*
+bugs,polish,zawiesza*
+bugs,polish,wywala*
+bugs,polish,nie uruchamia
+bugs,polish,nie odpala
+bugs,polish,nie włącza
+bugs,polish,nie wlacza
+bugs,polish,czarny ekran
+bugs,polish,uszkodzon*
+bugs,polish,hotfix*
+performance,polish,fps
+performance,polish,klatk*
+performance,polish,spadki
+performance,polish,optymaliz*
+performance,polish,wydajnoś*
+performance,polish,wydajnosc*
+performance,polish,przycin*
+performance,polish,lag
+performance,polish,lagi
+performance,polish,lagow*
+performance,polish,stutter*
+performance,polish,ray tracing
+performance,polish,dlss
+performance,polish,fsr
+price,polish,cena
+price,polish,ceny
+price,polish,cenę
+price,polish,cene
+price,polish,cenie
+price,polish,cenach
+price,polish,za drogo
+price,polish,drogo
+price,polish,przecen*
+price,polish,promocj*
+price,polish,zwrot pieniędzy
+price,polish,zwrot kasy
+price,polish,pieniądz*
+price,polish,pieniedz*
+price,polish,pieniędz*
+price,polish,złotych
+price,polish,zlotych
+story,polish,fabuł*
+story,polish,fabul*
+story,polish,historia
+story,polish,historii
+story,polish,postać
+story,polish,postac
+story,polish,postaci*
+story,polish,zakończeni*
+story,polish,zakonczeni*
+story,polish,dialog*
+story,polish,wątek
+story,polish,wątki
+story,polish,watek
+story,polish,watki
+story,polish,romans*
+story,polish,lore
+story,polish,scenariusz*
+story,polish,quest
+story,polish,questy
+story,polish,questów
+story,polish,questow
+content,polish,zawartoś*
+content,polish,zawartosc*
+content,polish,dodatek
+content,polish,dodatki
+content,polish,dodatku
+content,polish,dodatkiem
+content,polish,dlc*
+content,polish,phantom liberty
+content,polish,widmo wolności
+content,polish,serca z kamienia
+content,polish,krew i wino
+content,polish,obiecan*
+content,polish,obietnic*
+content,polish,pusty
+content,polish,pusta
+content,polish,puste
+content,polish,otwarty świat
+content,polish,endgame
+content,polish,mod
+content,polish,mody
+content,polish,modów
+content,polish,modow
+content,polish,modami
+bugs,german,bug*
+bugs,german,verbuggt
+bugs,german,glitch*
+bugs,german,absturz*
+bugs,german,abstürz*
+bugs,german,abstuerz*
+bugs,german,stürzt
+bugs,german,stuerzt
+bugs,german,crash*
+bugs,german,fehler
+bugs,german,friert ein
+bugs,german,eingefroren
+bugs,german,kaputt
+bugs,german,startet nicht
+bugs,german,lädt nicht
+bugs,german,laedt nicht
+bugs,german,schwarzer bildschirm
+bugs,german,beschädigt*
+bugs,german,beschaedigt*
+bugs,german,korrupt*
+bugs,german,hotfix*
+performance,german,fps
+performance,german,ruckel*
+performance,german,ruckler*
+performance,german,stotter*
+performance,german,optimier*
+performance,german,performance
+performance,german,leistung
+performance,german,framerate*
+performance,german,frame drops
+performance,german,ray tracing
+performance,german,raytracing
+performance,german,dlss
+performance,german,fsr
+price,german,preis*
+price,german,teuer*
+price,german,günstig*
+price,german,guenstig*
+price,german,rabatt*
+price,german,im sale
+price,german,sale
+price,german,rückerstatt*
+price,german,rueckerstatt*
+price,german,erstattung
+price,german,vollpreis
+price,german,geld
+story,german,geschichte
+story,german,story
+story,german,handlung*
+story,german,charakter*
+story,german,figuren
+story,german,das ende
+story,german,ending
+story,german,dialog*
+story,german,quest
+story,german,quests
+story,german,erzähl*
+story,german,erzaehl*
+story,german,lore
+story,german,romanz*
+content,german,inhalt*
+content,german,content
+content,german,dlc*
+content,german,erweiterung*
+content,german,phantom liberty
+content,german,hearts of stone
+content,german,blood and wine
+content,german,feature*
+content,german,versproch*
+content,german,versprechen
+content,german,leer
+content,german,leere
+content,german,offene welt
+content,german,open world
+content,german,mod
+content,german,mods
+bugs,french,bug*
+bugs,french,bogue*
+bugs,french,beug*
+bugs,french,glitch*
+bugs,french,crash*
+bugs,french,freeze*
+bugs,french,figé*
+bugs,french,fige
+bugs,french,ne se lance
+bugs,french,ne démarre
+bugs,french,ne demarre
+bugs,french,écran noir
+bugs,french,ecran noir
+bugs,french,corrompu*
+bugs,french,hotfix*
+performance,french,fps
+performance,french,optimis*
+performance,french,performance*
+performance,french,saccad*
+performance,french,lag
+performance,french,lags
+performance,french,framerate
+performance,french,ray tracing
+performance,french,dlss
+performance,french,fsr
+price,french,prix
+price,french,cher
+price,french,chère
+price,french,trop cher
+price,french,promo*
+price,french,soldes
+price,french,réduction*
+price,french,reduction*
+price,french,rembours*
+price,french,argent
+story,french,histoire*
+story,french,scénario*
+story,french,scenario*
+story,french,personnage*
+story,french,intrigue*
+story,french,narration*
+story,french,dialogue*
+story,french,quête*
+story,french,quete*
+story,french,lore
+story,french,romance*
+content,french,contenu*
+content,french,dlc*
+content,french,extension*
+content,french,phantom liberty
+content,french,promess*
+content,french,promis
+content,french,vide
+content,french,monde ouvert
+content,french,mod
+content,french,mods
+bugs,spanish,bug*
+bugs,spanish,bugue*
+bugs,spanish,glitch*
+bugs,spanish,crash*
+bugs,spanish,crashe*
+bugs,spanish,se cierra
+bugs,spanish,se congela
+bugs,spanish,congela*
+bugs,spanish,error*
+bugs,spanish,fallo*
+bugs,spanish,no inicia
+bugs,spanish,no arranca
+bugs,spanish,no abre
+bugs,spanish,pantalla negra
+bugs,spanish,corrupt*
+bugs,spanish,hotfix*
+performance,spanish,fps
+performance,spanish,optimiz*
+performance,spanish,rendimiento
+performance,spanish,lag
+performance,spanish,lags
+performance,spanish,lagea*
+performance,spanish,tirones
+performance,spanish,stutter*
+performance,spanish,ray tracing
+performance,spanish,dlss
+performance,spanish,fsr
+price,spanish,precio*
+price,spanish,caro
+price,spanish,barato
+price,spanish,descuento*
+price,spanish,oferta*
+price,spanish,rebaja*
+price,spanish,reembolso*
+price,spanish,dinero
+story,spanish,historia*
+story,spanish,trama
+story,spanish,narrativa
+story,spanish,personaje*
+story,spanish,el final
+story,spanish,diálogo*
+story,spanish,dialogo*
+story,spanish,lore
+story,spanish,guion
+story,spanish,guión
+story,spanish,romance*
+content,spanish,contenido*
+content,spanish,dlc*
+content,spanish,expansión
+content,spanish,expansion*
+content,spanish,phantom liberty
+content,spanish,prometi*
+content,spanish,promesa*
+content,spanish,vacío
+content,spanish,vacio
+content,spanish,mundo abierto
+content,spanish,mod
+content,spanish,mods
+bugs,latam,bug*
+bugs,latam,bugue*
+bugs,latam,glitch*
+bugs,latam,crash*
+bugs,latam,crashe*
+bugs,latam,se cierra
+bugs,latam,se congela
+bugs,latam,congela*
+bugs,latam,error*
+bugs,latam,fallo*
+bugs,latam,no inicia
+bugs,latam,no arranca
+bugs,latam,no abre
+bugs,latam,pantalla negra
+bugs,latam,corrupt*
+bugs,latam,hotfix*
+performance,latam,fps
+performance,latam,optimiz*
+performance,latam,rendimiento
+performance,latam,lag
+performance,latam,lags
+performance,latam,lagea*
+performance,latam,tirones
+performance,latam,stutter*
+performance,latam,ray tracing
+performance,latam,dlss
+performance,latam,fsr
+price,latam,precio*
+price,latam,caro
+price,latam,barato
+price,latam,descuento*
+price,latam,oferta*
+price,latam,rebaja*
+price,latam,reembolso*
+price,latam,dinero
+story,latam,historia*
+story,latam,trama
+story,latam,narrativa
+story,latam,personaje*
+story,latam,el final
+story,latam,diálogo*
+story,latam,dialogo*
+story,latam,lore
+story,latam,guion
+story,latam,guión
+story,latam,romance*
+content,latam,contenido*
+content,latam,dlc*
+content,latam,expansión
+content,latam,expansion*
+content,latam,phantom liberty
+content,latam,prometi*
+content,latam,promesa*
+content,latam,vacío
+content,latam,vacio
+content,latam,mundo abierto
+content,latam,mod
+content,latam,mods
+bugs,brazilian,bug*
+bugs,brazilian,bugad*
+bugs,brazilian,glitch*
+bugs,brazilian,crash*
+bugs,brazilian,crasha*
+bugs,brazilian,fecha sozinho
+bugs,brazilian,erro
+bugs,brazilian,erros
+bugs,brazilian,falha*
+bugs,brazilian,não abre
+bugs,brazilian,nao abre
+bugs,brazilian,não inicia
+bugs,brazilian,nao inicia
+bugs,brazilian,tela preta
+bugs,brazilian,corrompid*
+bugs,brazilian,hotfix*
+performance,brazilian,fps
+performance,brazilian,otimiza*
+performance,brazilian,desempenho
+performance,brazilian,lag
+performance,brazilian,lags
+performance,brazilian,travando
+performance,brazilian,travament*
+performance,brazilian,stutter*
+performance,brazilian,ray tracing
+performance,brazilian,dlss
+performance,brazilian,fsr
+price,brazilian,preço*
+price,brazilian,preco*
+price,brazilian,caro
+price,brazilian,barato
+price,brazilian,desconto*
+price,brazilian,promoção
+price,brazilian,promocao
+price,brazilian,promo
+price,brazilian,reembolso*
+price,brazilian,dinheiro
+story,brazilian,história*
+story,brazilian,historia*
+story,brazilian,enredo
+story,brazilian,narrativa
+story,brazilian,personage*
+story,brazilian,o final
+story,brazilian,diálogo*
+story,brazilian,dialogo*
+story,brazilian,lore
+story,brazilian,roteiro
+story,brazilian,romance*
+content,brazilian,conteúdo*
+content,brazilian,conteudo*
+content,brazilian,dlc*
+content,brazilian,expansão
+content,brazilian,expansao
+content,brazilian,phantom liberty
+content,brazilian,prometid*
+content,brazilian,promessa*
+content,brazilian,vazio
+content,brazilian,mundo aberto
+content,brazilian,mod
+content,brazilian,mods
+bugs,russian,баг
+bugs,russian,баги
+bugs,russian,багов
+bugs,russian,багам
+bugs,russian,багами
+bugs,russian,баганн*
+bugs,russian,забагова*
+bugs,russian,глюк*
+bugs,russian,вылет*
+bugs,russian,краш*
+bugs,russian,зависает
+bugs,russian,зависания
+bugs,russian,зависание
+bugs,russian,зависла
+bugs,russian,зависло
+bugs,russian,сломан*
+bugs,russian,ошибк*
+bugs,russian,не запускается
+bugs,russian,не запуск*
+bugs,russian,не загружа*
+bugs,russian,чёрный экран
+bugs,russian,черный экран
+bugs,russian,повреж*
+bugs,russian,хотфикс*
+performance,russian,фпс
+performance,russian,fps
+performance,russian,оптимиз*
+performance,russian,лаг
+performance,russian,лаги
+performance,russian,лагает
+performance,russian,лагов
+performance,russian,тормоз*
+performance,russian,фриз*
+performance,russian,статтер*
+performance,russian,производительн*
+performance,russian,просадк*
+performance,russian,трассировк*
+performance,russian,ray tracing
+performance,russian,dlss
+performance,russian,fsr
+price,russian,цена
+price,russian,цены
+price,russian,цену
+price,russian,цене
+price,russian,ценой
+price,russian,ценник*
+price,russian,дорого
+price,russian,дороговат*
+price,russian,скидк*
+price,russian,распродаж*
+price,russian,возврат*
+price,russian,деньг*
+price,russian,денег
+price,russian,рубл*
+story,russian,сюжет*
+story,russian,истори*
+story,russian,персонаж*
+story,russian,концовк*
+story,russian,диалог*
+story,russian,квест*
+story,russian,лор
+story,russian,роман
+story,russian,романы
+story,russian,романс*
+story,russian,сценари*
+content,russian,контент*
+content,russian,dlc
+content,russian,длс
+content,russian,дополнени*
+content,russian,phantom liberty
+content,russian,призрачная свобода
+content,russian,обещ*
+content,russian,пустой
+content,russian,пустая
+content,russian,пустые
+content,russian,открытый мир
+content,russian,мод
+content,russian,моды
+content,russian,модов
+content,russian,моддинг*
+bugs,ukrainian,баг
+bugs,ukrainian,баги
+bugs,ukrainian,багів
+bugs,ukrainian,багам
+bugs,ukrainian,багами
+bugs,ukrainian,забагова*
+bugs,ukrainian,глюк*
+bugs,ukrainian,виліт*
+bugs,ukrainian,вилітає
+bugs,ukrainian,краш*
+bugs,ukrainian,зависає
+bugs,ukrainian,зависання
+bugs,ukrainian,зависла
+bugs,ukrainian,зависло
+bugs,ukrainian,зламан*
+bugs,ukrainian,помилк*
+bugs,ukrainian,не запускається
+bugs,ukrainian,не запуск*
+bugs,ukrainian,не завантаж*
+bugs,ukrainian,чорний екран
+bugs,ukrainian,пошкодж*
+bugs,ukrainian,хотфікс*
+performance,ukrainian,фпс
+performance,ukrainian,fps
+performance,ukrainian,оптиміз*
+performance,ukrainian,лаг
+performance,ukrainian,лаги
+performance,ukrainian,лагає
+performance,ukrainian,гальм*
+performance,ukrainian,фриз*
+performance,ukrainian,статер*
+performance,ukrainian,продуктивн*
+performance,ukrainian,просідан*
+performance,ukrainian,dlss
+performance,ukrainian,fsr
+price,ukrainian,ціна
+price,ukrainian,ціни
+price,ukrainian,ціну
+price,ukrainian,ціні
+price,ukrainian,ціною
+price,ukrainian,цінник*
+price,ukrainian,дорого
+price,ukrainian,знижк*
+price,ukrainian,розпродаж*
+price,ukrainian,поверненн*
+price,ukrainian,гроші
+price,ukrainian,грошей
+story,ukrainian,сюжет*
+story,ukrainian,істор*
+story,ukrainian,персонаж*
+story,ukrainian,кінцівк*
+story,ukrainian,фінал*
+story,ukrainian,діалог*
+story,ukrainian,квест*
+story,ukrainian,лор
+story,ukrainian,роман
+story,ukrainian,романи
+story,ukrainian,сценарі*
+content,ukrainian,контент*
+content,ukrainian,dlc
+content,ukrainian,длс
+content,ukrainian,доповненн*
+content,ukrainian,phantom liberty
+content,ukrainian,обіця*
+content,ukrainian,пустий
+content,ukrainian,порожн*
+content,ukrainian,відкритий світ
+content,ukrainian,мод
+content,ukrainian,моди
+content,ukrainian,модів
+content,ukrainian,модами
+bugs,schinese,bug
+bugs,schinese,闪退
+bugs,schinese,崩溃
+bugs,schinese,卡死
+bugs,schinese,报错
+bugs,schinese,存档损坏
+bugs,schinese,穿模
+bugs,schinese,打不开
+bugs,schinese,进不去
+bugs,schinese,无法启动
+bugs,schinese,启动不了
+bugs,schinese,黑屏
+bugs,schinese,存档坏
+performance,schinese,fps
+performance,schinese,帧数
+performance,schinese,帧率
+performance,schinese,掉帧
+performance,schinese,卡顿
+performance,schinese,优化
+performance,schinese,光追
+performance,schinese,光线追踪
+price,schinese,价格
+price,schinese,打折
+price,schinese,折扣
+price,schinese,史低
+price,schinese,原价
+price,schinese,退款
+price,schinese,太贵
+price,schinese,便宜
+story,schinese,剧情
+story,schinese,故事
+story,schinese,角色
+story,schinese,结局
+story,schinese,对话
+story,schinese,任务
+story,schinese,人物
+story,schinese,叙事
+content,schinese,内容
+content,schinese,dlc
+content,schinese,资料片
+content,schinese,往日之影
+content,schinese,承诺
+content,schinese,画饼
+content,schinese,开放世界
+content,schinese,空洞
+content,schinese,mod
+content,schinese,模组

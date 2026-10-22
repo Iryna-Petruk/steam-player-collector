@@ -43,6 +43,17 @@ A second workflow (`collect-reviews.yml`, daily at 03:47 UTC) collects review **
 
 Output: `data/raw/reviews/<appid>/backfill/reviews_<appid>_<YYYY-MM>.csv` and `data/raw/reviews/<appid>/updates/reviews_<appid>_updates_<date>.csv`. Summary: `python collector/check_reviews.py`.
 
+## Review topics (privacy by design)
+
+What do players complain about: bugs, performance, price, story or content? To answer this without storing anyone's text, the collector tags each review **while the text is in memory** and keeps only 0/1 flags.
+
+- Dictionary: `config/review_topics.csv` (`topic, language, keyword`), 5 topics in 10 languages (English, Simplified Chinese, Russian, Polish, German, French, Spanish, Latin American Spanish, Brazilian Portuguese, Ukrainian). `crash*` = word starting with "crash", phrases allowed; Chinese is matched without word boundaries.
+- Output columns: `topic_bugs`, `topic_performance`, `topic_price`, `topic_story`, `topic_content`, `topics_scanned` (language covered), `topics_version`.
+- **Versioned:** the version is a hash of the dictionary. When it changes, the collector re-collects the full history so all reviews are tagged by the same rules (dbt warns while versions are mixed).
+- **Measured, not assumed:** `collector/topic_check.py sample ...` downloads a sample *with* text into `local/` (git-ignored) for manual labelling; `topic_check.py score ...` reports precision and recall per topic.
+- dbt: `fct_review_topics_daily` (game x day x language x topic) and `dim_topics`. Not additive across topics: one review can mention several; shares use `fct_reviews_daily.topic_scanned_reviews` as the denominator.
+- Limits: keyword matching misses sarcasm and negation ("no bugs at all" counts as bugs); languages outside the dictionary are excluded from topic shares, and their coverage is shown.
+
 ## Events calendar
 
 `config/events.csv` is a hand-maintained calendar of events that may move player activity or review sentiment: releases, expansions, major updates, patches, Netflix premieres, announcements and Steam seasonal sales. Every event has a source URL. Platform-wide Steam sales use `appid = ALL` and a date range (`event_date` to `end_date`).
@@ -58,8 +69,9 @@ GitHub repo (CSV) --git pull--> warehouse/load_raw.py --> PostgreSQL raw --> dbt
 ```
 
 - `warehouse/load_raw.py` loads all CSV files into the `raw` schema as text. Idempotent: unchanged files (SHA-256 in `raw.load_log`) are skipped, changed files are replaced in one transaction.
-- `dbt/` builds `staging` (types), `intermediate` (review deduplication, one player snapshot per hour) and `marts` (`fct_players_daily`, `fct_reviews_daily`, `dim_date`, `dim_games`, `dim_languages`, `dim_events`).
-- 39 data tests, including a reconciliation test (every deduplicated review counted exactly once in the daily table) and grain checks.
+- `dbt/` builds `staging` (types), `intermediate` (review deduplication, one player snapshot per hour) and `marts` (`fct_players_daily`, `fct_reviews_daily`, `fct_review_topics_daily`, `dim_date`, `dim_games`, `dim_languages`, `dim_events`, `dim_topics`).
+- Power BI connects with a read-only role `powerbi_reader` that can only `select` from `marts`; dbt re-applies the grant after every rebuild (`+grants` in `dbt_project.yml`).
+- 49 data tests, including a reconciliation test (every deduplicated review counted exactly once in the daily table) and grain checks.
 - One command for the whole refresh: `./run_pipeline.sh` (Mac/Linux) or `.\run_pipeline.ps1` (Windows).
 
 Connection settings come from the standard `PGHOST`, `PGPORT`, `PGUSER`, `PGPASSWORD`, `PGDATABASE` environment variables; no secrets are stored in the repository.
