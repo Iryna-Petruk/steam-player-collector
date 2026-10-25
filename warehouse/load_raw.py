@@ -90,7 +90,7 @@ def load_file(conn, path: Path, table: str, columns: list[str], min_columns: int
             n = 0
             with conn.cursor().copy(f"copy {table} ({col_list}) from stdin") as copy:
                 for row in reader:
-                    if not row:
+                    if not row or row == header:   # empty line, or a header repeated by a union merge
                         continue
                     # Empty CSV cells become NULL, everything else stays text.
                     copy.write_row([v if v != "" else None for v in row] + [rel])

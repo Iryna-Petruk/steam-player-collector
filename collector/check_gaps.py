@@ -33,6 +33,8 @@ def main() -> int:
         failed = defaultdict(list)       # game -> (hour, error)
         with path.open(newline="", encoding="utf-8") as f:
             for row in csv.DictReader(f):
+                if row["collected_at_utc"] == "collected_at_utc":   # header repeated by a union merge
+                    continue
                 hour = int(row["collected_at_utc"][11:13])
                 if row["status"] == "ok":
                     ok_hours[row["game"]].add(hour)

@@ -1,0 +1,4 @@
+# Player files are append-only: if two runs ever add rows to the same daily file,
+# keep the lines of both instead of stopping with a merge conflict.
+# (Duplicate snapshots are removed in dbt; a repeated header line is skipped by the loader.)
+data/raw/players/**/*.csv merge=union

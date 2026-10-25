@@ -27,10 +27,15 @@ jobs:
 
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+        with:
+          # The newest state of main at the moment the job starts. Without this,
+          # a run that waited in the queue checks out the older commit it was
+          # triggered on, and its push then conflicts with the run before it.
+          ref: main
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
