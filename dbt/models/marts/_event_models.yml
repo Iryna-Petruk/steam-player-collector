@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: fct_event_window
+    description: >
+      Event study: each CD PROJEKT RED event on a common axis of days from the
+      event (-28 ... +55), for the event game and the control games on the same
+      dates. Grain: event_id x target_appid x appid x day_offset.
+    columns:
+      - name: event_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_events')
+                field: event_id
+      - name: series_role
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["event_game", "control"]
+      - name: window_phase
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ["pre", "post_2w", "post_2_4w", "post_4_8w"]
+      - name: appid
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_games')
+                field: appid
+
+  - name: fct_event_impact
+    description: >
+      One row per event and CD PROJEKT RED game: uplift of review activity,
+      change of Steam score and players vs the 4 weeks before, the same for the
+      control games, and the net (difference-in-differences) effect.
+      NULL = not measurable with the available data.
+    columns:
+      - name: event_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_events')
+                field: event_id
+      - name: appid
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_games')
+                field: appid

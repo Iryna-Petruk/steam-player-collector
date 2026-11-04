@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: int_game_daily
+    description: >
+      One row per game per day (all languages): reviews with 0 on days without
+      reviews inside the game's review history, NULL before it; players where
+      collected. Stops at the last complete day.
