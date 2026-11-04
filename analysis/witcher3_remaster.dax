@@ -1,0 +1,71 @@
+// =====================================================================
+// The Witcher 3: Wild Hunt (appid 292030) - Remastered launch analysis
+//
+// Context: "The Witcher 3: Wild Hunt - Remastered" shipped as a free
+// upgrade on 2026-09-29 (event W3013 in config/events.csv). Reviews
+// spiked the same day: 3,730 reviews / 966 negative, with Positive %
+// dropping from ~96% to 74%.
+//
+// Run against the CDPR_Health_Hub semantic model (Power BI Desktop or
+// the published model). All queries anchor on the last date that has
+// review data instead of TODAY(), so they stay correct between
+// refreshes. Read-only: no model objects are created or changed.
+//
+// Caveat on every topic share: [Topic Share of Negative %] divides
+// 'Review Topics Daily'[negative_reviews] by
+// 'Reviews Daily'[topic_scanned_negative_reviews]. One review can carry
+// several topics, so shares do NOT sum to 100%. The "No topic found"
+// row is the share of scanned negative reviews the keyword dictionary
+// did not match, so a drop there means better matching, not less
+// negativity.
+// =====================================================================
+
+
+// ---------------------------------------------------------------------
+// Query 1 - Topic mix of negative reviews: last 30 days vs the 90 days
+//           before them.
+//
+// Shows how the composition of complaints shifted. Delta is in
+// percentage points. Note that the prior-90-day window contains the
+// 2026-09-29 launch spike, so it is not a quiet baseline - use Query 3
+// for a clean before / launch / after split.
+// ---------------------------------------------------------------------
+DEFINE
+    VAR _App = 292030
+    VAR _Last = CALCULATE ( MAX ( 'Reviews Daily'[date] ), ALL ( 'Date' ), 'Game'[appid] = _App )
+    VAR _S30 = _Last - 29
+    VAR _E90 = _S30 - 1
+    VAR _S90 = _E90 - 89
+EVALUATE
+VAR _T =
+    ADDCOLUMNS (
+        VALUES ( 'Topic'[topic_label] ),
+        "Neg mentions 30d", CALCULATE ( [Topic Mentions (Negative)], 'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _S30, _Last ) ),
+        "Share 30d", CALCULATE ( [Topic Share of Negative %], 'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _S30, _Last ) ),
+        "Neg mentions prev90d", CALCULATE ( [Topic Mentions (Negative)], 'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _S90, _E90 ) ),
+        "Share prev90d", CALCULATE ( [Topic Share of Negative %], 'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _S90, _E90 ) )
+    )
+RETURN
+    ADDCOLUMNS ( _T, "Delta pp", ( [Share 30d] - [Share prev90d] ) * 100 )
+ORDER BY [Share 30d] DESC
+
+
+// ---------------------------------------------------------------------
+// Query 2 - Negative reviews per day for the last 45 days.
+//
+// Daily shape of the launch reaction and the decay afterwards.
+// The last row is the current, incomplete day: exclude it when
+// comparing day-over-day.
+// ---------------------------------------------------------------------
+DEFINE
+    VAR _App = 292030
+    VAR _Last = CALCULATE ( MAX ( 'Reviews Daily'[date] ), ALL ( 'Date' ), 'Game'[appid] = _App )
+    VAR _S45 = _Last - 44
+EVALUATE
+ADDCOLUMNS (
+    CALCULATETABLE ( VALUES ( 'Date'[date] ), DATESBETWEEN ( 'Date'[date], _S45, _Last ) ),
+    "Negative Reviews", CALCULATE ( [Negative Reviews], 'Game'[appid] = _App ),
+    "Reviews", CALCULATE ( [Reviews], 'Game'[appid] = _App ),
+    "Positive %", CALCULATE ( [Positive %], 'Game'[appid] = _App )
+)
+ORDER BY 'Date'[date]
