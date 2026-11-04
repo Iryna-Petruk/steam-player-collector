@@ -69,3 +69,67 @@ ADDCOLUMNS (
     "Positive %", CALCULATE ( [Positive %], 'Game'[appid] = _App )
 )
 ORDER BY 'Date'[date]
+
+
+// ---------------------------------------------------------------------
+// Query 3 - Three fixed windows around the Remastered launch:
+//             Before  2026-07-08 .. 2026-09-28  (83 days, quiet baseline)
+//             Launch  2026-09-29 .. 2026-10-05  (7 days, launch week)
+//             After   2026-10-06 .. 2026-11-03  (29 days, settled)
+//           2026-11-04 is excluded: the current day is still incomplete.
+//
+// One row per window: overall health ([Negative Reviews], [Positive %],
+// [Negative from Newcomers %]) plus [Topic Mentions (Negative)] and
+// [Topic Share of Negative %] for each topic. "Scanned Negative" is the
+// denominator the shares use, kept visible so the shares can be checked.
+//
+// Windows are hardcoded on purpose: they are tied to event W3013 and
+// must not move when new data arrives.
+//
+// Overlapping event: Steam Autumn Sale 2026 (ST015, 2026-10-01 ..
+// 2026-10-08) falls inside the Launch window and the first three days of
+// After, so new buyers from the sale are a competing explanation for
+// part of the launch-week reaction. [Negative from Newcomers %] is the
+// column to read against that: if the sale were driving the negativity,
+// the share of negative reviews written under 2 hours of playtime would
+// rise, not fall.
+// ---------------------------------------------------------------------
+DEFINE
+    VAR _App = 292030
+    VAR _Windows =
+        DATATABLE (
+            "Window", STRING,
+            "From", DATETIME,
+            "To", DATETIME,
+            {
+                { "1 Before", "2026-07-08", "2026-09-28" },
+                { "2 Launch", "2026-09-29", "2026-10-05" },
+                { "3 After",  "2026-10-06", "2026-11-03" }
+            }
+        )
+EVALUATE
+GENERATE (
+    _Windows,
+    VAR _F = [From]
+    VAR _T = [To]
+    RETURN
+        ROW (
+            "Negative Reviews",        CALCULATE ( [Negative Reviews],           'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) ),
+            "Positive %",              CALCULATE ( [Positive %],                 'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) ),
+            "Neg from Newcomers %",    CALCULATE ( [Negative from Newcomers %],  'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) ),
+            "Scanned Negative",        CALCULATE ( SUM ( 'Reviews Daily'[topic_scanned_negative_reviews] ), 'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) ),
+            "Bugs mentions",           CALCULATE ( [Topic Mentions (Negative)],  'Topic'[topic] = "bugs",        'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) ),
+            "Bugs share",              CALCULATE ( [Topic Share of Negative %],  'Topic'[topic] = "bugs",        'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) ),
+            "Performance mentions",    CALCULATE ( [Topic Mentions (Negative)],  'Topic'[topic] = "performance", 'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) ),
+            "Performance share",       CALCULATE ( [Topic Share of Negative %],  'Topic'[topic] = "performance", 'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) ),
+            "Price mentions",          CALCULATE ( [Topic Mentions (Negative)],  'Topic'[topic] = "price",       'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) ),
+            "Price share",             CALCULATE ( [Topic Share of Negative %],  'Topic'[topic] = "price",       'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) ),
+            "Story mentions",          CALCULATE ( [Topic Mentions (Negative)],  'Topic'[topic] = "story",       'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) ),
+            "Story share",             CALCULATE ( [Topic Share of Negative %],  'Topic'[topic] = "story",       'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) ),
+            "Content mentions",        CALCULATE ( [Topic Mentions (Negative)],  'Topic'[topic] = "content",     'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) ),
+            "Content share",           CALCULATE ( [Topic Share of Negative %],  'Topic'[topic] = "content",     'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) ),
+            "No topic mentions",       CALCULATE ( [Topic Mentions (Negative)],  'Topic'[topic] = "none",        'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) ),
+            "No topic share",          CALCULATE ( [Topic Share of Negative %],  'Topic'[topic] = "none",        'Game'[appid] = _App, DATESBETWEEN ( 'Date'[date], _F, _T ) )
+        )
+)
+ORDER BY [Window]
