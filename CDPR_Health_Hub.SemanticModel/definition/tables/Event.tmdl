@@ -35,7 +35,7 @@ table Event
 		dataType: int64
 		formatString: 0
 		lineageTag: acb10082-5e0c-41ef-8867-87025b44956e
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: duration_days
 
 		annotation SummarizationSetBy = Automatic
@@ -44,7 +44,7 @@ table Event
 		dataType: int64
 		formatString: 0
 		lineageTag: 3319f705-1e98-4632-a616-e14d540ce8ec
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: appid
 
 		annotation SummarizationSetBy = Automatic

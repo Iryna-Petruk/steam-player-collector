@@ -18,7 +18,7 @@ table Date
 		dataType: int64
 		formatString: 0
 		lineageTag: a78e1563-7598-4d27-b1c2-ec3a38c2e4e6
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: year
 
 		annotation SummarizationSetBy = Automatic
@@ -27,7 +27,7 @@ table Date
 		dataType: int64
 		formatString: 0
 		lineageTag: a8dbcf2b-76a5-4d59-bf74-65e87b000c49
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: quarter
 
 		annotation SummarizationSetBy = Automatic
@@ -45,7 +45,7 @@ table Date
 		dataType: int64
 		formatString: 0
 		lineageTag: 85cee347-8bc0-400e-b3d9-fba35bdb06af
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: month
 
 		annotation SummarizationSetBy = Automatic
@@ -71,7 +71,7 @@ table Date
 		dataType: int64
 		formatString: 0
 		lineageTag: 8f87b995-4c4d-42d4-9344-dcd6a1885b92
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: iso_year
 
 		annotation SummarizationSetBy = Automatic
@@ -80,7 +80,7 @@ table Date
 		dataType: int64
 		formatString: 0
 		lineageTag: e4d1c2fb-05bb-4c09-a81d-7e73187f6c2b
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: iso_week
 
 		annotation SummarizationSetBy = Automatic
@@ -89,7 +89,7 @@ table Date
 		dataType: int64
 		formatString: 0
 		lineageTag: 2a92ec1f-dd49-4276-a64d-e157c92f823c
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: weekday_number
 
 		annotation SummarizationSetBy = Automatic

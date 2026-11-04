@@ -21,6 +21,7 @@ ref table Topic
 ref table 'Players Daily'
 ref table 'Review Topics Daily'
 ref table 'Reviews Daily'
+ref table _Measures
 
 ref cultureInfo en-US
 

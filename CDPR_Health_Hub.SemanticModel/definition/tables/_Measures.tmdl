@@ -1,0 +1,123 @@
+table _Measures
+	lineageTag: 5ccf17cd-f933-4cee-9e09-384f9cc0d81f
+
+	/// Загальна кількість відгуків за вибраний період.
+	measure Reviews = SUM('Reviews Daily'[reviews])
+		formatString: #,0
+		displayFolder: Reviews
+		lineageTag: 56ff37db-334f-404c-bea8-8c7a97ee8751
+
+	/// Кількість позитивних відгуків за вибраний період.
+	measure 'Positive Reviews' = SUM('Reviews Daily'[positive_reviews])
+		formatString: #,0
+		displayFolder: Reviews
+		lineageTag: be7375be-0c62-4dec-a183-4ecef912483f
+
+	/// Кількість негативних відгуків за вибраний період.
+	measure 'Negative Reviews' = SUM('Reviews Daily'[negative_reviews])
+		formatString: #,0
+		displayFolder: Reviews
+		lineageTag: a6893fe5-9861-4058-80dc-010fbb79affb
+
+	/// Частка позитивних відгуків серед усіх відгуків.
+	measure 'Positive %' = DIVIDE([Positive Reviews], [Reviews])
+		formatString: 0.0%
+		displayFolder: Reviews
+		lineageTag: 7a8d0145-8316-4ee0-8065-a6b455afcf94
+
+	/// Частка позитивних відгуків так, як рахує Steam — лише відгуки покупців у Steam.
+	measure 'Steam Score %' =
+			DIVIDE(
+			    SUM('Reviews Daily'[steam_purchase_positive_reviews]),
+			    SUM('Reviews Daily'[steam_purchase_reviews])
+			)
+		formatString: 0.0%
+		displayFolder: Reviews
+		lineageTag: 025edd46-c475-45aa-896c-5ac44b8668e2
+
+	/// Steam Score % за останні 30 днів від кінця вибраного періоду або від останньої дати з даними.
+	measure 'Recent Score % (30d)' =
+			VAR _lastData = CALCULATE(MAX('Reviews Daily'[date]), REMOVEFILTERS('Date'))
+			VAR _end = MIN(MAX('Date'[date]), _lastData)
+			RETURN
+			    CALCULATE([Steam Score %], DATESINPERIOD('Date'[date], _end, -30, DAY))
+		formatString: 0.0%
+		displayFolder: Reviews
+		lineageTag: bde950cb-8be3-4165-9d43-105d3b4b21d2
+
+	/// Частка негативних відгуків, написаних після менш ніж 2 годин у грі.
+	measure 'Negative from Newcomers %' = DIVIDE(SUM('Reviews Daily'[negative_reviews_under_2h_played]), [Negative Reviews])
+		formatString: 0.0%
+		displayFolder: Reviews
+		lineageTag: 5c88ef21-d7d8-491e-98e0-d42bbec6be07
+
+	/// Кількість відгуків, що згадують вибрану тему.
+	measure 'Topic Mentions' = SUM('Review Topics Daily'[reviews])
+		formatString: #,0
+		displayFolder: Topics
+		lineageTag: e785d8db-425b-4756-965d-1df717e87e6f
+
+	/// Кількість негативних відгуків, що згадують вибрану тему.
+	measure 'Topic Mentions (Negative)' = SUM('Review Topics Daily'[negative_reviews])
+		formatString: #,0
+		displayFolder: Topics
+		lineageTag: 9476f15f-b761-4696-9528-3535f0dc3a8e
+
+	/// Частка негативних відгуків, що згадують тему; один відгук може мати кілька тем, тому сума по темах може перевищувати 100%.
+	measure 'Topic Share of Negative %' =
+			DIVIDE([Topic Mentions (Negative)],
+			       SUM('Reviews Daily'[topic_scanned_negative_reviews]))
+		formatString: 0.0%
+		displayFolder: Topics
+		lineageTag: 229e7e6e-fb8e-4be6-8944-5e5361d59fe3
+
+	/// Частка позитивних відгуків серед тих, що згадують вибрану тему.
+	measure 'Topic Positive %' = DIVIDE(SUM('Review Topics Daily'[positive_reviews]), [Topic Mentions])
+		formatString: 0.0%
+		displayFolder: Topics
+		lineageTag: 4ff8eaed-4043-455f-b15a-d9ad0136f7c3
+
+	/// Частка відгуків, перевірених на теми, серед усіх відгуків.
+	measure 'Topic Coverage %' = DIVIDE(SUM('Reviews Daily'[topic_scanned_reviews]), [Reviews])
+		formatString: 0.0%
+		displayFolder: Topics
+		lineageTag: 0afacb4a-8d56-499d-acb8-b5e35f71f00e
+
+	/// Середня кількість гравців за повні дні (щонайменше 20 із 24 знімків); за кілька ігор дає суму.
+	measure 'Avg Daily Players' =
+			AVERAGEX(
+			    VALUES('Date'[date]),
+			    CALCULATE(SUM('Players Daily'[avg_players]),
+			              KEEPFILTERS('Players Daily'[is_complete_day] = TRUE()))
+			)
+		formatString: #,0
+		displayFolder: Players
+		lineageTag: d59d5036-ca62-4e4a-ac6a-7516426bce71
+
+	/// Найвищий погодинний знімок кількості гравців; коректний для однієї гри.
+	measure 'Peak Players' = MAX('Players Daily'[peak_players])
+		formatString: #,0
+		displayFolder: Players
+		lineageTag: 547d55fd-be52-423b-9008-3c4e168c7ae1
+
+	/// Середня повнота збору знімків за вибраний період.
+	measure 'Data Coverage %' = AVERAGE('Players Daily'[coverage_pct])
+		formatString: 0.0%
+		displayFolder: Players
+		lineageTag: d62e608e-911d-4c36-97b1-2c1a0fc87d20
+
+	/// Кількість днів із повним збором даних про гравців.
+	measure 'Complete Days' = CALCULATE(COUNTROWS('Players Daily'), 'Players Daily'[is_complete_day] = TRUE())
+		formatString: #,0
+		displayFolder: Players
+		lineageTag: 8bf59a76-e16a-4e14-bf25-9a71fb84c5a8
+
+	column Value
+		isHidden
+		isNameInferred
+		sourceColumn: [Value]
+
+	partition _Measures = calculated
+		mode: import
+		source = {BLANK()}
+
