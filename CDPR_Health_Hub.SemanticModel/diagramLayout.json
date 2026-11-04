@@ -1,0 +1,126 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 1504.2456006367579,
+            "y": 556.42153340186042
+          },
+          "nodeIndex": "marts dim_date",
+          "nodeLineageTag": "4c19f4ba-db2e-434a-a5d7-480a5ff72b97",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 334.92681699779376,
+            "y": 1052.2266242296596
+          },
+          "nodeIndex": "marts dim_events",
+          "nodeLineageTag": "ed2f62f3-8686-4da9-8273-664e8bc39917",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 338.50853147805759,
+            "y": 483.49762430612736
+          },
+          "nodeIndex": "marts dim_games",
+          "nodeLineageTag": "10111b52-534d-4716-9a98-ed4fe1ee0f0b",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 144.42408833604458,
+            "y": 252.96753958133468
+          },
+          "nodeIndex": "marts dim_languages",
+          "nodeLineageTag": "c459020a-d563-4952-ad8f-befe1173a93c",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1143.1842869763439,
+            "y": 0
+          },
+          "nodeIndex": "marts dim_topics",
+          "nodeLineageTag": "283b76ec-b2a1-450e-b07f-8c7dc51701d5",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 808.43034866509583,
+            "y": 743.82201010955941
+          },
+          "nodeIndex": "marts fct_players_daily",
+          "nodeLineageTag": "677e867b-b8c2-473c-b79f-feee966130ad",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 547.20745669650444,
+            "y": 180.96407625281017
+          },
+          "nodeIndex": "marts fct_review_topics_daily",
+          "nodeLineageTag": "fc67ea4a-e39e-4e27-b68b-45911242ba6f",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 597.78520031832443
+          },
+          "nodeIndex": "marts fct_reviews_daily",
+          "nodeLineageTag": "7e8691cc-d60d-4f3b-8be6-3d9524c7bd40",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 56.516106578484212,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

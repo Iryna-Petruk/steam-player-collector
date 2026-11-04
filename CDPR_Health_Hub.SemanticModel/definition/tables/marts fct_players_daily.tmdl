@@ -1,0 +1,98 @@
+table 'marts fct_players_daily'
+	lineageTag: 677e867b-b8c2-473c-b79f-feee966130ad
+
+	column appid
+		dataType: int64
+		formatString: 0
+		lineageTag: f8f105c2-3fe5-4b6a-9453-884df29b7069
+		summarizeBy: none
+		sourceColumn: appid
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 940c8c25-246c-4316-84be-5822baed96d6
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column snapshots_ok
+		dataType: int64
+		formatString: 0
+		lineageTag: 975b2c63-d2b2-49f3-860c-cc3259321185
+		summarizeBy: sum
+		sourceColumn: snapshots_ok
+
+		annotation SummarizationSetBy = Automatic
+
+	column failed_requests
+		dataType: int64
+		formatString: 0
+		lineageTag: 48417203-bcb2-4f6a-bd89-73b612101400
+		summarizeBy: sum
+		sourceColumn: failed_requests
+
+		annotation SummarizationSetBy = Automatic
+
+	column coverage_pct
+		dataType: double
+		lineageTag: a89c3791-4400-4349-a5dd-d9ed4effc568
+		summarizeBy: sum
+		sourceColumn: coverage_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column is_complete_day
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: cf8b08d2-0195-4b68-b94e-5680e2ab2834
+		summarizeBy: none
+		sourceColumn: is_complete_day
+
+		annotation SummarizationSetBy = Automatic
+
+	column avg_players
+		dataType: int64
+		formatString: 0
+		lineageTag: 486c7ccd-55fb-4908-b63b-1723efe3c4e3
+		summarizeBy: sum
+		sourceColumn: avg_players
+
+		annotation SummarizationSetBy = Automatic
+
+	column peak_players
+		dataType: int64
+		formatString: 0
+		lineageTag: 113eddee-b160-49a7-bcbf-00e543b4b63c
+		summarizeBy: sum
+		sourceColumn: peak_players
+
+		annotation SummarizationSetBy = Automatic
+
+	column min_players
+		dataType: int64
+		formatString: 0
+		lineageTag: 23efa7b0-8ce5-4732-9f2a-680421537659
+		summarizeBy: sum
+		sourceColumn: min_players
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'marts fct_players_daily' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("localhost", "cdpr_hub"),
+				  #"Navigation 1" = Source{[Schema = "marts", Item = "fct_players_daily"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+

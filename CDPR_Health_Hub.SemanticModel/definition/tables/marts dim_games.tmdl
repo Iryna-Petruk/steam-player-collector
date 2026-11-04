@@ -1,0 +1,66 @@
+table 'marts dim_games'
+	lineageTag: 10111b52-534d-4716-9a98-ed4fe1ee0f0b
+
+	column appid
+		dataType: int64
+		formatString: 0
+		lineageTag: 907818b2-436f-43ca-91ed-e94deb6660dc
+		summarizeBy: none
+		sourceColumn: appid
+
+		annotation SummarizationSetBy = Automatic
+
+	column game
+		dataType: string
+		lineageTag: fa4ea161-14d7-4d3f-928d-44ea62853af2
+		summarizeBy: none
+		sourceColumn: game
+
+		annotation SummarizationSetBy = Automatic
+
+	column role
+		dataType: string
+		lineageTag: d1f879b0-1708-4f33-b5c3-6a1af8926448
+		summarizeBy: none
+		sourceColumn: role
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_cdpr
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: dfa5f425-f041-4401-87bd-14bbed1489fd
+		summarizeBy: none
+		sourceColumn: is_cdpr
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_control
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 626c6985-c75d-493e-b985-30a412bc6f44
+		summarizeBy: none
+		sourceColumn: is_control
+
+		annotation SummarizationSetBy = Automatic
+
+	column collects_reviews
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ac5e17fb-82cd-4eae-9747-9318c0324cc3
+		summarizeBy: none
+		sourceColumn: collects_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'marts dim_games' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("localhost", "cdpr_hub"),
+				  #"Navigation 1" = Source{[Schema = "marts", Item = "dim_games"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+

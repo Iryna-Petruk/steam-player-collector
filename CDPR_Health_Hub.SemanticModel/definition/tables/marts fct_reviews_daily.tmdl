@@ -1,0 +1,142 @@
+table 'marts fct_reviews_daily'
+	lineageTag: 7e8691cc-d60d-4f3b-8be6-3d9524c7bd40
+
+	column appid
+		dataType: int64
+		formatString: 0
+		lineageTag: 5c8b1a47-4e6f-43ee-9cb5-efae880cce6a
+		summarizeBy: none
+		sourceColumn: appid
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d15e9d94-4f3b-47fe-a0eb-f097d9fbe29f
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column language
+		dataType: string
+		lineageTag: d5a2cd0f-a9c6-467c-82a2-9d082be144e7
+		summarizeBy: none
+		sourceColumn: language
+
+		annotation SummarizationSetBy = Automatic
+
+	column reviews
+		dataType: int64
+		formatString: 0
+		lineageTag: d3d99fe5-1e1c-4a32-8dd7-ca1b7657aafe
+		summarizeBy: sum
+		sourceColumn: reviews
+
+		annotation SummarizationSetBy = Automatic
+
+	column positive_reviews
+		dataType: int64
+		formatString: 0
+		lineageTag: d50d4acb-2116-489e-bda4-8bd9d3b72c28
+		summarizeBy: sum
+		sourceColumn: positive_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+	column negative_reviews
+		dataType: int64
+		formatString: 0
+		lineageTag: e7d9f437-1d77-43d5-80f7-989d2ae96c39
+		summarizeBy: sum
+		sourceColumn: negative_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+	column steam_purchase_reviews
+		dataType: int64
+		formatString: 0
+		lineageTag: 9146a0d5-c3f6-41b5-990c-0281cbf0e0d9
+		summarizeBy: sum
+		sourceColumn: steam_purchase_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+	column steam_purchase_positive_reviews
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c77d6ef-e0d4-4efc-9ff4-188e44a4ccb2
+		summarizeBy: sum
+		sourceColumn: steam_purchase_positive_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+	column reviews_under_2h_played
+		dataType: int64
+		formatString: 0
+		lineageTag: e6dc9d39-e2cb-4885-bf0e-e39c98839b96
+		summarizeBy: sum
+		sourceColumn: reviews_under_2h_played
+
+		annotation SummarizationSetBy = Automatic
+
+	column negative_reviews_under_2h_played
+		dataType: int64
+		formatString: 0
+		lineageTag: 7d2abfc2-da4c-4987-b0ec-728f1b49b922
+		summarizeBy: sum
+		sourceColumn: negative_reviews_under_2h_played
+
+		annotation SummarizationSetBy = Automatic
+
+	column edited_reviews
+		dataType: int64
+		formatString: 0
+		lineageTag: df3c4ff6-1b1c-48c5-a69f-d478b5e3217e
+		summarizeBy: sum
+		sourceColumn: edited_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+	column topic_scanned_reviews
+		dataType: int64
+		formatString: 0
+		lineageTag: 88544d27-9345-44b8-8911-b326cf90dfd5
+		summarizeBy: sum
+		sourceColumn: topic_scanned_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+	column topic_scanned_negative_reviews
+		dataType: int64
+		formatString: 0
+		lineageTag: 12f1cf0a-558a-44ed-a737-4593d28d2c93
+		summarizeBy: sum
+		sourceColumn: topic_scanned_negative_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+	column median_hours_at_review
+		dataType: double
+		lineageTag: fb1facc3-b233-456a-bad9-e2c089f3699c
+		summarizeBy: sum
+		sourceColumn: median_hours_at_review
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'marts fct_reviews_daily' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("localhost", "cdpr_hub"),
+				  #"Navigation 1" = Source{[Schema = "marts", Item = "fct_reviews_daily"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,46 @@
+table 'marts dim_languages'
+	lineageTag: c459020a-d563-4952-ad8f-befe1173a93c
+
+	column language
+		dataType: string
+		lineageTag: 2a216f1d-1602-4458-ad26-8240618a900f
+		summarizeBy: none
+		sourceColumn: language
+
+		annotation SummarizationSetBy = Automatic
+
+	column language_name
+		dataType: string
+		lineageTag: b20d1b97-2842-4b01-a2f2-23c6eab8522f
+		summarizeBy: none
+		sourceColumn: language_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column market
+		dataType: string
+		lineageTag: 55d29874-7b63-4eeb-930b-7fc0a7f661e0
+		summarizeBy: none
+		sourceColumn: market
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: c2c72225-8bfd-4b88-a910-bc9b8eeeb481
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'marts dim_languages' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("localhost", "cdpr_hub"),
+				  #"Navigation 1" = Source{[Schema = "marts", Item = "dim_languages"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+

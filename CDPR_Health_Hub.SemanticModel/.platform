@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CDPR_Health_Hub"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "542ee75b-cf62-46f4-b4b1-1aec2fc4fbcb"
+  }
+}

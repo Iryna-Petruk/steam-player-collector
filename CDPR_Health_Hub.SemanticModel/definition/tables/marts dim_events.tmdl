@@ -1,0 +1,129 @@
+table 'marts dim_events'
+	lineageTag: ed2f62f3-8686-4da9-8273-664e8bc39917
+
+	column event_id
+		dataType: string
+		lineageTag: 66a7c804-8fa3-4cab-8c75-70fc5a3d1d35
+		summarizeBy: none
+		sourceColumn: event_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 09cbb344-dd52-4174-9acd-6b3879e4d8cc
+		summarizeBy: none
+		sourceColumn: event_date
+
+		variation Variation
+			isDefault
+			relationship: 4f853567-d29b-483c-8cac-212bacad9a43
+			defaultHierarchy: LocalDateTable_5156f53a-093f-4d29-8415-800335041408.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column end_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 457ee645-7890-45ec-b314-1f8feba95593
+		summarizeBy: none
+		sourceColumn: end_date
+
+		variation Variation
+			isDefault
+			relationship: e78691dd-92a5-4c47-8514-8ec33f784dda
+			defaultHierarchy: LocalDateTable_daadd45a-1db3-409b-b812-4ca4c620dd70.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column duration_days
+		dataType: int64
+		formatString: 0
+		lineageTag: acb10082-5e0c-41ef-8867-87025b44956e
+		summarizeBy: sum
+		sourceColumn: duration_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column appid
+		dataType: int64
+		formatString: 0
+		lineageTag: 3319f705-1e98-4632-a616-e14d540ce8ec
+		summarizeBy: sum
+		sourceColumn: appid
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_platform_wide
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5cd05622-64d8-4fed-8dff-ba0420643486
+		summarizeBy: none
+		sourceColumn: is_platform_wide
+
+		annotation SummarizationSetBy = Automatic
+
+	column game
+		dataType: string
+		lineageTag: 25734a48-7dfb-451c-8809-e9722b08b788
+		summarizeBy: none
+		sourceColumn: game
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_type
+		dataType: string
+		lineageTag: 053a83e0-54a7-451a-81a8-e15e9a07d6b9
+		summarizeBy: none
+		sourceColumn: event_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_name
+		dataType: string
+		lineageTag: 70a3ca8a-db5b-440c-97e7-08425aad3604
+		summarizeBy: none
+		sourceColumn: event_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column magnitude
+		dataType: string
+		lineageTag: 3ee7383c-be8b-4f7a-9e12-43f71adfb7a2
+		summarizeBy: none
+		sourceColumn: magnitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column source_url
+		dataType: string
+		lineageTag: 8e3bd5fb-9c49-4f60-aeca-eee32361db8d
+		summarizeBy: none
+		sourceColumn: source_url
+
+		annotation SummarizationSetBy = Automatic
+
+	column notes
+		dataType: string
+		lineageTag: 656d580f-f0b7-4610-ba3b-4948ead5b356
+		summarizeBy: none
+		sourceColumn: notes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'marts dim_events' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("localhost", "cdpr_hub"),
+				  #"Navigation 1" = Source{[Schema = "marts", Item = "dim_events"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+

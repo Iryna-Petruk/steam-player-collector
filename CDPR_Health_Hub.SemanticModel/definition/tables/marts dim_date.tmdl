@@ -1,0 +1,125 @@
+table 'marts dim_date'
+	lineageTag: 4c19f4ba-db2e-434a-a5d7-480a5ff72b97
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7c925866-78d8-4f54-8eb4-b2e12bbb4944
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: 0d405339-7ca9-445f-811d-73d56077dc4e
+			defaultHierarchy: LocalDateTable_a3ff80c4-a992-4d8d-8fb0-2a4aa24a792c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: a78e1563-7598-4d27-b1c2-ec3a38c2e4e6
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: a8dbcf2b-76a5-4d59-bf74-65e87b000c49
+		summarizeBy: sum
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter_name
+		dataType: string
+		lineageTag: 6388a882-8c7b-4728-8d2e-3a2fcb5e711e
+		summarizeBy: none
+		sourceColumn: quarter_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		formatString: 0
+		lineageTag: 85cee347-8bc0-400e-b3d9-fba35bdb06af
+		summarizeBy: sum
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: c1c5e816-3c72-45fb-bdfd-7d41163c5d38
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_month
+		dataType: string
+		lineageTag: bdefd33b-d46c-47cc-a71e-f4f3b9cc73b9
+		summarizeBy: none
+		sourceColumn: year_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f87b995-4c4d-42d4-9344-dcd6a1885b92
+		summarizeBy: sum
+		sourceColumn: iso_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_week
+		dataType: int64
+		formatString: 0
+		lineageTag: e4d1c2fb-05bb-4c09-a81d-7e73187f6c2b
+		summarizeBy: sum
+		sourceColumn: iso_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 2a92ec1f-dd49-4276-a64d-e157c92f823c
+		summarizeBy: sum
+		sourceColumn: weekday_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column weekday_name
+		dataType: string
+		lineageTag: 09923cec-a74e-42cb-bf4d-74fe377d183c
+		summarizeBy: none
+		sourceColumn: weekday_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_weekend
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 166eee61-56d7-4840-81b4-dd9037cf5235
+		summarizeBy: none
+		sourceColumn: is_weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'marts dim_date' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("localhost", "cdpr_hub"),
+				  #"Navigation 1" = Source{[Schema = "marts", Item = "dim_date"]}[Data]
+				in
+				  #"Navigation 1"
+
+	annotation PBI_ResultType = Table
+

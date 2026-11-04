@@ -11,3 +11,7 @@ logs/
 # Review samples WITH text for manual topic checks: never commit
 local/
 dbt/.user.yml
+
+# Power BI (PBIP) local artifacts: user settings and data cache
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
