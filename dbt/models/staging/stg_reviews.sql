@@ -10,7 +10,12 @@ select
     cast(updated_utc as timestamptz)                       as updated_at,
     voted_up = '1'                                         as is_positive,
     cast(votes_up as integer)                              as votes_up,
-    cast(votes_funny as integer)                           as votes_funny,
+    -- Steam occasionally returns a negative counter as an unsigned 32-bit
+    -- number (4294967295 = -1, 4294967292 = -4). Such a value is corrupt,
+    -- not a real count, and does not fit in integer either: treat it as
+    -- unknown rather than letting it skew any aggregate built on it.
+    case when votes_funny::bigint > 2147483647 then null
+         else cast(votes_funny as integer) end             as votes_funny,
     cast(nullif(weighted_vote_score, '') as numeric)       as weighted_vote_score,
     cast(comment_count as integer)                         as comment_count,
     steam_purchase = '1'                                   as is_steam_purchase,
