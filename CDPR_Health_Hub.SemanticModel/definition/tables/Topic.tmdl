@@ -1,4 +1,4 @@
-table 'marts dim_topics'
+table Topic
 	lineageTag: 283b76ec-b2a1-450e-b07f-8c7dc51701d5
 
 	column topic

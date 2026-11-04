@@ -7,24 +7,20 @@ model Model
 		legacyRedirects
 		returnErrorValuesAsNull
 
-annotation __PBI_TimeIntelligenceEnabled = 1
+annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBI_QueryOrder = ["marts dim_date","marts dim_events","marts dim_games","marts dim_languages","marts dim_topics","marts fct_players_daily","marts fct_review_topics_daily","marts fct_reviews_daily"]
 
-annotation PBI_ProTooling = ["DevMode"]
+annotation PBI_ProTooling = ["DevMode","MCP-PBIModeling"]
 
-ref table 'marts dim_date'
-ref table DateTableTemplate_bac518f3-f25c-4925-bac4-ca88c594ccdc
-ref table LocalDateTable_a3ff80c4-a992-4d8d-8fb0-2a4aa24a792c
-ref table 'marts dim_events'
-ref table LocalDateTable_5156f53a-093f-4d29-8415-800335041408
-ref table LocalDateTable_daadd45a-1db3-409b-b812-4ca4c620dd70
-ref table 'marts dim_games'
-ref table 'marts dim_languages'
-ref table 'marts dim_topics'
-ref table 'marts fct_players_daily'
-ref table 'marts fct_review_topics_daily'
-ref table 'marts fct_reviews_daily'
+ref table Date
+ref table Event
+ref table Game
+ref table Language
+ref table Topic
+ref table 'Players Daily'
+ref table 'Review Topics Daily'
+ref table 'Reviews Daily'
 
 ref cultureInfo en-US
 

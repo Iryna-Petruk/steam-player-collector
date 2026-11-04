@@ -1,4 +1,4 @@
-table 'marts dim_languages'
+table Language
 	lineageTag: c459020a-d563-4952-ad8f-befe1173a93c
 
 	column language

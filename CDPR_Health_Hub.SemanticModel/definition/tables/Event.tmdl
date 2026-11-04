@@ -1,4 +1,4 @@
-table 'marts dim_events'
+table Event
 	lineageTag: ed2f62f3-8686-4da9-8273-664e8bc39917
 
 	column event_id
@@ -16,11 +16,6 @@ table 'marts dim_events'
 		summarizeBy: none
 		sourceColumn: event_date
 
-		variation Variation
-			isDefault
-			relationship: 4f853567-d29b-483c-8cac-212bacad9a43
-			defaultHierarchy: LocalDateTable_5156f53a-093f-4d29-8415-800335041408.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
@@ -31,11 +26,6 @@ table 'marts dim_events'
 		lineageTag: 457ee645-7890-45ec-b314-1f8feba95593
 		summarizeBy: none
 		sourceColumn: end_date
-
-		variation Variation
-			isDefault
-			relationship: e78691dd-92a5-4c47-8514-8ec33f784dda
-			defaultHierarchy: LocalDateTable_daadd45a-1db3-409b-b812-4ca4c620dd70.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 

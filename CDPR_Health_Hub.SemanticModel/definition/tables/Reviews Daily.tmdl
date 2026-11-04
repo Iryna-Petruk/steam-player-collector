@@ -1,8 +1,9 @@
-table 'marts fct_reviews_daily'
+table 'Reviews Daily'
 	lineageTag: 7e8691cc-d60d-4f3b-8be6-3d9524c7bd40
 
 	column appid
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 5c8b1a47-4e6f-43ee-9cb5-efae880cce6a
 		summarizeBy: none
@@ -12,6 +13,7 @@ table 'marts fct_reviews_daily'
 
 	column date
 		dataType: dateTime
+		isHidden
 		formatString: Long Date
 		lineageTag: d15e9d94-4f3b-47fe-a0eb-f097d9fbe29f
 		summarizeBy: none
@@ -23,6 +25,7 @@ table 'marts fct_reviews_daily'
 
 	column language
 		dataType: string
+		isHidden
 		lineageTag: d5a2cd0f-a9c6-467c-82a2-9d082be144e7
 		summarizeBy: none
 		sourceColumn: language

@@ -1,8 +1,9 @@
-table 'marts fct_players_daily'
+table 'Players Daily'
 	lineageTag: 677e867b-b8c2-473c-b79f-feee966130ad
 
 	column appid
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: f8f105c2-3fe5-4b6a-9453-884df29b7069
 		summarizeBy: none
@@ -12,6 +13,7 @@ table 'marts fct_players_daily'
 
 	column date
 		dataType: dateTime
+		isHidden
 		formatString: Long Date
 		lineageTag: 940c8c25-246c-4316-84be-5822baed96d6
 		summarizeBy: none

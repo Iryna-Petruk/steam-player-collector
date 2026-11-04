@@ -1,51 +1,36 @@
-relationship 0d405339-7ca9-445f-811d-73d56077dc4e
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'marts dim_date'.date
-	toColumn: LocalDateTable_a3ff80c4-a992-4d8d-8fb0-2a4aa24a792c.Date
-
-relationship 4f853567-d29b-483c-8cac-212bacad9a43
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'marts dim_events'.event_date
-	toColumn: LocalDateTable_5156f53a-093f-4d29-8415-800335041408.Date
-
-relationship e78691dd-92a5-4c47-8514-8ec33f784dda
-	joinOnDateBehavior: datePartOnly
-	fromColumn: 'marts dim_events'.end_date
-	toColumn: LocalDateTable_daadd45a-1db3-409b-b812-4ca4c620dd70.Date
-
 relationship AutoDetected_1c6df24e-911d-4c73-90d7-130b6bf74803
-	fromColumn: 'marts fct_players_daily'.appid
-	toColumn: 'marts dim_games'.appid
+	fromColumn: 'Players Daily'.appid
+	toColumn: Game.appid
 
 relationship AutoDetected_0a6a24d9-42de-4b1b-97b6-59a644875729
-	fromColumn: 'marts fct_review_topics_daily'.appid
-	toColumn: 'marts dim_games'.appid
+	fromColumn: 'Review Topics Daily'.appid
+	toColumn: Game.appid
 
 relationship AutoDetected_d74aec3f-c0ad-4055-b425-09a68b8483e2
-	fromColumn: 'marts fct_reviews_daily'.appid
-	toColumn: 'marts dim_games'.appid
+	fromColumn: 'Reviews Daily'.appid
+	toColumn: Game.appid
 
 relationship AutoDetected_83f272df-cfc9-4b38-9612-96b23444a6f9
-	fromColumn: 'marts fct_review_topics_daily'.language
-	toColumn: 'marts dim_languages'.language
+	fromColumn: 'Review Topics Daily'.language
+	toColumn: Language.language
 
 relationship AutoDetected_bbc5c300-bc2f-4ecf-8890-8485d4f0220c
-	fromColumn: 'marts fct_reviews_daily'.language
-	toColumn: 'marts dim_languages'.language
+	fromColumn: 'Reviews Daily'.language
+	toColumn: Language.language
 
 relationship AutoDetected_0beb7c03-8321-4965-8d11-7bffce8b8774
-	fromColumn: 'marts fct_review_topics_daily'.topic
-	toColumn: 'marts dim_topics'.topic
+	fromColumn: 'Review Topics Daily'.topic
+	toColumn: Topic.topic
 
 relationship 4e22856c-a056-a1c7-73b6-e4bab577617c
-	fromColumn: 'marts fct_reviews_daily'.date
-	toColumn: 'marts dim_date'.date
+	fromColumn: 'Reviews Daily'.date
+	toColumn: Date.date
 
 relationship f52e7d0c-475a-948d-e2da-fe37ee800b11
-	fromColumn: 'marts fct_review_topics_daily'.date
-	toColumn: 'marts dim_date'.date
+	fromColumn: 'Review Topics Daily'.date
+	toColumn: Date.date
 
 relationship 9ebb63e2-0f4a-b832-4406-f21c6f2990ee
-	fromColumn: 'marts fct_players_daily'.date
-	toColumn: 'marts dim_date'.date
+	fromColumn: 'Players Daily'.date
+	toColumn: Date.date
 

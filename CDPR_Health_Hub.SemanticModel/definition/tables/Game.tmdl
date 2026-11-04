@@ -1,4 +1,4 @@
-table 'marts dim_games'
+table Game
 	lineageTag: 10111b52-534d-4716-9a98-ed4fe1ee0f0b
 
 	column appid

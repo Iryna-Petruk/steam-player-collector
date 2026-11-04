@@ -1,17 +1,14 @@
-table 'marts dim_date'
+table Date
 	lineageTag: 4c19f4ba-db2e-434a-a5d7-480a5ff72b97
+	dataCategory: Time
 
 	column date
 		dataType: dateTime
+		isUnique
 		formatString: Long Date
 		lineageTag: 7c925866-78d8-4f54-8eb4-b2e12bbb4944
 		summarizeBy: none
 		sourceColumn: date
-
-		variation Variation
-			isDefault
-			relationship: 0d405339-7ca9-445f-811d-73d56077dc4e
-			defaultHierarchy: LocalDateTable_a3ff80c4-a992-4d8d-8fb0-2a4aa24a792c.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -40,6 +37,7 @@ table 'marts dim_date'
 		lineageTag: 6388a882-8c7b-4728-8d2e-3a2fcb5e711e
 		summarizeBy: none
 		sourceColumn: quarter_name
+		sortByColumn: quarter
 
 		annotation SummarizationSetBy = Automatic
 
@@ -57,6 +55,7 @@ table 'marts dim_date'
 		lineageTag: c1c5e816-3c72-45fb-bdfd-7d41163c5d38
 		summarizeBy: none
 		sourceColumn: month_name
+		sortByColumn: month
 
 		annotation SummarizationSetBy = Automatic
 
@@ -100,6 +99,7 @@ table 'marts dim_date'
 		lineageTag: 09923cec-a74e-42cb-bf4d-74fe377d183c
 		summarizeBy: none
 		sourceColumn: weekday_name
+		sortByColumn: weekday_number
 
 		annotation SummarizationSetBy = Automatic
 
