@@ -1,0 +1,178 @@
+table 'Event Window'
+	lineageTag: fdea0ce7-eeb8-48e3-af57-f6f015798c12
+
+	column event_id
+		dataType: string
+		isHidden
+		lineageTag: 7162a463-2c68-4f44-ad39-6a2f9161cdc6
+		summarizeBy: none
+		sourceColumn: event_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column target_appid
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 44143c83-a196-43a0-9125-484f93fa1e33
+		summarizeBy: none
+		sourceColumn: target_appid
+
+		annotation SummarizationSetBy = Automatic
+
+	column appid
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c633dce1-a38f-4dab-8e67-97bac55ae253
+		summarizeBy: none
+		sourceColumn: appid
+
+		annotation SummarizationSetBy = Automatic
+
+	column series_role
+		dataType: string
+		lineageTag: 4d372295-b2c9-4dcd-b6b0-e45895b23e15
+		summarizeBy: none
+		sourceColumn: series_role
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_date
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 8b62f6ee-d9fb-4dc6-a164-7f7f3d875259
+		summarizeBy: none
+		sourceColumn: event_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column day_offset
+		dataType: int64
+		formatString: 0
+		lineageTag: 8e797388-0f03-4298-94e0-ab1a69bfda43
+		summarizeBy: none
+		sourceColumn: day_offset
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ccfafbf9-5787-4552-971b-cb36f6d0e9f5
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column window_phase
+		dataType: string
+		lineageTag: fdc1fff3-40f6-43d5-842f-8a15150f1675
+		summarizeBy: none
+		sourceColumn: window_phase
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_excluded_control
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0d0ecb3d-1a24-4599-a6da-d9c960fe5b71
+		summarizeBy: none
+		sourceColumn: is_excluded_control
+
+		annotation SummarizationSetBy = Automatic
+
+	column reviews
+		dataType: double
+		lineageTag: 6847cb98-700e-4573-9ae1-44b36e048c54
+		summarizeBy: none
+		sourceColumn: reviews
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column positive_reviews
+		dataType: double
+		lineageTag: 974a1df7-3868-46e7-be99-f82810bb03f3
+		summarizeBy: sum
+		sourceColumn: positive_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column negative_reviews
+		dataType: double
+		lineageTag: ad7bae10-3b90-43f3-97a9-ee7c2dcfdcbb
+		summarizeBy: sum
+		sourceColumn: negative_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column steam_purchase_reviews
+		dataType: double
+		lineageTag: aec36b8e-1594-47c4-921d-7a42a2477300
+		summarizeBy: sum
+		sourceColumn: steam_purchase_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column steam_purchase_positive_reviews
+		dataType: double
+		lineageTag: 92600b0e-fdde-47d0-bfcc-46b90b9a53fa
+		summarizeBy: sum
+		sourceColumn: steam_purchase_positive_reviews
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_players
+		dataType: int64
+		formatString: 0
+		lineageTag: a5d200b5-41f5-4949-9c0e-4447efcfbc5d
+		summarizeBy: none
+		sourceColumn: avg_players
+
+		annotation SummarizationSetBy = Automatic
+
+	column reviews_index
+		dataType: double
+		lineageTag: f086ce02-9752-42d4-bb35-4b0fad210dcb
+		summarizeBy: none
+		sourceColumn: reviews_index
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column players_index
+		dataType: double
+		lineageTag: 26449cab-2305-4450-99d5-768ae31d0cdd
+		summarizeBy: none
+		sourceColumn: players_index
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'marts fct_event_window' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("localhost", "cdpr_hub"),
+				  #"Navigation 1" = Source{[Schema = "marts", Item = "fct_event_window"]}[Data]
+				in
+				  #"Navigation 1"
+

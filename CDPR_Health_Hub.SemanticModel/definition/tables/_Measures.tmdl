@@ -112,8 +112,79 @@ table _Measures
 		displayFolder: Players
 		lineageTag: 8bf59a76-e16a-4e14-bf25-9a71fb84c5a8
 
+	/// Індекс потоку відгуків самої гри події. 100 = середньодобовий рівень цієї гри за 4 тижні до події. Середнє по кількох подіях показує «типову» реакцію.
+	measure 'Reviews Index (Event Game)' =
+			CALCULATE(
+			    AVERAGE('Event Window'[reviews_index]),
+			    KEEPFILTERS('Event Window'[series_role] = "event_game")
+			)
+		formatString: 0
+		displayFolder: Events
+		lineageTag: 7617a0b8-52ab-445a-b86f-0f8792fa5359
+
+	/// Індекс потоку відгуків контрольних ігор (без виключених). 100 = їхній середньодобовий рівень за 4 тижні до події. Базова лінія: наскільки Steam рухався б і без події.
+	measure 'Reviews Index (Controls)' =
+			CALCULATE(
+			    AVERAGE('Event Window'[reviews_index]),
+			    KEEPFILTERS('Event Window'[series_role] = "control"),
+			    KEEPFILTERS('Event Window'[is_excluded_control] = FALSE())
+			)
+		formatString: 0
+		displayFolder: Events
+		lineageTag: 86e3659f-64f1-4285-9fdd-bda059a79f30
+
+	/// Індекс онлайну гри події. 100 = середній онлайн цієї гри за 4 тижні до події. Середнє по кількох подіях показує «типову» реакцію.
+	measure 'Players Index (Event Game)' =
+			CALCULATE(
+			    AVERAGE('Event Window'[players_index]),
+			    KEEPFILTERS('Event Window'[series_role] = "event_game")
+			)
+		formatString: 0
+		displayFolder: Events
+		lineageTag: 259eed2d-ee76-4379-abdd-d44a591cf9be
+
+	/// Індекс онлайну контрольних ігор (без виключених). 100 = їхній середній онлайн за 4 тижні до події. Базова лінія для порівняння з грою події.
+	measure 'Players Index (Controls)' =
+			CALCULATE(
+			    AVERAGE('Event Window'[players_index]),
+			    KEEPFILTERS('Event Window'[series_role] = "control"),
+			    KEEPFILTERS('Event Window'[is_excluded_control] = FALSE())
+			)
+		formatString: 0
+		displayFolder: Events
+		lineageTag: 92589fde-097a-446e-beff-14991fa677b2
+
+	/// Кількість подій, для яких вдалося порахувати ефект на відгуки за 2 тижні. Показує, на скількох подіях тримається медіана поряд.
+	measure 'Events Measured' =
+			CALCULATE(
+			    COUNTROWS('Event Impact'),
+			    NOT ISBLANK('Event Impact'[reviews_uplift_2w_pct])
+			)
+		formatString: #,0
+		displayFolder: Events
+		lineageTag: 09bfa3fb-894a-4e8b-b1a4-8f62eb454fa7
+
+	/// Медіанний приріст відгуків за день у перші 2 тижні після події проти 4 тижнів до неї. Медіана, а не середнє: одна гучна подія не перетягує підсумок.
+	measure 'Median Reviews Uplift 2w' = MEDIAN('Event Impact'[reviews_uplift_2w_pct])
+		formatString: 0%
+		displayFolder: Events
+		lineageTag: 5f105db5-6a77-4dd9-bb9e-b33ef2dcdef7
+
+	/// Те саме, але мінус той самий приріст у контрольних іграх (difference-in-differences). Відповідає на питання: скільки з реакції дала саме подія, а не загальний рух Steam.
+	measure 'Median Net Reviews Uplift 2w' = MEDIAN('Event Impact'[net_reviews_uplift_2w_pct])
+		formatString: 0%
+		displayFolder: Events
+		lineageTag: 65372c3c-06f3-4cb1-85ef-e26f43edebbe
+
+	/// Середня зміна частки позитивних відгуків за перші 2 тижні після події, у відсоткових пунктах. Мінус = подія зіпсувала настрій.
+	measure 'Avg Score Change 2w (pp)' = AVERAGE('Event Impact'[score_change_2w_pp])
+		formatString: 0.0
+		displayFolder: Events
+		lineageTag: 28ee5119-ceb2-4b1a-8e83-0dd9591c8314
+
 	column Value
 		isHidden
+		lineageTag: be1fba15-f117-4237-8a64-2552309cbddf
 		isNameInferred
 		sourceColumn: [Value]
 

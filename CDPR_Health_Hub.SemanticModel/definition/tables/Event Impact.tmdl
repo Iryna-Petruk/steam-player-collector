@@ -1,0 +1,274 @@
+table 'Event Impact'
+	lineageTag: 8a5e129e-40bc-458c-b11e-26278b521949
+
+	column event_id
+		dataType: string
+		isHidden
+		lineageTag: db518e72-cd5b-4728-aeec-178b0a11e3a8
+		summarizeBy: none
+		sourceColumn: event_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column appid
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b00bd533-f38e-4d13-b795-ca0e7958afc5
+		summarizeBy: none
+		sourceColumn: appid
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9a8311c4-704b-4769-9b1f-f6fe83685aca
+		summarizeBy: none
+		sourceColumn: event_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column event_type
+		dataType: string
+		lineageTag: a2df56f6-f920-46e5-8f49-1c578b08a3a9
+		summarizeBy: none
+		sourceColumn: event_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column magnitude
+		dataType: string
+		lineageTag: 5b8b4eff-fb58-4ecb-acbd-1aa3f0657de5
+		summarizeBy: none
+		sourceColumn: magnitude
+
+		annotation SummarizationSetBy = Automatic
+
+	column event_name
+		dataType: string
+		lineageTag: 2866f68e-7a59-4bab-8dc5-d94d7c53ab04
+		summarizeBy: none
+		sourceColumn: event_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_platform_wide
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c7271b35-68b2-4e81-b2c2-d8ac69131be6
+		summarizeBy: none
+		sourceColumn: is_platform_wide
+
+		annotation SummarizationSetBy = Automatic
+
+	column reviews_per_day_pre
+		dataType: double
+		lineageTag: 21318cdf-2f02-42fb-86dc-fba62208048b
+		summarizeBy: none
+		sourceColumn: reviews_per_day_pre
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column reviews_per_day_2w
+		dataType: double
+		lineageTag: 2abba1fd-547c-4287-afa8-d6fe4721c449
+		summarizeBy: none
+		sourceColumn: reviews_per_day_2w
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column reviews_per_day_4_8w
+		dataType: double
+		lineageTag: 132410cc-c36c-4582-9c05-9979a4548605
+		summarizeBy: none
+		sourceColumn: reviews_per_day_4_8w
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column reviews_uplift_2w_pct
+		dataType: double
+		formatString: 0%
+		lineageTag: 5e0af2de-c536-4b10-8dba-c81b51f88510
+		summarizeBy: none
+		sourceColumn: reviews_uplift_2w_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column reviews_uplift_4_8w_pct
+		dataType: double
+		formatString: 0%
+		lineageTag: fbc207f3-9a2a-46b3-965a-a96d14c5f191
+		summarizeBy: none
+		sourceColumn: reviews_uplift_4_8w_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column control_reviews_uplift_2w_pct
+		dataType: double
+		formatString: 0%
+		lineageTag: 01b9e180-decc-4fbc-9f76-12a25bb86c5c
+		summarizeBy: none
+		sourceColumn: control_reviews_uplift_2w_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column net_reviews_uplift_2w_pct
+		dataType: double
+		formatString: 0%
+		lineageTag: 8a5bb661-f0f2-472e-98b5-284389048d49
+		summarizeBy: none
+		sourceColumn: net_reviews_uplift_2w_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column net_reviews_uplift_4_8w_pct
+		dataType: double
+		formatString: 0%
+		lineageTag: a4872d38-4c3a-4a16-a8b5-7e28225913a1
+		summarizeBy: none
+		sourceColumn: net_reviews_uplift_4_8w_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column n_control_games
+		dataType: int64
+		formatString: 0
+		lineageTag: adf89546-697b-4d83-8739-226a1a17dbcd
+		summarizeBy: none
+		sourceColumn: n_control_games
+
+		annotation SummarizationSetBy = Automatic
+
+	column steam_score_pre
+		dataType: double
+		formatString: 0%
+		lineageTag: 5502703d-73ca-455d-8977-b7860a65cbf1
+		summarizeBy: none
+		sourceColumn: steam_score_pre
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column steam_score_2w
+		dataType: double
+		formatString: 0%
+		lineageTag: 7e46c74c-c252-45f5-96c1-3fd0b4954469
+		summarizeBy: none
+		sourceColumn: steam_score_2w
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column score_change_2w_pp
+		dataType: double
+		formatString: 0.0
+		lineageTag: 0a17bbc9-17c1-40a0-ada9-8984856791c1
+		summarizeBy: none
+		sourceColumn: score_change_2w_pp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column control_score_change_2w_pp
+		dataType: double
+		formatString: 0.0
+		lineageTag: 13ac6a89-6953-423c-b901-8c00d941867d
+		summarizeBy: none
+		sourceColumn: control_score_change_2w_pp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column net_score_change_2w_pp
+		dataType: double
+		formatString: 0.0
+		lineageTag: 456077a0-3f6d-437b-9792-19ffb53bf450
+		summarizeBy: none
+		sourceColumn: net_score_change_2w_pp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_players_pre
+		dataType: double
+		lineageTag: f88a651f-87d7-43f4-beaa-c7d437caeec6
+		summarizeBy: none
+		sourceColumn: avg_players_pre
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_players_2w
+		dataType: double
+		lineageTag: 68ea16f4-7ac0-4334-b8c1-303c397ea36c
+		summarizeBy: none
+		sourceColumn: avg_players_2w
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column players_uplift_2w_pct
+		dataType: double
+		formatString: 0%
+		lineageTag: 73e225cd-b756-4ff9-9f8d-d242af431574
+		summarizeBy: none
+		sourceColumn: players_uplift_2w_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column net_players_uplift_2w_pct
+		dataType: double
+		formatString: 0%
+		lineageTag: 2884b879-fcf8-46c9-b3fd-36cb8fd06676
+		summarizeBy: none
+		sourceColumn: net_players_uplift_2w_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column overlapping_event_ids
+		dataType: string
+		lineageTag: b646468d-83f6-47bf-9f8c-f4366ace12c4
+		summarizeBy: none
+		sourceColumn: overlapping_event_ids
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'marts fct_event_impact' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("localhost", "cdpr_hub"),
+				  #"Navigation 1" = Source{[Schema = "marts", Item = "fct_event_impact"]}[Data]
+				in
+				  #"Navigation 1"
+

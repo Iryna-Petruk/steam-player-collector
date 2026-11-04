@@ -9,7 +9,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["marts dim_date","marts dim_events","marts dim_games","marts dim_languages","marts dim_topics","marts fct_players_daily","marts fct_review_topics_daily","marts fct_reviews_daily"]
+annotation PBI_QueryOrder = ["Date","Event","Game","Language","Topic","Players Daily","Review Topics Daily","Reviews Daily","marts fct_event_impact","marts fct_event_window"]
 
 annotation PBI_ProTooling = ["DevMode","MCP-PBIModeling"]
 
@@ -22,6 +22,8 @@ ref table 'Players Daily'
 ref table 'Review Topics Daily'
 ref table 'Reviews Daily'
 ref table _Measures
+ref table 'Event Impact'
+ref table 'Event Window'
 
 ref cultureInfo en-US
 

@@ -34,3 +34,19 @@ relationship 9ebb63e2-0f4a-b832-4406-f21c6f2990ee
 	fromColumn: 'Players Daily'.date
 	toColumn: Date.date
 
+relationship AutoDetected_41701565-a063-4127-8adb-8892126e4031
+	fromColumn: 'Event Impact'.event_id
+	toColumn: Event.event_id
+
+relationship AutoDetected_051ffc78-1d8f-46ec-83bf-cee9f4498f7e
+	fromColumn: 'Event Window'.event_id
+	toColumn: Event.event_id
+
+relationship AutoDetected_c81789b2-772c-4e9c-8909-9ba1af3e9c78
+	fromColumn: 'Event Impact'.appid
+	toColumn: Game.appid
+
+relationship EventWindow_target_appid_Game_appid
+	fromColumn: 'Event Window'.target_appid
+	toColumn: Game.appid
+
