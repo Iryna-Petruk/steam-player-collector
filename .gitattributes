@@ -2,3 +2,6 @@
 # keep the lines of both instead of stopping with a merge conflict.
 # (Duplicate snapshots are removed in dbt; a repeated header line is skipped by the loader.)
 data/raw/players/**/*.csv merge=union
+
+# Config and design files: always LF in the repo (data CSVs are left as written)
+*.json text eol=lf
