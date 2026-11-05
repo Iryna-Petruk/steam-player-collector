@@ -10,10 +10,10 @@
       "nodes": [
         {
           "location": {
-            "x": 1504.2456006367579,
-            "y": 556.42153340186042
+            "x": 1357.6521669793642,
+            "y": 294.84994804948667
           },
-          "nodeIndex": "marts dim_date",
+          "nodeIndex": "Date",
           "nodeLineageTag": "4c19f4ba-db2e-434a-a5d7-480a5ff72b97",
           "size": {
             "height": 300,
@@ -23,10 +23,10 @@
         },
         {
           "location": {
-            "x": 334.92681699779376,
-            "y": 1052.2266242296596
+            "x": 912.32333109388355,
+            "y": 711.36387795927578
           },
-          "nodeIndex": "marts dim_events",
+          "nodeIndex": "Event",
           "nodeLineageTag": "ed2f62f3-8686-4da9-8273-664e8bc39917",
           "size": {
             "height": 300,
@@ -36,10 +36,10 @@
         },
         {
           "location": {
-            "x": 338.50853147805759,
-            "y": 483.49762430612736
+            "x": 147.24708868479155,
+            "y": 311.96312900482394
           },
-          "nodeIndex": "marts dim_games",
+          "nodeIndex": "Game",
           "nodeLineageTag": "10111b52-534d-4716-9a98-ed4fe1ee0f0b",
           "size": {
             "height": 224,
@@ -49,10 +49,10 @@
         },
         {
           "location": {
-            "x": 144.42408833604458,
-            "y": 252.96753958133468
+            "x": 356.42408833604458,
+            "y": 24.967539581334677
           },
-          "nodeIndex": "marts dim_languages",
+          "nodeIndex": "Language",
           "nodeLineageTag": "c459020a-d563-4952-ad8f-befe1173a93c",
           "size": {
             "height": 176,
@@ -62,23 +62,10 @@
         },
         {
           "location": {
-            "x": 1143.1842869763439,
-            "y": 0
+            "x": 244.72446807067161,
+            "y": 698.73486251180407
           },
-          "nodeIndex": "marts dim_topics",
-          "nodeLineageTag": "283b76ec-b2a1-450e-b07f-8c7dc51701d5",
-          "size": {
-            "height": 176,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
-            "x": 808.43034866509583,
-            "y": 743.82201010955941
-          },
-          "nodeIndex": "marts fct_players_daily",
+          "nodeIndex": "Players Daily",
           "nodeLineageTag": "677e867b-b8c2-473c-b79f-feee966130ad",
           "size": {
             "height": 296,
@@ -88,10 +75,10 @@
         },
         {
           "location": {
-            "x": 547.20745669650444,
-            "y": 180.96407625281017
+            "x": 931.20745669650444,
+            "y": 304.96407625281017
           },
-          "nodeIndex": "marts fct_review_topics_daily",
+          "nodeIndex": "Review Topics Daily",
           "nodeLineageTag": "fc67ea4a-e39e-4e27-b68b-45911242ba6f",
           "size": {
             "height": 248,
@@ -101,11 +88,63 @@
         },
         {
           "location": {
-            "x": 50,
-            "y": 597.78520031832443
+            "x": 665.57371919399054,
+            "y": 301.88832248443595
           },
-          "nodeIndex": "marts fct_reviews_daily",
+          "nodeIndex": "Reviews Daily",
           "nodeLineageTag": "7e8691cc-d60d-4f3b-8be6-3d9524c7bd40",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 793.18428697634386,
+            "y": 0
+          },
+          "nodeIndex": "Topic",
+          "nodeLineageTag": "283b76ec-b2a1-450e-b07f-8c7dc51701d5",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1262.1707915775939,
+            "y": 2
+          },
+          "nodeIndex": "_Measures",
+          "nodeLineageTag": "5ccf17cd-f933-4cee-9e09-384f9cc0d81f",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1210.05829782223,
+            "y": 710.08959074722156
+          },
+          "nodeIndex": "Event Impact",
+          "nodeLineageTag": "8a5e129e-40bc-458c-b11e-26278b521949",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 605.59772853896948,
+            "y": 697.38026088538413
+          },
+          "nodeIndex": "Event Window",
+          "nodeLineageTag": "fdea0ce7-eeb8-48e3-af57-f6f015798c12",
           "size": {
             "height": 300,
             "width": 234
@@ -114,7 +153,7 @@
         }
       ],
       "name": "All tables",
-      "zoomValue": 56.516106578484212,
+      "zoomValue": 65.168006650173325,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "0b62f4175565c4010ae0",
+  "position": {
+    "x": 1725.3740949316173,
+    "y": 16.991150442477878,
+    "z": 10002,
+    "height": 149.83105390185037,
+    "width": 183.81335478680612,
+    "tabOrder": 10002
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Event"
+                    }
+                  },
+                  "Property": "event_name"
+                }
+              },
+              "queryRef": "Event.event_name",
+              "nativeQueryRef": "event_name",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
