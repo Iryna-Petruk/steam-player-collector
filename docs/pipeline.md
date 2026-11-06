@@ -1,0 +1,103 @@
+# Steam Player Collector
+
+Hourly collection of concurrent Steam player counts for CD PROJEKT RED games and a fixed control group of comparable single-player titles. This is the first data source of the **CD PROJEKT Back-Catalogue Health Hub**, a Power BI portfolio project.
+
+> Independent analysis based on public data. Not affiliated with or endorsed by CD PROJEKT or Valve.
+
+## What it does
+
+- Every hour (minute 17, UTC) a GitHub Actions workflow calls the public Steam Web API method `ISteamUserStats/GetNumberOfCurrentPlayers` for each game in `config/games.csv`.
+- **Reliable hourly trigger:** GitHub's own `schedule` proved unreliable for a new repository (runs every 4-5 hours instead of hourly), so an external scheduler (cron-job.org) starts the workflow through the GitHub API (`workflow_dispatch`, fine-grained token with Actions: read/write on this repository only). The GitHub schedule stays as a backup.
+- **No push conflicts:** runs check out the latest `main` when they start, and `.gitattributes` uses `merge=union` for the append-only player files, so two runs in the same hour keep both sets of rows; duplicates are removed in dbt.
+- Results are appended to a daily CSV file: `data/raw/players/YYYY/MM/players_YYYY-MM-DD.csv`.
+- Failed requests are retried and, if still failing, recorded with an error status instead of being silently skipped.
+- `collector/check_gaps.py` reports missing or failed hours per game and day.
+
+## Games tracked
+
+| Role | Games |
+| --- | --- |
+| CD PROJEKT RED | Cyberpunk 2077, The Witcher 3: Wild Hunt |
+| Control group | Baldur's Gate 3, ELDEN RING, Red Dead Redemption 2 |
+
+The control group was chosen before any analysis and is kept fixed, so event-impact comparisons are not cherry-picked.
+
+## Data columns
+
+| Column | Description |
+| --- | --- |
+| collected_at_utc | Time of the request, UTC, ISO 8601 |
+| appid | Steam application ID |
+| game | Game name |
+| role | `cdpr` or `control` |
+| player_count | Players currently in game on Steam; empty if the request failed |
+| status | `ok` or an error description |
+
+## Reviews
+
+A second workflow (`collect-reviews.yml`, daily at 03:47 UTC) collects review **metadata** for games marked `reviews=yes` in `config/games.csv`, using `IUserReviewsService/GetAppReviews` (no key needed).
+
+- **Backfill:** full history, one calendar month at a time by creation date. Progress is stored in `state/reviews_state.json`, so the backfill spreads over several runs within GitHub's 6-hour job limit.
+- **Incremental:** afterwards, only reviews created or updated since the last run (watermark with a 2-day overlap).
+- Raw files are append-only; duplicates from overlaps and updates are removed downstream (dbt).
+- **Privacy:** review text and author Steam IDs are not stored; only metadata, text length and topic flags (see below).
+- All languages and purchase types are collected; `steam_purchase` allows reproducing Steam's own score. Off-topic review activity ("review bombs") is excluded by Steam's default filter.
+
+Output: `data/raw/reviews/<appid>/backfill/reviews_<appid>_<YYYY-MM>.csv` and `data/raw/reviews/<appid>/updates/reviews_<appid>_updates_<date>.csv`. Summary: `python collector/check_reviews.py`.
+
+## Review topics (privacy by design)
+
+What do players complain about: bugs, performance, price, story or content? To answer this without storing anyone's text, the collector tags each review **while the text is in memory** and keeps only 0/1 flags.
+
+- Dictionary: `config/review_topics.csv` (`topic, language, keyword`), 5 topics in 10 languages (English, Simplified Chinese, Russian, Polish, German, French, Spanish, Latin American Spanish, Brazilian Portuguese, Ukrainian). `crash*` = word starting with "crash", phrases allowed; Chinese is matched without word boundaries.
+- Output columns: `topic_bugs`, `topic_performance`, `topic_price`, `topic_story`, `topic_content`, `topics_scanned` (language covered), `topics_version`.
+- **Versioned:** the version is a hash of the dictionary. When it changes, the collector re-collects the full history so all reviews are tagged by the same rules (dbt warns while versions are mixed).
+- **Measured, not assumed:** `collector/topic_check.py sample ...` downloads a sample *with* text into `local/` (git-ignored) for manual labelling; `topic_check.py score ...` reports precision and recall per topic.
+- **Validation so far:** 150 recent negative reviews (100 English, 50 Polish) reviewed by hand. The first iteration missed a whole category (launch failures and corrupted saves right after Update 2.5: "won't launch", "can't load"), which was added for all 10 languages before the full history was tagged. It also showed that the API ignores `review_type`, so the sampler filters negatives itself.
+- **Coverage:** 91% of Cyberpunk 2077 and 88% of The Witcher 3 reviews are in languages covered by the dictionary.
+- dbt: `fct_review_topics_daily` (game x day x language x topic) and `dim_topics`. Not additive across topics: one review can mention several; shares use `fct_reviews_daily.topic_scanned_reviews` as the denominator.
+- Limits: keyword matching misses sarcasm and negation ("no bugs at all" counts as bugs); languages outside the dictionary are excluded from topic shares, and their coverage is shown.
+
+## Events calendar
+
+`config/events.csv` is a hand-maintained calendar of events that may move player activity or review sentiment: releases, expansions, major updates, patches, Netflix premieres, announcements and Steam seasonal sales. Every event has a source URL. Platform-wide Steam sales use `appid = ALL` and a date range (`event_date` to `end_date`).
+
+Event types: `release`, `expansion`, `major_update`, `patch`, `transmedia`, `announcement`, `platform_sale`, `related_release`, `other`. Magnitude: `major` or `minor`, assigned before any analysis.
+
+Control-group events are included so that their own windows can be excluded when comparing against CD PROJEKT RED titles. Validate after every edit: `python collector/validate_events.py`.
+
+## Local warehouse (PostgreSQL + dbt)
+
+```
+GitHub repo (CSV) --git pull--> warehouse/load_raw.py --> PostgreSQL raw --> dbt: staging -> intermediate -> marts
+```
+
+- `warehouse/load_raw.py` loads all CSV files into the `raw` schema as text. Idempotent: unchanged files (SHA-256 in `raw.load_log`) are skipped, changed files are replaced in one transaction.
+- `dbt/` builds `staging` (types), `intermediate` (review deduplication, one player snapshot per hour) and `marts` (`fct_players_daily`, `fct_reviews_daily`, `fct_review_topics_daily`, `dim_date`, `dim_games`, `dim_languages`, `dim_events`, `dim_topics`).
+- Power BI connects with a read-only role `powerbi_reader` that can only `select` from `marts`; dbt re-applies the grant after every rebuild (`+grants` in `dbt_project.yml`).
+- 50 data tests, including a reconciliation test (every deduplicated review counted exactly once in the daily table) and grain checks.
+- **Steam counter wrap-around:** Steam returns review counters as unsigned 32-bit integers, so a counter that goes negative (e.g. funny votes removed) arrives as 4294967295 (-1) or 4294967292 (-4). The `steam_count()` macro casts to `bigint` and turns anything above the signed-integer maximum into NULL; the warning test `warn_steam_counter_wraparound` reports how many values were affected (19 of ~1.9M reviews, all in `votes_funny`), so `dbt build` ends with `WARN=1` by design.
+- One command for the whole refresh: `./run_pipeline.sh` (Mac/Linux) or `.\run_pipeline.ps1` (Windows).
+
+Power BI Desktop and PostgreSQL run on the same Windows machine, so Power BI connects to `localhost` (Import mode). The database has no TLS configured, which is acceptable for a local, single-machine setup but would be enabled in production.
+
+**Row-level security.** Dynamic RLS by region: a `security_region_access` table (dbt seed, version-controlled and tested) maps users to regions; the role "Regional access" filters `Language[region]` by `USERPRINCIPALNAME()`, with `ALL` for global access. The security table has no relationships and is itself filtered. Review and topic data are restricted; players and event-study tables are global KPIs available to all roles by design. Demo users use `example.com`.
+
+Connection settings come from the standard `PGHOST`, `PGPORT`, `PGUSER`, `PGPASSWORD`, `PGDATABASE` environment variables; no secrets are stored in the repository.
+
+## Limitations
+
+- Steam only: console, GOG and Epic players are not included.
+- Players in offline mode are not counted by Steam.
+- Scheduled GitHub Actions runs can be delayed or occasionally skipped; gaps are visible through `check_gaps.py`.
+- Player history starts on the day collection began (21 October 2026); the API does not provide past values. Reviews have full history.
+- Topics are keyword-based: sarcasm and negation are not understood, which is why topic shares are shown for negative reviews.
+
+## Run locally
+
+```bash
+python collector/collect_players.py
+python collector/check_gaps.py 7
+```
+
+The collectors need Python 3.10+ and no packages. The warehouse (`requirements.txt`: dbt-core 1.12.6, dbt-postgres 1.11.0, psycopg 3) needs Python 3.10-3.14 (tested on 3.12 and 3.13); 3.15 is not yet supported by dbt and its PostgreSQL driver.
