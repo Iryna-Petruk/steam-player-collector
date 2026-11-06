@@ -1,9 +1,11 @@
+/// Один рядок на подію та гру CD PROJEKT RED: приріст активності відгуків, зміна оцінки Steam і онлайну проти 4 тижнів до події та проти контрольних ігор. Порожньо = наявних даних не досить, щоб порахувати.
 table 'Event Impact'
 	lineageTag: 8a5e129e-40bc-458c-b11e-26278b521949
 
 	column event_id
 		dataType: string
 		isHidden
+		isAvailableInMdx: false
 		lineageTag: db518e72-cd5b-4728-aeec-178b0a11e3a8
 		summarizeBy: none
 		sourceColumn: event_id
@@ -14,58 +16,16 @@ table 'Event Impact'
 		dataType: int64
 		isHidden
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: b00bd533-f38e-4d13-b795-ca0e7958afc5
 		summarizeBy: none
 		sourceColumn: appid
 
 		annotation SummarizationSetBy = Automatic
 
-	column event_date
-		dataType: dateTime
-		formatString: Long Date
-		lineageTag: 9a8311c4-704b-4769-9b1f-f6fe83685aca
-		summarizeBy: none
-		sourceColumn: event_date
-
-		annotation SummarizationSetBy = Automatic
-
-		annotation UnderlyingDateTimeDataType = Date
-
-	column event_type
-		dataType: string
-		lineageTag: a2df56f6-f920-46e5-8f49-1c578b08a3a9
-		summarizeBy: none
-		sourceColumn: event_type
-
-		annotation SummarizationSetBy = Automatic
-
-	column magnitude
-		dataType: string
-		lineageTag: 5b8b4eff-fb58-4ecb-acbd-1aa3f0657de5
-		summarizeBy: none
-		sourceColumn: magnitude
-
-		annotation SummarizationSetBy = Automatic
-
-	column event_name
-		dataType: string
-		lineageTag: 2866f68e-7a59-4bab-8dc5-d94d7c53ab04
-		summarizeBy: none
-		sourceColumn: event_name
-
-		annotation SummarizationSetBy = Automatic
-
-	column is_platform_wide
-		dataType: boolean
-		formatString: """TRUE"";""TRUE"";""FALSE"""
-		lineageTag: c7271b35-68b2-4e81-b2c2-d8ac69131be6
-		summarizeBy: none
-		sourceColumn: is_platform_wide
-
-		annotation SummarizationSetBy = Automatic
-
+	/// Середня кількість відгуків за день у 4 тижні до події.
 	column reviews_per_day_pre
-		dataType: double
+		dataType: decimal
 		lineageTag: 21318cdf-2f02-42fb-86dc-fba62208048b
 		summarizeBy: none
 		sourceColumn: reviews_per_day_pre
@@ -74,8 +34,9 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Середня кількість відгуків за день у перші 2 тижні після події.
 	column reviews_per_day_2w
-		dataType: double
+		dataType: decimal
 		lineageTag: 2abba1fd-547c-4287-afa8-d6fe4721c449
 		summarizeBy: none
 		sourceColumn: reviews_per_day_2w
@@ -84,8 +45,9 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Середня кількість відгуків за день у 4-8 тижні після події.
 	column reviews_per_day_4_8w
-		dataType: double
+		dataType: decimal
 		lineageTag: 132410cc-c36c-4582-9c05-9979a4548605
 		summarizeBy: none
 		sourceColumn: reviews_per_day_4_8w
@@ -94,8 +56,9 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Приріст відгуків за день у перші 2 тижні проти 4 тижнів до події.
 	column reviews_uplift_2w_pct
-		dataType: double
+		dataType: decimal
 		formatString: 0%
 		lineageTag: 5e0af2de-c536-4b10-8dba-c81b51f88510
 		summarizeBy: none
@@ -105,8 +68,9 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Те саме для 4-8 тижня після події: чи ефект тримається.
 	column reviews_uplift_4_8w_pct
-		dataType: double
+		dataType: decimal
 		formatString: 0%
 		lineageTag: fbc207f3-9a2a-46b3-965a-a96d14c5f191
 		summarizeBy: none
@@ -116,8 +80,9 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Той самий приріст у контрольних ігор за ті самі дні, зведений як геометричне середнє їхніх співвідношень.
 	column control_reviews_uplift_2w_pct
-		dataType: double
+		dataType: decimal
 		formatString: 0%
 		lineageTag: 01b9e180-decc-4fbc-9f76-12a25bb86c5c
 		summarizeBy: none
@@ -127,8 +92,9 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Чистий приріст (difference-in-differences): наскільки більше за порівнянні ігри в ті самі дні.
 	column net_reviews_uplift_2w_pct
-		dataType: double
+		dataType: decimal
 		formatString: 0%
 		lineageTag: 8a5bb661-f0f2-472e-98b5-284389048d49
 		summarizeBy: none
@@ -138,8 +104,9 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Те саме для 4-8 тижня після події.
 	column net_reviews_uplift_4_8w_pct
-		dataType: double
+		dataType: decimal
 		formatString: 0%
 		lineageTag: a4872d38-4c3a-4a16-a8b5-7e28225913a1
 		summarizeBy: none
@@ -149,6 +116,7 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Скільки контрольних ігор увійшло в базову лінію. Виключені та ті, що без даних, не рахуються.
 	column n_control_games
 		dataType: int64
 		formatString: 0
@@ -158,8 +126,9 @@ table 'Event Impact'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Частка позитивних відгуків покупців Steam за 4 тижні до події.
 	column steam_score_pre
-		dataType: double
+		dataType: decimal
 		formatString: 0%
 		lineageTag: 5502703d-73ca-455d-8977-b7860a65cbf1
 		summarizeBy: none
@@ -169,8 +138,9 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Частка позитивних відгуків покупців Steam за перші 2 тижні після події.
 	column steam_score_2w
-		dataType: double
+		dataType: decimal
 		formatString: 0%
 		lineageTag: 7e46c74c-c252-45f5-96c1-3fd0b4954469
 		summarizeBy: none
@@ -181,8 +151,10 @@ table 'Event Impact'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column score_change_2w_pp
-		dataType: double
+		dataType: decimal
+		isHidden
 		formatString: 0.0
+		isAvailableInMdx: false
 		lineageTag: 0a17bbc9-17c1-40a0-ada9-8984856791c1
 		summarizeBy: none
 		sourceColumn: score_change_2w_pp
@@ -191,8 +163,9 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Середня зміна оцінки в контрольних ігор за ті самі дні, у відсоткових пунктах.
 	column control_score_change_2w_pp
-		dataType: double
+		dataType: decimal
 		formatString: 0.0
 		lineageTag: 13ac6a89-6953-423c-b901-8c00d941867d
 		summarizeBy: none
@@ -202,8 +175,9 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Зміна оцінки мінус та сама зміна в контрольних ігор, у відсоткових пунктах.
 	column net_score_change_2w_pp
-		dataType: double
+		dataType: decimal
 		formatString: 0.0
 		lineageTag: 456077a0-3f6d-437b-9792-19ffb53bf450
 		summarizeBy: none
@@ -213,8 +187,9 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Середній добовий онлайн за 4 тижні до події.
 	column avg_players_pre
-		dataType: double
+		dataType: decimal
 		lineageTag: f88a651f-87d7-43f4-beaa-c7d437caeec6
 		summarizeBy: none
 		sourceColumn: avg_players_pre
@@ -223,8 +198,9 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Середній добовий онлайн за перші 2 тижні після події.
 	column avg_players_2w
-		dataType: double
+		dataType: decimal
 		lineageTag: 68ea16f4-7ac0-4334-b8c1-303c397ea36c
 		summarizeBy: none
 		sourceColumn: avg_players_2w
@@ -233,8 +209,9 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Приріст онлайну в перші 2 тижні проти 4 тижнів до події.
 	column players_uplift_2w_pct
-		dataType: double
+		dataType: decimal
 		formatString: 0%
 		lineageTag: 73e225cd-b756-4ff9-9f8d-d242af431574
 		summarizeBy: none
@@ -244,8 +221,9 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Приріст онлайну мінус той самий приріст у контрольних ігор.
 	column net_players_uplift_2w_pct
-		dataType: double
+		dataType: decimal
 		formatString: 0%
 		lineageTag: 2884b879-fcf8-46c9-b3fd-36cb8fd06676
 		summarizeBy: none
@@ -255,6 +233,7 @@ table 'Event Impact'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Інші події тієї самої гри або на всю платформу, що потрапили у вікно від 4 тижнів до до 2 тижнів після. Якщо не порожньо - виміряний ефект може бути спільним із ними.
 	column overlapping_event_ids
 		dataType: string
 		lineageTag: b646468d-83f6-47bf-9f8c-f4366ace12c4
@@ -268,7 +247,35 @@ table 'Event Impact'
 		source =
 				let
 				  Source = PostgreSQL.Database("localhost", "cdpr_hub"),
-				  #"Navigation 1" = Source{[Schema = "marts", Item = "fct_event_impact"]}[Data]
+				  #"Navigation 1" = Source{[Schema = "marts", Item = "fct_event_impact"]}[Data],
+				  // Attributes the Event dimension already carries. One copy per attribute,
+				  // in Event, keeps a single source of truth for the model.
+				  #"Removed duplicated columns" = Table.RemoveColumns(#"Navigation 1", {"event_date", "event_type", "magnitude", "event_name", "is_platform_wide"}),
+				  // An unconstrained PostgreSQL numeric arrives as a floating point Double.
+				  // Fixed decimal (Currency.Type) holds these values exactly and compresses
+				  // better, which is what the model wants for ratios and averages.
+				  #"Changed column types" = Table.TransformColumnTypes(
+				    #"Removed duplicated columns",
+				    {
+				      {"reviews_per_day_pre", Currency.Type},
+				      {"reviews_per_day_2w", Currency.Type},
+				      {"reviews_per_day_4_8w", Currency.Type},
+				      {"reviews_uplift_2w_pct", Currency.Type},
+				      {"reviews_uplift_4_8w_pct", Currency.Type},
+				      {"control_reviews_uplift_2w_pct", Currency.Type},
+				      {"net_reviews_uplift_2w_pct", Currency.Type},
+				      {"net_reviews_uplift_4_8w_pct", Currency.Type},
+				      {"steam_score_pre", Currency.Type},
+				      {"steam_score_2w", Currency.Type},
+				      {"score_change_2w_pp", Currency.Type},
+				      {"control_score_change_2w_pp", Currency.Type},
+				      {"net_score_change_2w_pp", Currency.Type},
+				      {"avg_players_pre", Currency.Type},
+				      {"avg_players_2w", Currency.Type},
+				      {"players_uplift_2w_pct", Currency.Type},
+				      {"net_players_uplift_2w_pct", Currency.Type}
+				    }
+				  )
 				in
-				  #"Navigation 1"
+				  #"Changed column types"
 

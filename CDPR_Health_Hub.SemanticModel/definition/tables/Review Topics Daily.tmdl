@@ -1,3 +1,4 @@
+/// Згадки тем у відгуках. Гранулярність: гра x дата x мова x тема. Не додається по темах: один відгук може згадувати кілька.
 table 'Review Topics Daily'
 	lineageTag: fc67ea4a-e39e-4e27-b68b-45911242ba6f
 
@@ -5,6 +6,7 @@ table 'Review Topics Daily'
 		dataType: int64
 		isHidden
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: cce703a8-18f8-4955-b67d-09df1dd49dc4
 		summarizeBy: none
 		sourceColumn: appid
@@ -15,6 +17,7 @@ table 'Review Topics Daily'
 		dataType: dateTime
 		isHidden
 		formatString: Long Date
+		isAvailableInMdx: false
 		lineageTag: 78bfe5ca-28b6-4eb1-8549-8f86dc773cf1
 		summarizeBy: none
 		sourceColumn: date
@@ -26,6 +29,7 @@ table 'Review Topics Daily'
 	column language
 		dataType: string
 		isHidden
+		isAvailableInMdx: false
 		lineageTag: 032ebde0-a12f-4e0f-bbde-f03ca8eba5c4
 		summarizeBy: none
 		sourceColumn: language
@@ -35,6 +39,7 @@ table 'Review Topics Daily'
 	column topic
 		dataType: string
 		isHidden
+		isAvailableInMdx: false
 		lineageTag: a286f583-3d42-4369-99fb-90e5c9d69c9f
 		summarizeBy: none
 		sourceColumn: topic
@@ -43,27 +48,33 @@ table 'Review Topics Daily'
 
 	column reviews
 		dataType: int64
+		isHidden
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: e6f48213-fd53-44d3-b43b-ba89794f8cd5
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: reviews
 
 		annotation SummarizationSetBy = Automatic
 
 	column positive_reviews
 		dataType: int64
+		isHidden
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: b16af75b-e7d9-40cc-a217-6a167b389e9f
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: positive_reviews
 
 		annotation SummarizationSetBy = Automatic
 
 	column negative_reviews
 		dataType: int64
+		isHidden
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: 7a9d49d6-b9f9-4d63-83ca-71cc1ffeddb3
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: negative_reviews
 
 		annotation SummarizationSetBy = Automatic

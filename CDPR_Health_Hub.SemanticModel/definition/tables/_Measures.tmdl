@@ -1,3 +1,4 @@
+/// Контейнер мір: таблиця без власних даних, щоб усі міри лежали в одному місці й були згруповані по папках.
 table _Measures
 	lineageTag: 5ccf17cd-f933-4cee-9e09-384f9cc0d81f
 
@@ -21,7 +22,7 @@ table _Measures
 
 	/// Частка позитивних відгуків серед усіх відгуків.
 	measure 'Positive %' = DIVIDE([Positive Reviews], [Reviews])
-		formatString: 0.0%
+		formatString: #,0.0%;-#,0.0%;#,0.0%
 		displayFolder: Reviews
 		lineageTag: 7a8d0145-8316-4ee0-8065-a6b455afcf94
 
@@ -31,7 +32,7 @@ table _Measures
 			    SUM('Reviews Daily'[steam_purchase_positive_reviews]),
 			    SUM('Reviews Daily'[steam_purchase_reviews])
 			)
-		formatString: 0.0%
+		formatString: #,0.0%;-#,0.0%;#,0.0%
 		displayFolder: Reviews
 		lineageTag: 025edd46-c475-45aa-896c-5ac44b8668e2
 
@@ -41,13 +42,13 @@ table _Measures
 			VAR _end = MIN(MAX('Date'[date]), _lastData)
 			RETURN
 			    CALCULATE([Steam Score %], DATESINPERIOD('Date'[date], _end, -30, DAY))
-		formatString: 0.0%
+		formatString: #,0.0%;-#,0.0%;#,0.0%
 		displayFolder: Reviews
 		lineageTag: bde950cb-8be3-4165-9d43-105d3b4b21d2
 
 	/// Частка негативних відгуків, написаних після менш ніж 2 годин у грі.
 	measure 'Negative from Newcomers %' = DIVIDE(SUM('Reviews Daily'[negative_reviews_under_2h_played]), [Negative Reviews])
-		formatString: 0.0%
+		formatString: #,0.0%;-#,0.0%;#,0.0%
 		displayFolder: Reviews
 		lineageTag: 5c88ef21-d7d8-491e-98e0-d42bbec6be07
 
@@ -67,19 +68,19 @@ table _Measures
 	measure 'Topic Share of Negative %' =
 			DIVIDE([Topic Mentions (Negative)],
 			       SUM('Reviews Daily'[topic_scanned_negative_reviews]))
-		formatString: 0.0%
+		formatString: #,0.0%;-#,0.0%;#,0.0%
 		displayFolder: Topics
 		lineageTag: 229e7e6e-fb8e-4be6-8944-5e5361d59fe3
 
 	/// Частка позитивних відгуків серед тих, що згадують вибрану тему.
 	measure 'Topic Positive %' = DIVIDE(SUM('Review Topics Daily'[positive_reviews]), [Topic Mentions])
-		formatString: 0.0%
+		formatString: #,0.0%;-#,0.0%;#,0.0%
 		displayFolder: Topics
 		lineageTag: 4ff8eaed-4043-455f-b15a-d9ad0136f7c3
 
 	/// Частка відгуків, перевірених на теми, серед усіх відгуків.
 	measure 'Topic Coverage %' = DIVIDE(SUM('Reviews Daily'[topic_scanned_reviews]), [Reviews])
-		formatString: 0.0%
+		formatString: #,0.0%;-#,0.0%;#,0.0%
 		displayFolder: Topics
 		lineageTag: 0afacb4a-8d56-499d-acb8-b5e35f71f00e
 
@@ -102,7 +103,7 @@ table _Measures
 
 	/// Середня повнота збору знімків за вибраний період.
 	measure 'Data Coverage %' = AVERAGE('Players Daily'[coverage_pct])
-		formatString: 0.0%
+		formatString: #,0.0%;-#,0.0%;#,0.0%
 		displayFolder: Players
 		lineageTag: d62e608e-911d-4c36-97b1-2c1a0fc87d20
 
@@ -118,7 +119,7 @@ table _Measures
 			    AVERAGE('Event Window'[reviews_index]),
 			    KEEPFILTERS('Event Window'[series_role] = "event_game")
 			)
-		formatString: 0
+		formatString: #,0
 		displayFolder: Events
 		lineageTag: 7617a0b8-52ab-445a-b86f-0f8792fa5359
 
@@ -129,7 +130,7 @@ table _Measures
 			    KEEPFILTERS('Event Window'[series_role] = "control"),
 			    KEEPFILTERS('Event Window'[is_excluded_control] = FALSE())
 			)
-		formatString: 0
+		formatString: #,0
 		displayFolder: Events
 		lineageTag: 86e3659f-64f1-4285-9fdd-bda059a79f30
 
@@ -139,7 +140,7 @@ table _Measures
 			    AVERAGE('Event Window'[players_index]),
 			    KEEPFILTERS('Event Window'[series_role] = "event_game")
 			)
-		formatString: 0
+		formatString: #,0
 		displayFolder: Events
 		lineageTag: 259eed2d-ee76-4379-abdd-d44a591cf9be
 
@@ -150,7 +151,7 @@ table _Measures
 			    KEEPFILTERS('Event Window'[series_role] = "control"),
 			    KEEPFILTERS('Event Window'[is_excluded_control] = FALSE())
 			)
-		formatString: 0
+		formatString: #,0
 		displayFolder: Events
 		lineageTag: 92589fde-097a-446e-beff-14991fa677b2
 
@@ -166,13 +167,13 @@ table _Measures
 
 	/// Медіанний приріст відгуків за день у перші 2 тижні після події проти 4 тижнів до неї. Медіана, а не середнє: одна гучна подія не перетягує підсумок.
 	measure 'Median Reviews Uplift 2w' = MEDIAN('Event Impact'[reviews_uplift_2w_pct])
-		formatString: 0%
+		formatString: #,0.0%;-#,0.0%;#,0.0%
 		displayFolder: Events
 		lineageTag: 5f105db5-6a77-4dd9-bb9e-b33ef2dcdef7
 
 	/// Те саме, але мінус той самий приріст у контрольних іграх (difference-in-differences). Відповідає на питання: скільки з реакції дала саме подія, а не загальний рух Steam.
 	measure 'Median Net Reviews Uplift 2w' = MEDIAN('Event Impact'[net_reviews_uplift_2w_pct])
-		formatString: 0%
+		formatString: #,0.0%;-#,0.0%;#,0.0%
 		displayFolder: Events
 		lineageTag: 65372c3c-06f3-4cb1-85ef-e26f43edebbe
 
@@ -182,13 +183,20 @@ table _Measures
 		displayFolder: Events
 		lineageTag: 28ee5119-ceb2-4b1a-8e83-0dd9591c8314
 
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["INTEGER_FORMATTING"]}
+
 	column Value
 		isHidden
+		isAvailableInMdx: false
 		lineageTag: be1fba15-f117-4237-8a64-2552309cbddf
 		isNameInferred
 		sourceColumn: [Value]
 
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["UNNECESSARY_COLUMNS"]}
+
 	partition _Measures = calculated
 		mode: import
 		source = {BLANK()}
+
+	annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["REDUCE_USAGE_OF_CALCULATED_TABLES","ENSURE_TABLES_HAVE_RELATIONSHIPS"]}
 

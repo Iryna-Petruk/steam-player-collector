@@ -1,3 +1,4 @@
+/// Група обчислень часового вікна: застосовує до будь-якої вибраної міри період порівняння, не дублюючи самі міри.
 table 'Time Window'
 	lineageTag: 7456839e-a69f-4bc5-85ee-7eeb07ebdbd5
 
@@ -104,9 +105,12 @@ table 'Time Window'
 
 			formatStringDefinition = SELECTEDMEASUREFORMATSTRING()
 
+	/// Назва часового вікна для вибору у зрізі: Selected period, Last 30 days, Last 12 months, Prior year, YoY change.
 	column 'Time Window'
 		dataType: string
 		lineageTag: ca59324a-1568-4d3a-9ad5-be48ed82f0f9
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["DATA_COLUMNS_MUST_HAVE_A_SOURCE_COLUMN"]}
 
 	partition 'Partition_Time Window' = calculationGroup
 

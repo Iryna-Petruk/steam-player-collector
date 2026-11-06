@@ -1,3 +1,4 @@
+/// Щоденна кількість гравців у Steam за добу UTC. Гранулярність: гра x дата. Повноту збору показують Data Coverage % і Complete Days.
 table 'Players Daily'
 	lineageTag: 677e867b-b8c2-473c-b79f-feee966130ad
 
@@ -5,6 +6,7 @@ table 'Players Daily'
 		dataType: int64
 		isHidden
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: f8f105c2-3fe5-4b6a-9453-884df29b7069
 		summarizeBy: none
 		sourceColumn: appid
@@ -15,6 +17,7 @@ table 'Players Daily'
 		dataType: dateTime
 		isHidden
 		formatString: Long Date
+		isAvailableInMdx: false
 		lineageTag: 940c8c25-246c-4316-84be-5822baed96d6
 		summarizeBy: none
 		sourceColumn: date
@@ -23,34 +26,39 @@ table 'Players Daily'
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	/// Кількість успішних погодинних знімків за добу, максимум 24. Операційна колонка: у ролі Regional access прихована через OLS.
 	column snapshots_ok
 		dataType: int64
 		formatString: 0
 		lineageTag: 975b2c63-d2b2-49f3-860c-cc3259321185
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: snapshots_ok
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Кількість невдалих запитів до Steam за добу. Операційна колонка: у ролі Regional access прихована через OLS.
 	column failed_requests
 		dataType: int64
 		formatString: 0
 		lineageTag: 48417203-bcb2-4f6a-bd89-73b612101400
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: failed_requests
 
 		annotation SummarizationSetBy = Automatic
 
 	column coverage_pct
-		dataType: double
+		dataType: decimal
+		isHidden
+		isAvailableInMdx: false
 		lineageTag: a89c3791-4400-4349-a5dd-d9ed4effc568
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: coverage_pct
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Чи доба повна: щонайменше 20 із 24 знімків.
 	column is_complete_day
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
@@ -62,27 +70,32 @@ table 'Players Daily'
 
 	column avg_players
 		dataType: int64
+		isHidden
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: 486c7ccd-55fb-4908-b63b-1723efe3c4e3
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: avg_players
 
 		annotation SummarizationSetBy = Automatic
 
 	column peak_players
 		dataType: int64
+		isHidden
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: 113eddee-b160-49a7-bcbf-00e543b4b63c
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: peak_players
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Найнижчий погодинний знімок онлайну за добу.
 	column min_players
 		dataType: int64
 		formatString: 0
 		lineageTag: 23efa7b0-8ce5-4732-9f2a-680421537659
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: min_players
 
 		annotation SummarizationSetBy = Automatic
@@ -92,9 +105,18 @@ table 'Players Daily'
 		source =
 				let
 				  Source = PostgreSQL.Database("localhost", "cdpr_hub"),
-				  #"Navigation 1" = Source{[Schema = "marts", Item = "fct_players_daily"]}[Data]
+				  #"Navigation 1" = Source{[Schema = "marts", Item = "fct_players_daily"]}[Data],
+				  // An unconstrained PostgreSQL numeric arrives as a floating point Double.
+				  // Fixed decimal (Currency.Type) holds these values exactly and compresses
+				  // better, which is what the model wants for ratios and averages.
+				  #"Changed column types" = Table.TransformColumnTypes(
+				    #"Navigation 1",
+				    {
+				      {"coverage_pct", Currency.Type}
+				    }
+				  )
 				in
-				  #"Navigation 1"
+				  #"Changed column types"
 
 	annotation PBI_ResultType = Table
 

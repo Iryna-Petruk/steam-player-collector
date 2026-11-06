@@ -1,14 +1,19 @@
+/// Словник тем відгуків: код теми, підпис для звіту та порядок показу.
 table Topic
 	lineageTag: 283b76ec-b2a1-450e-b07f-8c7dc51701d5
 
 	column topic
 		dataType: string
+		isHidden
+		isKey
+		isAvailableInMdx: false
 		lineageTag: 3bd11337-a37e-445c-9d63-f5dd0a492ce0
 		summarizeBy: none
 		sourceColumn: topic
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Підпис теми для показу у звіті.
 	column topic_label
 		dataType: string
 		lineageTag: 5e1d00e4-d57b-4014-bbf2-077a9c369895
@@ -18,6 +23,7 @@ table Topic
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Пояснення, що саме покриває тема.
 	column description
 		dataType: string
 		lineageTag: 22885001-c8c0-4972-a9ac-4b981cf925ee
@@ -26,6 +32,7 @@ table Topic
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Порядок показу тем у візуалах.
 	column sort_order
 		dataType: int64
 		formatString: 0

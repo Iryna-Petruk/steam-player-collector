@@ -3,16 +3,20 @@ table 'Security Region Access'
 	isHidden
 	lineageTag: 657bd906-e4ab-40ac-9847-0c4f9e5dd76b
 
+	/// Email користувача Power BI, якому надано доступ. У проєкті - вигадані демонстраційні адреси на example.com.
 	column user_email
 		dataType: string
+		isAvailableInMdx: false
 		lineageTag: 9e1a7acb-bc4e-4b91-9d2b-7edd9f0e09a9
 		summarizeBy: none
 		sourceColumn: user_email
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Регіон, доступний цьому користувачу. Значення ALL відкриває всі регіони.
 	column region
 		dataType: string
+		isAvailableInMdx: false
 		lineageTag: 8f5bff98-3005-47c9-ae54-752438f512d8
 		summarizeBy: none
 		sourceColumn: region
@@ -27,4 +31,6 @@ table 'Security Region Access'
 				  #"Navigation 1" = Source{[Schema = "marts", Item = "security_region_access"]}[Data]
 				in
 				  #"Navigation 1"
+
+	annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["ENSURE_TABLES_HAVE_RELATIONSHIPS"]}
 

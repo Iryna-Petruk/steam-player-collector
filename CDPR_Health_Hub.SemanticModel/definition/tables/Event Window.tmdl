@@ -1,9 +1,11 @@
+/// Подієве дослідження: кожна подія на спільній осі днів від події (-28 ... +55), для гри події та для контрольних ігор у ті самі календарні дні.
 table 'Event Window'
 	lineageTag: fdea0ce7-eeb8-48e3-af57-f6f015798c12
 
 	column event_id
 		dataType: string
 		isHidden
+		isAvailableInMdx: false
 		lineageTag: 7162a463-2c68-4f44-ad39-6a2f9161cdc6
 		summarizeBy: none
 		sourceColumn: event_id
@@ -14,22 +16,14 @@ table 'Event Window'
 		dataType: int64
 		isHidden
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: 44143c83-a196-43a0-9125-484f93fa1e33
 		summarizeBy: none
 		sourceColumn: target_appid
 
 		annotation SummarizationSetBy = Automatic
 
-	column appid
-		dataType: int64
-		isHidden
-		formatString: 0
-		lineageTag: c633dce1-a38f-4dab-8e67-97bac55ae253
-		summarizeBy: none
-		sourceColumn: appid
-
-		annotation SummarizationSetBy = Automatic
-
+	/// Чия це серія: event_game - гра самої події, control - контрольна гра.
 	column series_role
 		dataType: string
 		lineageTag: 4d372295-b2c9-4dcd-b6b0-e45895b23e15
@@ -38,18 +32,9 @@ table 'Event Window'
 
 		annotation SummarizationSetBy = Automatic
 
-	column event_date
-		dataType: dateTime
-		isHidden
-		formatString: Long Date
-		lineageTag: 8b62f6ee-d9fb-4dc6-a164-7f7f3d875259
-		summarizeBy: none
-		sourceColumn: event_date
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["HIDE_FACT_TABLE_COLUMNS"]}
 
-		annotation SummarizationSetBy = Automatic
-
-		annotation UnderlyingDateTimeDataType = Date
-
+	/// Днів від події: -28 ... +55, де 0 - день самої події. Це вісь графіків подій.
 	column day_offset
 		dataType: int64
 		formatString: 0
@@ -59,6 +44,9 @@ table 'Event Window'
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["HIDE_FACT_TABLE_COLUMNS"]}
+
+	/// Календарна дата рядка.
 	column date
 		dataType: dateTime
 		formatString: Long Date
@@ -70,6 +58,7 @@ table 'Event Window'
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	/// Вікно спостереження: pre (-28...-1), post_2w (0...13), post_2_4w (14...27), post_4_8w (28...55).
 	column window_phase
 		dataType: string
 		lineageTag: fdc1fff3-40f6-43d5-842f-8a15150f1675
@@ -78,18 +67,22 @@ table 'Event Window'
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["HIDE_FACT_TABLE_COLUMNS"]}
+
 	column is_excluded_control
 		dataType: boolean
 		isHidden
 		formatString: """TRUE"";""TRUE"";""FALSE"""
+		isAvailableInMdx: false
 		lineageTag: 0d0ecb3d-1a24-4599-a6da-d9c960fe5b71
 		summarizeBy: none
 		sourceColumn: is_excluded_control
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Кількість відгуків цієї гри за цей день.
 	column reviews
-		dataType: double
+		dataType: int64
 		lineageTag: 6847cb98-700e-4573-9ae1-44b36e048c54
 		summarizeBy: none
 		sourceColumn: reviews
@@ -98,46 +91,51 @@ table 'Event Window'
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Кількість позитивних відгуків за цей день.
 	column positive_reviews
-		dataType: double
+		dataType: int64
 		lineageTag: 974a1df7-3868-46e7-be99-f82810bb03f3
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: positive_reviews
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Кількість негативних відгуків за цей день.
 	column negative_reviews
-		dataType: double
+		dataType: int64
 		lineageTag: ad7bae10-3b90-43f3-97a9-ee7c2dcfdcbb
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: negative_reviews
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Відгуки покупців Steam за цей день - знаменник офіційної оцінки Steam.
 	column steam_purchase_reviews
-		dataType: double
+		dataType: int64
 		lineageTag: aec36b8e-1594-47c4-921d-7a42a2477300
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: steam_purchase_reviews
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Позитивні відгуки покупців Steam за цей день.
 	column steam_purchase_positive_reviews
-		dataType: double
+		dataType: int64
 		lineageTag: 92600b0e-fdde-47d0-bfcc-46b90b9a53fa
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: steam_purchase_positive_reviews
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Середній онлайн за цей день; заповнено лише для повних діб.
 	column avg_players
 		dataType: int64
 		formatString: 0
@@ -148,7 +146,9 @@ table 'Event Window'
 		annotation SummarizationSetBy = Automatic
 
 	column reviews_index
-		dataType: double
+		dataType: decimal
+		isHidden
+		isAvailableInMdx: false
 		lineageTag: f086ce02-9752-42d4-bb35-4b0fad210dcb
 		summarizeBy: none
 		sourceColumn: reviews_index
@@ -158,7 +158,9 @@ table 'Event Window'
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column players_index
-		dataType: double
+		dataType: decimal
+		isHidden
+		isAvailableInMdx: false
 		lineageTag: 26449cab-2305-4450-99d5-768ae31d0cdd
 		summarizeBy: none
 		sourceColumn: players_index
@@ -172,7 +174,20 @@ table 'Event Window'
 		source =
 				let
 				  Source = PostgreSQL.Database("localhost", "cdpr_hub"),
-				  #"Navigation 1" = Source{[Schema = "marts", Item = "fct_event_window"]}[Data]
+				  #"Navigation 1" = Source{[Schema = "marts", Item = "fct_event_window"]}[Data],
+				  // appid and event_date duplicate what Game (via target_appid) and Event
+				  // already provide; nothing in the model or the report reads them here.
+				  #"Removed duplicated columns" = Table.RemoveColumns(#"Navigation 1", {"appid", "event_date"}),
+				  // An unconstrained PostgreSQL numeric arrives as a floating point Double.
+				  // Fixed decimal (Currency.Type) holds these values exactly and compresses
+				  // better, which is what the model wants for ratios and averages.
+				  #"Changed column types" = Table.TransformColumnTypes(
+				    #"Removed duplicated columns",
+				    {
+				      {"reviews_index", Currency.Type},
+				      {"players_index", Currency.Type}
+				    }
+				  )
 				in
-				  #"Navigation 1"
+				  #"Changed column types"
 

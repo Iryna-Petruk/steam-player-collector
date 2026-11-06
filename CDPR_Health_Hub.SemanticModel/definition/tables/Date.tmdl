@@ -1,10 +1,13 @@
+/// Календар на 2015-2027 роки. Позначений як таблиця дат: на нього спирається вся часова логіка мір і група обчислень Time Window.
 table Date
 	lineageTag: 4c19f4ba-db2e-434a-a5d7-480a5ff72b97
 	dataCategory: Time
 
+	/// Дата (день). Ключ таблиці дат і поле зрізу періоду у звіті.
 	column date
 		dataType: dateTime
 		isUnique
+		isKey
 		formatString: Long Date
 		lineageTag: 7c925866-78d8-4f54-8eb4-b2e12bbb4944
 		summarizeBy: none
@@ -14,6 +17,9 @@ table Date
 
 		annotation UnderlyingDateTimeDataType = Date
 
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["HIDE_FOREIGN_KEYS"]}
+
+	/// Рік числом, напр. 2026.
 	column year
 		dataType: int64
 		formatString: 0
@@ -23,6 +29,7 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Номер квартала, 1-4.
 	column quarter
 		dataType: int64
 		formatString: 0
@@ -32,6 +39,7 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Підпис квартала, напр. Q4.
 	column quarter_name
 		dataType: string
 		lineageTag: 6388a882-8c7b-4728-8d2e-3a2fcb5e711e
@@ -41,6 +49,7 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Номер місяця, 1-12.
 	column month
 		dataType: int64
 		formatString: 0
@@ -50,6 +59,7 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Скорочена назва місяця, напр. Nov; сортується за номером місяця.
 	column month_name
 		dataType: string
 		lineageTag: c1c5e816-3c72-45fb-bdfd-7d41163c5d38
@@ -59,6 +69,7 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Рік і місяць як текст YYYY-MM, напр. 2026-11. Такий формат сортується правильно сам по собі, тому окрема колонка сортування не потрібна.
 	column year_month
 		dataType: string
 		lineageTag: bdefd33b-d46c-47cc-a71e-f4f3b9cc73b9
@@ -67,6 +78,9 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["MONTH_(AS_A_STRING)_MUST_BE_SORTED"]}
+
+	/// Рік за ISO 8601: на межі року може відрізнятися від календарного.
 	column iso_year
 		dataType: int64
 		formatString: 0
@@ -76,6 +90,7 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Номер тижня за ISO 8601.
 	column iso_week
 		dataType: int64
 		formatString: 0
@@ -85,6 +100,7 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Номер дня тижня, 1 = понеділок.
 	column weekday_number
 		dataType: int64
 		formatString: 0
@@ -94,6 +110,7 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Скорочена назва дня тижня, напр. Mon; сортується за номером дня.
 	column weekday_name
 		dataType: string
 		lineageTag: 09923cec-a74e-42cb-bf4d-74fe377d183c
@@ -103,6 +120,7 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Чи день припадає на вихідні (субота або неділя).
 	column is_weekend
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""

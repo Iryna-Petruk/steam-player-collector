@@ -1,14 +1,19 @@
+/// Мова відгуку, зведена до ринку й регіону. Регіон - ключ, за яким фільтрує RLS у ролі Regional access.
 table Language
 	lineageTag: c459020a-d563-4952-ad8f-befe1173a93c
 
 	column language
 		dataType: string
+		isHidden
+		isKey
+		isAvailableInMdx: false
 		lineageTag: 2a216f1d-1602-4458-ad26-8240618a900f
 		summarizeBy: none
 		sourceColumn: language
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Назва мови. Для мов, яких немає в довіднику, дорівнює коду мови.
 	column language_name
 		dataType: string
 		lineageTag: b20d1b97-2842-4b01-a2f2-23c6eab8522f
@@ -17,6 +22,7 @@ table Language
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Ринок, до якого віднесено мову. Other - мова поза довідником.
 	column market
 		dataType: string
 		lineageTag: 55d29874-7b63-4eeb-930b-7fc0a7f661e0
@@ -25,6 +31,7 @@ table Language
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Регіон мови. Саме за цією колонкою фільтрує RLS; Other - мова поза довідником.
 	column region
 		dataType: string
 		lineageTag: c2c72225-8bfd-4b88-a910-bc9b8eeeb481

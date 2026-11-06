@@ -7,14 +7,17 @@
 
 with reviews as (
 
+    -- sum() over a bigint returns numeric in PostgreSQL, and Power Query reads
+    -- an unconstrained numeric as a floating point Double. These are counts, so
+    -- cast them back to bigint and keep them integers all the way to the model.
     select
         appid,
         date,
-        sum(reviews)                          as reviews,
-        sum(positive_reviews)                 as positive_reviews,
-        sum(negative_reviews)                 as negative_reviews,
-        sum(steam_purchase_reviews)           as steam_purchase_reviews,
-        sum(steam_purchase_positive_reviews)  as steam_purchase_positive_reviews
+        cast(sum(reviews) as bigint)                          as reviews,
+        cast(sum(positive_reviews) as bigint)                 as positive_reviews,
+        cast(sum(negative_reviews) as bigint)                 as negative_reviews,
+        cast(sum(steam_purchase_reviews) as bigint)           as steam_purchase_reviews,
+        cast(sum(steam_purchase_positive_reviews) as bigint)  as steam_purchase_positive_reviews
     from {{ ref('fct_reviews_daily') }}
     group by appid, date
 

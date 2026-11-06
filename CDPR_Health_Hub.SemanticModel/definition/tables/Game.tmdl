@@ -1,15 +1,20 @@
+/// Ігри під наглядом: власні ігри CD PROJEKT RED і контрольні ігри, що служать базовою лінією для порівняння.
 table Game
 	lineageTag: 10111b52-534d-4716-9a98-ed4fe1ee0f0b
 
 	column appid
 		dataType: int64
+		isHidden
+		isKey
 		formatString: 0
+		isAvailableInMdx: false
 		lineageTag: 907818b2-436f-43ca-91ed-e94deb6660dc
 		summarizeBy: none
 		sourceColumn: appid
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Назва гри.
 	column game
 		dataType: string
 		lineageTag: fa4ea161-14d7-4d3f-928d-44ea62853af2
@@ -18,6 +23,7 @@ table Game
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Роль гри в аналізі: cdpr або control.
 	column role
 		dataType: string
 		lineageTag: d1f879b0-1708-4f33-b5c3-6a1af8926448
@@ -26,6 +32,7 @@ table Game
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Чи це гра CD PROJEKT RED.
 	column is_cdpr
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
@@ -35,6 +42,7 @@ table Game
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Чи гра служить контрольною - базовою лінією для порівняння з подіями.
 	column is_control
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
@@ -44,6 +52,7 @@ table Game
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Чи для цієї гри збираються відгуки.
 	column collects_reviews
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""

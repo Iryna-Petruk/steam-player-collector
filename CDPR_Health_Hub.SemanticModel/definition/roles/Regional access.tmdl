@@ -11,7 +11,11 @@ role 'Regional access'
 			RETURN
 			    "ALL" IN _regions || 'Language'[region] IN _regions
 
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["CHECK_IF_DYNAMIC_ROW_LEVEL_SECURITY_(RLS)_IS_NECESSARY"]}
+
 	tablePermission 'Security Region Access' = 'Security Region Access'[user_email] = USERPRINCIPALNAME()
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["CHECK_IF_DYNAMIC_ROW_LEVEL_SECURITY_(RLS)_IS_NECESSARY"]}
 
 	tablePermission 'Players Daily'
 
@@ -20,4 +24,6 @@ role 'Regional access'
 		columnPermission snapshots_ok = none
 
 	annotation PBI_Id = 667d80bf40e04a4aaee047df38479d38
+
+	annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["REMOVE_ROLES_WITH_NO_MEMBERS"]}
 
