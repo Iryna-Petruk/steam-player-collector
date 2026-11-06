@@ -62,5 +62,22 @@
         "howCreated": "User"
       }
     ]
-  }
+  },
+  "visualInteractions": [
+    {
+      "source": "31645d655202443be272",
+      "target": "2d90bdc847379acde36c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "31645d655202443be272",
+      "target": "475e21a6b54bc73479e9",
+      "type": "NoFilter"
+    },
+    {
+      "source": "31645d655202443be272",
+      "target": "7b2556b18605d46a9927",
+      "type": "NoFilter"
+    }
+  ]
 }

@@ -166,18 +166,13 @@
                   "expr": {
                     "FillRule": {
                       "Input": {
-                        "Aggregation": {
+                        "Measure": {
                           "Expression": {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Entity": "Event Impact"
-                                }
-                              },
-                              "Property": "score_change_2w_pp"
+                            "SourceRef": {
+                              "Entity": "_Measures"
                             }
                           },
-                          "Function": 0
+                          "Property": "Avg Score Change 2w (pp)"
                         }
                       },
                       "FillRule": {
