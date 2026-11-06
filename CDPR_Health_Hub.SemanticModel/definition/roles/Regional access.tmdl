@@ -1,0 +1,17 @@
+/// Dynamic RLS: a user sees only the regions granted to them in 'Security Region Access'; region 'ALL' grants every region.
+role 'Regional access'
+	modelPermission: read
+
+	tablePermission Language =
+			VAR _regions =
+			    CALCULATETABLE(
+			        VALUES('Security Region Access'[region]),
+			        'Security Region Access'[user_email] = USERPRINCIPALNAME()
+			    )
+			RETURN
+			    "ALL" IN _regions || 'Language'[region] IN _regions
+
+	tablePermission 'Security Region Access' = 'Security Region Access'[user_email] = USERPRINCIPALNAME()
+
+	annotation PBI_Id = 667d80bf40e04a4aaee047df38479d38
+

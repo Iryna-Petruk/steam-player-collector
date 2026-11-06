@@ -9,7 +9,7 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["Date","Event","Game","Language","Topic","Players Daily","Review Topics Daily","Reviews Daily","marts fct_event_impact","marts fct_event_window"]
+annotation PBI_QueryOrder = ["Date","Event","Game","Language","Topic","Players Daily","Review Topics Daily","Reviews Daily","Event Impact","Event Window","marts security_region_access"]
 
 annotation PBI_ProTooling = ["DevMode","MCP-PBIModeling"]
 
@@ -24,6 +24,9 @@ ref table 'Reviews Daily'
 ref table _Measures
 ref table 'Event Impact'
 ref table 'Event Window'
+ref table 'Security Region Access'
+
+ref role 'Regional access'
 
 ref cultureInfo en-US
 

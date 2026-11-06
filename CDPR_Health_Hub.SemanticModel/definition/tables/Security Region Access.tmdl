@@ -1,0 +1,30 @@
+/// Row-level security mapping (marts.security_region_access): which regions each user may see; region 'ALL' means all regions. Intentionally has NO relationships - the 'Regional access' role filters Language[region] with DAX instead. Hidden: report authors should never use it.
+table 'Security Region Access'
+	isHidden
+	lineageTag: 657bd906-e4ab-40ac-9847-0c4f9e5dd76b
+
+	column user_email
+		dataType: string
+		lineageTag: 9e1a7acb-bc4e-4b91-9d2b-7edd9f0e09a9
+		summarizeBy: none
+		sourceColumn: user_email
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 8f5bff98-3005-47c9-ae54-752438f512d8
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'marts security_region_access' = m
+		mode: import
+		source =
+				let
+				  Source = PostgreSQL.Database("localhost", "cdpr_hub"),
+				  #"Navigation 1" = Source{[Schema = "marts", Item = "security_region_access"]}[Data]
+				in
+				  #"Navigation 1"
+

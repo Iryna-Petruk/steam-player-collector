@@ -150,6 +150,19 @@
             "width": 234
           },
           "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1500.5430594997863,
+            "y": 719.42558851555418
+          },
+          "nodeIndex": "Security Region Access",
+          "nodeLineageTag": "657bd906-e4ab-40ac-9847-0c4f9e5dd76b",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",
