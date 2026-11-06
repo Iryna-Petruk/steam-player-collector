@@ -13,5 +13,11 @@ role 'Regional access'
 
 	tablePermission 'Security Region Access' = 'Security Region Access'[user_email] = USERPRINCIPALNAME()
 
+	tablePermission 'Players Daily'
+
+		columnPermission failed_requests = none
+
+		columnPermission snapshots_ok = none
+
 	annotation PBI_Id = 667d80bf40e04a4aaee047df38479d38
 

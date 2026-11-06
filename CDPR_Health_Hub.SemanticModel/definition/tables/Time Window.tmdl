@@ -1,0 +1,112 @@
+table 'Time Window'
+	lineageTag: 7456839e-a69f-4bc5-85ee-7eeb07ebdbd5
+
+	/// Часове вікно для будь-якої вибраної міри. Міра [Recent Score % (30d)] і міри з папки Events повертаються без змін: у них власне вікно часу або немає зв'язку з календарем.
+	calculationGroup
+		precedence: 10
+
+		/// Міра за період, вибраний у зрізах, без додаткових змін.
+		calculationItem 'Selected period' = SELECTEDMEASURE()
+
+			formatStringDefinition = SELECTEDMEASUREFORMATSTRING()
+
+		/// Міра за останні 30 днів від кінця вибраного періоду або від останньої дати з даними. Міри з власним вікном часу (Events, Recent Score % (30d)) не змінюються.
+		calculationItem 'Last 30 days' =
+				IF (
+				    ISSELECTEDMEASURE (
+				        [Recent Score % (30d)],
+				        [Reviews Index (Event Game)],
+				        [Reviews Index (Controls)],
+				        [Players Index (Event Game)],
+				        [Players Index (Controls)],
+				        [Events Measured],
+				        [Median Reviews Uplift 2w],
+				        [Median Net Reviews Uplift 2w],
+				        [Avg Score Change 2w (pp)]
+				    ),
+				    SELECTEDMEASURE (),
+				    VAR _lastData =
+				        CALCULATE ( MAX ( 'Reviews Daily'[date] ), REMOVEFILTERS ( 'Date' ) )
+				    VAR _end =
+				        MIN ( MAX ( 'Date'[date] ), _lastData )
+				    RETURN
+				        CALCULATE ( SELECTEDMEASURE (), DATESINPERIOD ( 'Date'[date], _end, -30, DAY ) )
+				)
+
+			formatStringDefinition = SELECTEDMEASUREFORMATSTRING()
+
+		/// Міра за останні 12 місяців від кінця вибраного періоду або від останньої дати з даними. Міри з власним вікном часу (Events, Recent Score % (30d)) не змінюються.
+		calculationItem 'Last 12 months' =
+				IF (
+				    ISSELECTEDMEASURE (
+				        [Recent Score % (30d)],
+				        [Reviews Index (Event Game)],
+				        [Reviews Index (Controls)],
+				        [Players Index (Event Game)],
+				        [Players Index (Controls)],
+				        [Events Measured],
+				        [Median Reviews Uplift 2w],
+				        [Median Net Reviews Uplift 2w],
+				        [Avg Score Change 2w (pp)]
+				    ),
+				    SELECTEDMEASURE (),
+				    VAR _lastData =
+				        CALCULATE ( MAX ( 'Reviews Daily'[date] ), REMOVEFILTERS ( 'Date' ) )
+				    VAR _end =
+				        MIN ( MAX ( 'Date'[date] ), _lastData )
+				    RETURN
+				        CALCULATE ( SELECTEDMEASURE (), DATESINPERIOD ( 'Date'[date], _end, -12, MONTH ) )
+				)
+
+			formatStringDefinition = SELECTEDMEASUREFORMATSTRING()
+
+		/// Міра за той самий період попереднього року. Міри з власним вікном часу (Events, Recent Score % (30d)) не змінюються.
+		calculationItem 'Prior year' =
+				IF (
+				    ISSELECTEDMEASURE (
+				        [Recent Score % (30d)],
+				        [Reviews Index (Event Game)],
+				        [Reviews Index (Controls)],
+				        [Players Index (Event Game)],
+				        [Players Index (Controls)],
+				        [Events Measured],
+				        [Median Reviews Uplift 2w],
+				        [Median Net Reviews Uplift 2w],
+				        [Avg Score Change 2w (pp)]
+				    ),
+				    SELECTEDMEASURE (),
+				    CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( 'Date'[date] ) )
+				)
+
+			formatStringDefinition = SELECTEDMEASUREFORMATSTRING()
+
+		/// Різниця між вибраним періодом і тим самим періодом попереднього року; порожньо, якщо бракує одного з двох значень. Міри з власним вікном часу (Events, Recent Score % (30d)) не змінюються.
+		calculationItem 'YoY change' =
+				IF (
+				    ISSELECTEDMEASURE (
+				        [Recent Score % (30d)],
+				        [Reviews Index (Event Game)],
+				        [Reviews Index (Controls)],
+				        [Players Index (Event Game)],
+				        [Players Index (Controls)],
+				        [Events Measured],
+				        [Median Reviews Uplift 2w],
+				        [Median Net Reviews Uplift 2w],
+				        [Avg Score Change 2w (pp)]
+				    ),
+				    SELECTEDMEASURE (),
+				    VAR _cur = SELECTEDMEASURE ()
+				    VAR _py =
+				        CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( 'Date'[date] ) )
+				    RETURN
+				        IF ( NOT ISBLANK ( _cur ) && NOT ISBLANK ( _py ), _cur - _py )
+				)
+
+			formatStringDefinition = SELECTEDMEASUREFORMATSTRING()
+
+	column 'Time Window'
+		dataType: string
+		lineageTag: ca59324a-1568-4d3a-9ad5-be48ed82f0f9
+
+	partition 'Partition_Time Window' = calculationGroup
+
