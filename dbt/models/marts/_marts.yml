@@ -21,6 +21,19 @@ models:
       - name: region
         data_tests: [not_null]
 
+  - name: security_region_access
+    description: >
+      Row-level security mapping for Power BI: one row per user x region.
+      Region 'ALL' means the user sees every region. Demo users only
+      (fictional example.com addresses). Tested by
+      assert_security_regions_valid: every region is 'ALL' or a real
+      dim_languages region.
+    columns:
+      - name: user_email
+        data_tests: [not_null]
+      - name: region
+        data_tests: [not_null]
+
   - name: dim_events
     description: Sourced events calendar (single-day events have end_date = event_date).
     columns:
