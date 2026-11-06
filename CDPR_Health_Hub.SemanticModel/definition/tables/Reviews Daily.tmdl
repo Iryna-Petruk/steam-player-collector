@@ -96,7 +96,7 @@ table 'Reviews Daily'
 		dataType: int64
 		formatString: 0
 		lineageTag: e6dc9d39-e2cb-4885-bf0e-e39c98839b96
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: reviews_under_2h_played
 
 		annotation SummarizationSetBy = Automatic
