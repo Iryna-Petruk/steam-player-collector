@@ -1,0 +1,88 @@
+# Runs Microsoft's Best Practice Analyzer rules against the semantic model
+# on every change to the model, the rules, or this workflow.
+#
+# Tabular Editor exits non-zero only for severity 3 findings, so the job
+# fails on those and lets severity 1-2 through as annotations in the log
+# (the -G switch turns findings into GitHub Actions log commands).
+
+name: Model best practices (BPA)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "CDPR_Health_Hub.SemanticModel/**"
+      - "bpa/**"
+      - ".github/workflows/bpa.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "CDPR_Health_Hub.SemanticModel/**"
+      - "bpa/**"
+      - ".github/workflows/bpa.yml"
+  # Adds a "Run workflow" button in the Actions tab for manual runs.
+  workflow_dispatch:
+
+# Reads the repository, writes nothing.
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    # Tabular Editor 2 is a .NET Framework application, so this needs Windows.
+    runs-on: windows-latest
+    timeout-minutes: 10
+
+    env:
+      TE_VERSION: "2.29.0"
+      # Must match the hash recorded in bpa/README.md.
+      TE_SHA256: "c0d3a7abda4572baaf3aeedf9cb342ce7ad4d9840e6438d6b13df02267d308a4"
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v5
+
+      - name: Download Tabular Editor 2
+        shell: pwsh
+        run: |
+          $url = "https://github.com/TabularEditor/TabularEditor/releases/download/$env:TE_VERSION/TabularEditor.Portable.zip"
+          Write-Host "Downloading $url"
+          Invoke-WebRequest -Uri $url -OutFile "$env:RUNNER_TEMP\TabularEditor.Portable.zip"
+
+      - name: Verify the download
+        shell: pwsh
+        run: |
+          $zip = "$env:RUNNER_TEMP\TabularEditor.Portable.zip"
+          $actual = (Get-FileHash -Path $zip -Algorithm SHA256).Hash.ToLower()
+          $expected = $env:TE_SHA256.ToLower()
+          Write-Host "expected sha256: $expected"
+          Write-Host "actual   sha256: $actual"
+          if ($actual -ne $expected) {
+            Write-Host "::error::Tabular Editor $env:TE_VERSION does not match the SHA-256 recorded in bpa/README.md. Refusing to run it."
+            exit 1
+          }
+          Write-Host "Hash matches."
+
+      - name: Extract Tabular Editor 2
+        shell: pwsh
+        run: |
+          Expand-Archive -Path "$env:RUNNER_TEMP\TabularEditor.Portable.zip" `
+                         -DestinationPath "$env:RUNNER_TEMP\TabularEditor2" -Force
+          $exe = "$env:RUNNER_TEMP\TabularEditor2\TabularEditor.exe"
+          if (-not (Test-Path $exe)) {
+            Write-Host "::error::TabularEditor.exe not found in the extracted archive."
+            exit 1
+          }
+          Write-Host (Get-Item $exe).VersionInfo.ProductVersion
+
+      - name: Run Best Practice Analyzer
+        shell: pwsh
+        run: |
+          $proc = Start-Process -Wait -NoNewWindow -PassThru `
+            -FilePath "$env:RUNNER_TEMP\TabularEditor2\TabularEditor.exe" `
+            -ArgumentList `
+              '"CDPR_Health_Hub.SemanticModel\definition\database.tmdl"', `
+              '-A', '"bpa\BPARules.json"', `
+              '-G'
+          Write-Host "Tabular Editor exit code: $($proc.ExitCode)"
+          exit $proc.ExitCode
