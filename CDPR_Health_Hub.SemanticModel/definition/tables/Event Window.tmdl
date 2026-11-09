@@ -2,20 +2,6 @@
 table 'Event Window'
 	lineageTag: fdea0ce7-eeb8-48e3-af57-f6f015798c12
 
-	/// Гра цього рядка: або сама гра події (target_appid), або одна з контрольних. Це ідентифікатор серії, а не дублювання Game[appid].
-	column appid
-		dataType: int64
-		isHidden
-		isAvailableInMdx: false
-		formatString: 0
-		lineageTag: c633dce1-a38f-4dab-8e67-97bac55ae253
-		summarizeBy: none
-		sourceColumn: appid
-
-		annotation SummarizationSetBy = Automatic
-
-		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["REMOVE_REDUNDANT_COLUMNS_IN_RELATED_TABLES","UNNECESSARY_COLUMNS"]}
-
 	column event_id
 		dataType: string
 		isHidden
@@ -182,6 +168,20 @@ table 'Event Window'
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Гра цього рядка: або сама гра події (target_appid), або одна з контрольних. Це ідентифікатор серії, а не дублювання Game[appid].
+	column appid
+		dataType: int64
+		isHidden
+		formatString: 0
+		isAvailableInMdx: false
+		lineageTag: c633dce1-a38f-4dab-8e67-97bac55ae253
+		summarizeBy: none
+		sourceColumn: appid
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["REMOVE_REDUNDANT_COLUMNS_IN_RELATED_TABLES","UNNECESSARY_COLUMNS"]}
 
 	partition 'marts fct_event_window' = m
 		mode: import

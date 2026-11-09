@@ -343,6 +343,16 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.6
 			          }
+			        },
+			        {
+			          "month": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -697,16 +707,13 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "event id": {
 			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "id": {
-			            "State": "Generated",
-			            "Weight": 0.97
 			          }
 			        },
 			        {
@@ -756,8 +763,7 @@ cultureInfo en-US
 			            "Weight": 0.727
 			          }
 			        }
-			      ],
-			      "NameType": "Identifier"
+			      ]
 			    },
 			    "event.event_date": {
 			      "Definition": {
@@ -1306,7 +1312,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Event": {
+			          "event": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -1692,6 +1698,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "appid": {
@@ -2263,14 +2272,12 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "language": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "language name": {
 			            "State": "Generated"
 			          }
 			        },
@@ -2364,8 +2371,7 @@ cultureInfo en-US
 			            "Weight": 0.452
 			          }
 			        }
-			      ],
-			      "NameType": "Name"
+			      ]
 			    },
 			    "language.language_name": {
 			      "Definition": {
@@ -2682,14 +2688,12 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "topic": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "topic name": {
 			            "State": "Generated"
 			          }
 			        },
@@ -2753,8 +2757,7 @@ cultureInfo en-US
 			            "Weight": 0.476
 			          }
 			        }
-			      ],
-			      "NameType": "Name"
+			      ]
 			    },
 			    "topic.topic_label": {
 			      "Definition": {
@@ -2861,6 +2864,16 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.571
+			          }
+			        },
+			        {
+			          "topic": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -3381,6 +3394,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "coverage pct": {
@@ -3427,6 +3443,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "avg player": {
@@ -3550,6 +3569,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "peak player": {
@@ -3807,6 +3829,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "review topics daily": {
@@ -3904,7 +3929,6 @@ cultureInfo en-US
 			      "Terms": [
 			        {
 			          "date": {
-			            "Type": "Noun",
 			            "State": "Generated"
 			          }
 			        },
@@ -4127,6 +4151,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "review": {
@@ -4243,6 +4270,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "positive review": {
@@ -4366,6 +4396,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "negative review": {
@@ -4716,6 +4749,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "review": {
@@ -4832,6 +4868,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "positive review": {
@@ -4955,6 +4994,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "negative review": {
@@ -5078,6 +5120,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "steam purchase review": {
@@ -5207,6 +5252,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "steam purchase positive review": {
@@ -5459,6 +5507,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "negative review under 2h played": {
@@ -5705,6 +5756,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "topic scanned review": {
@@ -5828,6 +5882,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "topic scanned negative review": {
@@ -6611,6 +6668,16 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.461
 			          }
+			        },
+			        {
+			          "negative": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -6682,6 +6749,16 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "score": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -6827,12 +6904,6 @@ cultureInfo en-US
 			          "topic mentions": {
 			            "State": "Generated"
 			          }
-			        },
-			        {
-			          "mentions": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
 			        }
 			      ]
 			    },
@@ -6854,6 +6925,16 @@ cultureInfo en-US
 			          "topic mentions": {
 			            "State": "Generated",
 			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "mentions": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -6960,6 +7041,16 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.504
+			          }
+			        },
+			        {
+			          "share": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -7940,445 +8031,137 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "event_impact.event_date": {
+			    "entity__measure.entity__steam_score__FormatString": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Event Impact",
-			          "ConceptualProperty": "event_date"
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Steam Score % FormatString"
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
-			          "event date": {
+			          "_steam score % FormatString": {
 			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "event_date": {
-			            "Type": "Noun",
-			            "State": "Generated",
-			            "Weight": 0.99
-			          }
-			        },
-			        {
-			          "date": {
-			            "State": "Generated",
-			            "Weight": 0.7
-			          }
-			        },
-			        {
-			          "event moment": {
+			          "_steam score percentage formatstring": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.75
+			            "Weight": 0.624
 			          }
 			        },
 			        {
-			          "event period": {
+			          "_steam score pct formatstring": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.727
-			          }
-			        }
-			      ],
-			      "SemanticType": "Time"
-			    },
-			    "event_impact.event_type": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "Event Impact",
-			          "ConceptualProperty": "event_type"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "event type": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "event_type": {
-			            "Type": "Noun",
-			            "State": "Generated",
-			            "Weight": 0.99
-			          }
-			        },
-			        {
-			          "type": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "event category": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "event genre": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "event manner": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "event variety": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.75
-			          }
-			        },
-			        {
-			          "category": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.736
-			          }
-			        },
-			        {
-			          "genre": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.736
-			          }
-			        },
-			        {
-			          "manner": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.736
-			          }
-			        },
-			        {
-			          "variety": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.736
-			          }
-			        },
-			        {
-			          "event brand": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "event class": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
+			            "Weight": 0.605
 			          }
 			        }
 			      ]
 			    },
-			    "event_impact.magnitude": {
+			    "entity__measure.entity__positive__FormatString": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Event Impact",
-			          "ConceptualProperty": "magnitude"
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Positive % FormatString"
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
-			          "magnitude": {
+			          "_positive % FormatString": {
 			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "greatness": {
+			          "_positive percentage formatstring": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.491
+			            "Weight": 0.617
 			          }
 			        },
 			        {
-			          "extent": {
+			          "_positive pct formatstring": {
 			            "Type": "Noun",
 			            "State": "Suggested",
 			            "Source": {
 			              "Agent": "Thesaurus"
 			            },
-			            "Weight": 0.491
-			          }
-			        },
-			        {
-			          "degree": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.491
-			          }
-			        },
-			        {
-			          "enormousness": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.491
-			          }
-			        },
-			        {
-			          "enormity": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.491
-			          }
-			        },
-			        {
-			          "scale": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.476
-			          }
-			        },
-			        {
-			          "size": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.476
-			          }
-			        },
-			        {
-			          "level": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.476
-			          }
-			        },
-			        {
-			          "importance": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.466
-			          }
-			        },
-			        {
-			          "significance": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.466
+			            "Weight": 0.599
 			          }
 			        }
 			      ]
 			    },
-			    "event_impact.event_name": {
+			    "entity__measure.entity__negative_reviews_FormatString": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Event Impact",
-			          "ConceptualProperty": "event_name"
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Negative Reviews FormatString"
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
-			          "event name": {
+			          "_negative reviews FormatString": {
 			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "event_name": {
-			            "Type": "Noun",
-			            "State": "Generated",
-			            "Weight": 0.99
-			          }
-			        },
-			        {
-			          "event nickname": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "event title": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "event label": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "event tag": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
 			          }
 			        }
 			      ]
 			    },
-			    "event_impact.is_platform_wide": {
+			    "entity__measure.entity__positive_reviews_FormatString": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Event Impact",
-			          "ConceptualProperty": "is_platform_wide"
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Positive Reviews FormatString"
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
-			          "is platform wide": {
+			          "_positive reviews FormatString": {
 			            "State": "Generated"
 			          }
-			        },
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__reviews_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Reviews FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
 			        {
-			          "is_platform_wide": {
-			            "Type": "Noun",
-			            "State": "Generated",
-			            "Weight": 0.99
-			          }
-			        },
-			        {
-			          "wide": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "platform wide": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "eclectic": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.476
-			          }
-			        },
-			        {
-			          "comprehensive": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.476
-			          }
-			        },
-			        {
-			          "wide-ranging": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.476
-			          }
-			        },
-			        {
-			          "broad": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.476
-			          }
-			        },
-			        {
-			          "baggy": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.452
+			          "_reviews FormatString": {
+			            "State": "Generated"
 			          }
 			        }
 			      ]
@@ -8781,6 +8564,16 @@ cultureInfo en-US
 			          }
 			        },
 			        {
+			          "uplift": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
 			          "Activity uplift 2w": {
 			            "State": "Suggested",
 			            "Source": {
@@ -9071,6 +8864,16 @@ cultureInfo en-US
 			            "State": "Generated",
 			            "Weight": 0.99
 			          }
+			        },
+			        {
+			          "before": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -9094,6 +8897,16 @@ cultureInfo en-US
 			            "State": "Generated",
 			            "Weight": 0.99
 			          }
+			        },
+			        {
+			          "after": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -9105,6 +8918,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "score change 2w pp": {
@@ -9116,6 +8932,16 @@ cultureInfo en-US
 			            "Type": "Noun",
 			            "State": "Generated",
 			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "change": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        },
 			        {
@@ -9161,6 +8987,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "net score change 2w pp": {
@@ -9172,6 +9001,16 @@ cultureInfo en-US
 			            "Type": "Noun",
 			            "State": "Generated",
 			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "net": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        },
 			        {
@@ -9348,7 +9187,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "overlapping event": {
+			          "event id": {
 			            "State": "Generated",
 			            "Weight": 0.97
 			          }
@@ -9384,6 +9223,36 @@ cultureInfo en-US
 			          }
 			        },
 			        {
+			          "event identification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "event identity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "event identifier": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
 			          "overlapping event credential": {
 			            "Type": "Noun",
 			            "State": "Suggested",
@@ -9391,6 +9260,16 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "event credential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
 			          }
 			        },
 			        {
@@ -9411,46 +9290,6 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "overlapping episode": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.5
-			          }
-			        },
-			        {
-			          "overlapping occasion": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.485
-			          }
-			        },
-			        {
-			          "overlapping happening": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.485
-			          }
-			        },
-			        {
-			          "overlapping incident": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.485
 			          }
 			        },
 			        {
@@ -9850,52 +9689,27 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "event_window.event_date": {
+			    "entity__measure.avg_net_score_change_2w_pp": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Event Window",
-			          "ConceptualProperty": "event_date"
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Avg Net Score Change 2w (pp)"
 			        }
 			      },
 			      "State": "Generated",
-			      "Visibility": {
-			        "Value": "Hidden"
-			      },
 			      "Terms": [
 			        {
-			          "event date": {
+			          "avg net score change 2w (pp)": {
 			            "State": "Generated"
 			          }
 			        },
 			        {
-			          "event_date": {
-			            "Type": "Noun",
+			          "avg net score change 2w": {
 			            "State": "Generated",
-			            "Weight": 0.99
-			          }
-			        },
-			        {
-			          "event moment": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
 			            "Weight": 0.75
 			          }
-			        },
-			        {
-			          "event period": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
 			        }
-			      ],
-			      "SemanticType": "Time"
+			      ]
 			    },
 			    "event_window.day_offset": {
 			      "Definition": {
@@ -11069,6 +10883,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "reviews index": {
@@ -11205,6 +11022,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "players index": {
@@ -11332,9 +11152,1299 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "entity__measure.entity__recent_score__30d_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Recent Score % (30d) FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_recent score % (30d) FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__negative_from_newcomers__FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Negative from Newcomers % FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_negative from newcomers % FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__topic_mentions_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Topic Mentions FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_topic mentions FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__topic_mentions_negative_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Topic Mentions (Negative) FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_topic mentions (negative) FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__topic_share_of_negative__FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Topic Share of Negative % FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_topic share of negative % FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__topic_positive__FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Topic Positive % FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_topic positive % FormatString": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "_topic positive percentage formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.624
+			          }
+			        },
+			        {
+			          "_topic positive pct formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__topic_coverage__FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Topic Coverage % FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_topic coverage % FormatString": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "_topic coverage percentage formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.624
+			          }
+			        },
+			        {
+			          "_topic coverage pct formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__avg_daily_players_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Avg Daily Players FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_avg daily players FormatString": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "_ average daily player formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__peak_players_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Peak Players FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_peak players FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__data_coverage__FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Data Coverage % FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_data coverage % FormatString": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "_ information coverage % formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.624
+			          }
+			        },
+			        {
+			          "_ fact coverage % formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.624
+			          }
+			        },
+			        {
+			          "_ info coverage % formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.624
+			          }
+			        },
+			        {
+			          "_ statistic coverage % formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.624
+			          }
+			        },
+			        {
+			          "_data coverage percentage formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.624
+			          }
+			        },
+			        {
+			          "_ document coverage % formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "_ figure coverage % formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "_ record coverage % formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "_data coverage pct formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__complete_days_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Complete Days FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_complete days FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__reviews_index_event_game_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Reviews Index (Event Game) FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_reviews index (event game) FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__reviews_index_controls_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Reviews Index (Controls) FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_reviews index (controls) FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__players_index_event_game_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Players Index (Event Game) FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_players index (event game) FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__players_index_controls_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Players Index (Controls) FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_players index (controls) FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__events_measured_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Events Measured FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_events measured FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__median_reviews_uplift_2w_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Median Reviews Uplift 2w FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_median reviews uplift 2w FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__median_net_reviews_uplift_2w_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Median Net Reviews Uplift 2w FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_median net reviews uplift 2w FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__avg_score_change_2w_pp_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Avg Score Change 2w (pp) FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_avg score change 2w (pp) FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__avg_net_score_change_2w_pp_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Avg Net Score Change 2w (pp) FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_avg net score change 2w (pp) FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "security_region_access": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Security Region Access"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "security region access": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "access": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "region access": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "security location access": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.677
+			          }
+			        },
+			        {
+			          "location access": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.667
+			          }
+			        },
+			        {
+			          "security province access": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "province access": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "security area access": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "security district access": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "security section access": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "security zone access": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "security continent access": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "area access": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "security_region_access.user_email": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Security Region Access",
+			          "ConceptualProperty": "user_email"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "user email": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "user_email": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "email": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "user correspondence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "correspondence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "user message": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        },
+			        {
+			          "user communication": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        },
+			        {
+			          "message": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "communication": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        }
+			      ]
+			    },
+			    "security_region_access.region": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Security Region Access",
+			          "ConceptualProperty": "region"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "region": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "location": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        },
+			        {
+			          "province": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "area": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "district": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "section": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "zone": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "continent": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "time_window": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Time Window"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "time window": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "window": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "duration window": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "interval window": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "moment window": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period window": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "timetable window": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "time booth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "booth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "time gap": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "time space": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "time opening": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        }
+			      ]
+			    },
+			    "time_window.time_window": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Time Window",
+			          "ConceptualProperty": "Time Window"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "time window": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "time window name": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "window": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "duration window": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "interval window": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "moment window": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period window": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "timetable window": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "time booth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "booth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "time gap": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "time space": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "time opening": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        }
+			      ],
+			      "NameType": "Name"
+			    },
+			    "entity__measure.major_events_in_month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Major Events In Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "major events in month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "in month": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "events in month": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "events": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "major events": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "in mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "major event in mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "event in mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "major procedure in month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "procedure in month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "major procedure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "major proceeding in month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "major action in month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "major measure in month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "major trial in month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__major_events_in_month_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Major Events In Month FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_major events in month FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
+			    "reviews_daily_has_language": {
+			      "Binding": {
+			        "ConceptualEntity": "Reviews Daily"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "reviews_daily": {
+			          "Target": {
+			            "Entity": "reviews_daily"
+			          }
+			        },
+			        "language": {
+			          "Target": {
+			            "Entity": "language"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "reviews_daily"
+			            },
+			            "Object": {
+			              "Role": "language"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "reviews_dailies_have_languages"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "language"
+			            },
+			            "Object": {
+			              "Role": "reviews_daily"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "languages_have_reviews_dailies"
+			        }
+			      ]
+			    },
 			    "reviews_daily_has_game": {
 			      "Binding": {
 			        "ConceptualEntity": "Reviews Daily"
@@ -11397,35 +12507,7 @@ cultureInfo en-US
 			            "Entity": "date"
 			          }
 			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "review_topics_daily"
-			            },
-			            "Object": {
-			              "Role": "date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "review_topics_dailies_have_dates"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date"
-			            },
-			            "Object": {
-			              "Role": "review_topics_daily"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dates_have_review_topics_dailies"
-			        }
-			      ]
+			      }
 			    },
 			    "review_topics_daily_has_topic": {
 			      "Binding": {
@@ -11443,35 +12525,7 @@ cultureInfo en-US
 			            "Entity": "topic"
 			          }
 			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "review_topics_daily"
-			            },
-			            "Object": {
-			              "Role": "topic"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "review_topics_dailies_have_topics"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "topic"
-			            },
-			            "Object": {
-			              "Role": "review_topics_daily"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "topics_have_review_topics_dailies"
-			        }
-			      ]
+			      }
 			    },
 			    "review_topics_daily_has_language": {
 			      "Binding": {
@@ -11489,35 +12543,7 @@ cultureInfo en-US
 			            "Entity": "language"
 			          }
 			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "review_topics_daily"
-			            },
-			            "Object": {
-			              "Role": "language"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "review_topics_dailies_have_languages"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "language"
-			            },
-			            "Object": {
-			              "Role": "review_topics_daily"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "languages_have_review_topics_dailies"
-			        }
-			      ]
+			      }
 			    },
 			    "review_topics_daily_has_game": {
 			      "Binding": {
@@ -11535,35 +12561,7 @@ cultureInfo en-US
 			            "Entity": "game"
 			          }
 			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "review_topics_daily"
-			            },
-			            "Object": {
-			              "Role": "game"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "review_topics_dailies_have_games"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "game"
-			            },
-			            "Object": {
-			              "Role": "review_topics_daily"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "games_have_review_topics_dailies"
-			        }
-			      ]
+			      }
 			    },
 			    "players_daily_has_date": {
 			      "Binding": {
@@ -11657,20 +12655,20 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "event_window_has_players_index": {
+			    "event_has_entity__measure_major_events_in_month": {
 			      "Binding": {
-			        "ConceptualEntity": "Event Window"
+			        "ConceptualEntity": "Event"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "event_window": {
+			        "event": {
 			          "Target": {
-			            "Entity": "event_window"
+			            "Entity": "event"
 			          }
 			        },
-			        "event_window.players_index": {
+			        "entity__measure.major_events_in_month": {
 			          "Target": {
-			            "Entity": "event_window.players_index"
+			            "Entity": "entity__measure.major_events_in_month"
 			          }
 			        }
 			      },
@@ -11678,32 +12676,83 @@ cultureInfo en-US
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "event_window"
+			              "Role": "event"
 			            },
 			            "Object": {
-			              "Role": "event_window.players_index"
+			              "Role": "entity__measure.major_events_in_month"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "event_windows_have_players_indices"
+			          "ID": "events_have_major_events_in_month"
+			        },
+			        {
+			          "Verb": {
+			            "Subject": {
+			              "Role": "event"
+			            },
+			            "Verbs": [
+			              {
+			                "event": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "PrepositionalPhrases": [
+			              {
+			                "Prepositions": [
+			                  {
+			                    "in": {
+			                      "State": "Generated"
+			                    }
+			                  }
+			                ],
+			                "Object": {
+			                  "Role": "entity__measure.major_events_in_month"
+			                }
+			              }
+			            ]
+			          },
+			          "State": "Generated",
+			          "Weight": 0.95,
+			          "ID": "events_event_in_major_events_in_month"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "event"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "entity__measure.major_events_in_month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "events_are_in_major_events_in_month"
 			        }
 			      ]
 			    },
-			    "event_window_has_reviews_index": {
+			    "time_window_has_time_window": {
 			      "Binding": {
-			        "ConceptualEntity": "Event Window"
+			        "ConceptualEntity": "Time Window"
 			      },
 			      "State": "Generated",
 			      "Roles": {
-			        "event_window": {
+			        "time_window": {
 			          "Target": {
-			            "Entity": "event_window"
+			            "Entity": "time_window"
 			          }
 			        },
-			        "event_window.reviews_index": {
+			        "time_window.time_window": {
 			          "Target": {
-			            "Entity": "event_window.reviews_index"
+			            "Entity": "time_window.time_window"
 			          }
 			        }
 			      },
@@ -11711,15 +12760,28 @@ cultureInfo en-US
 			        {
 			          "Attribute": {
 			            "Subject": {
-			              "Role": "event_window"
+			              "Role": "time_window"
 			            },
 			            "Object": {
-			              "Role": "event_window.reviews_index"
+			              "Role": "time_window.time_window"
 			            }
 			          },
 			          "State": "Generated",
 			          "Weight": 0.99,
-			          "ID": "event_windows_have_reviews_indices"
+			          "ID": "time_windows_have_time_windows"
+			        },
+			        {
+			          "Name": {
+			            "Subject": {
+			              "Role": "time_window"
+			            },
+			            "Name": {
+			              "Role": "time_window.time_window"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "time_windows_are_names_IDs_of_time_windows"
 			        }
 			      ]
 			    },
@@ -12020,6 +13082,39 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
+			    "event_impact_has_entity__measure_avg_net_score_change_2w_pp": {
+			      "Binding": {
+			        "ConceptualEntity": "Event Impact"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "event_impact": {
+			          "Target": {
+			            "Entity": "event_impact"
+			          }
+			        },
+			        "entity__measure.avg_net_score_change_2w_pp": {
+			          "Target": {
+			            "Entity": "entity__measure.avg_net_score_change_2w_pp"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "event_impact"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.avg_net_score_change_2w_pp"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "event_impacts_have_avg_net_score_change_2w_pp"
+			        }
+			      ]
+			    },
 			    "event_window_has_series_role": {
 			      "Binding": {
 			        "ConceptualEntity": "Event Window"
@@ -12218,39 +13313,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "event_impact_has_net_score_change_2w_pp": {
-			      "Binding": {
-			        "ConceptualEntity": "Event Impact"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "event_impact": {
-			          "Target": {
-			            "Entity": "event_impact"
-			          }
-			        },
-			        "event_impact.net_score_change_2w_pp": {
-			          "Target": {
-			            "Entity": "event_impact.net_score_change_2w_pp"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "event_impact"
-			            },
-			            "Object": {
-			              "Role": "event_impact.net_score_change_2w_pp"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "event_impacts_have_net_score_change_2w_pps"
-			        }
-			      ]
-			    },
 			    "event_impact_has_control_score_change_2w_pp": {
 			      "Binding": {
 			        "ConceptualEntity": "Event Impact"
@@ -12281,39 +13343,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "event_impacts_have_control_score_change_2w_pps"
-			        }
-			      ]
-			    },
-			    "event_impact_has_score_change_2w_pp": {
-			      "Binding": {
-			        "ConceptualEntity": "Event Impact"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "event_impact": {
-			          "Target": {
-			            "Entity": "event_impact"
-			          }
-			        },
-			        "event_impact.score_change_2w_pp": {
-			          "Target": {
-			            "Entity": "event_impact.score_change_2w_pp"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "event_impact"
-			            },
-			            "Object": {
-			              "Role": "event_impact.score_change_2w_pp"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "event_impacts_have_score_change_2w_pps"
 			        }
 			      ]
 			    },
@@ -12677,171 +13706,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "event_impacts_have_review_per_day_pre"
-			        }
-			      ]
-			    },
-			    "event_impact_has_is_platform_wide": {
-			      "Binding": {
-			        "ConceptualEntity": "Event Impact"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "event_impact": {
-			          "Target": {
-			            "Entity": "event_impact"
-			          }
-			        },
-			        "event_impact.is_platform_wide": {
-			          "Target": {
-			            "Entity": "event_impact.is_platform_wide"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "event_impact"
-			            },
-			            "Object": {
-			              "Role": "event_impact.is_platform_wide"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "event_impacts_have_is_platform_wides"
-			        }
-			      ]
-			    },
-			    "event_impact_has_event_name": {
-			      "Binding": {
-			        "ConceptualEntity": "Event Impact"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "event_impact": {
-			          "Target": {
-			            "Entity": "event_impact"
-			          }
-			        },
-			        "event_impact.event_name": {
-			          "Target": {
-			            "Entity": "event_impact.event_name"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "event_impact"
-			            },
-			            "Object": {
-			              "Role": "event_impact.event_name"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "event_impacts_have_event_names"
-			        }
-			      ]
-			    },
-			    "event_impact_has_magnitude": {
-			      "Binding": {
-			        "ConceptualEntity": "Event Impact"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "event_impact": {
-			          "Target": {
-			            "Entity": "event_impact"
-			          }
-			        },
-			        "event_impact.magnitude": {
-			          "Target": {
-			            "Entity": "event_impact.magnitude"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "event_impact"
-			            },
-			            "Object": {
-			              "Role": "event_impact.magnitude"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "event_impacts_have_magnitudes"
-			        }
-			      ]
-			    },
-			    "event_impact_has_event_type": {
-			      "Binding": {
-			        "ConceptualEntity": "Event Impact"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "event_impact": {
-			          "Target": {
-			            "Entity": "event_impact"
-			          }
-			        },
-			        "event_impact.event_type": {
-			          "Target": {
-			            "Entity": "event_impact.event_type"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "event_impact"
-			            },
-			            "Object": {
-			              "Role": "event_impact.event_type"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "event_impacts_have_event_types"
-			        }
-			      ]
-			    },
-			    "event_impact_has_event_date": {
-			      "Binding": {
-			        "ConceptualEntity": "Event Impact"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "event_impact": {
-			          "Target": {
-			            "Entity": "event_impact"
-			          }
-			        },
-			        "event_impact.event_date": {
-			          "Target": {
-			            "Entity": "event_impact.event_date"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "event_impact"
-			            },
-			            "Object": {
-			              "Role": "event_impact.event_date"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "event_impacts_have_event_dates"
 			        }
 			      ]
 			    },
@@ -13323,22 +14187,7 @@ cultureInfo en-US
 			            "Entity": "entity__measure.topic_positive_"
 			          }
 			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "review_topics_daily"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.topic_positive_"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "review_topics_dailies_have_topic_positive_"
-			        }
-			      ]
+			      }
 			    },
 			    "reviews_daily_has_entity__measure_topic_share_of_negative_": {
 			      "Binding": {
@@ -13389,22 +14238,7 @@ cultureInfo en-US
 			            "Entity": "entity__measure.topic_share_of_negative_"
 			          }
 			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "review_topics_daily"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.topic_share_of_negative_"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "review_topics_dailies_have_topic_share_of_negative_"
-			        }
-			      ]
+			      }
 			    },
 			    "review_topics_daily_has_entity__measure_topic_mentions_negative": {
 			      "Binding": {
@@ -13422,22 +14256,7 @@ cultureInfo en-US
 			            "Entity": "entity__measure.topic_mentions_negative"
 			          }
 			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "review_topics_daily"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.topic_mentions_negative"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "review_topics_dailies_have_topic_mentions_negative"
-			        }
-			      ]
+			      }
 			    },
 			    "review_topics_daily_has_entity__measure_topic_mentions": {
 			      "Binding": {
@@ -13455,22 +14274,7 @@ cultureInfo en-US
 			            "Entity": "entity__measure.topic_mentions"
 			          }
 			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "review_topics_daily"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.topic_mentions"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "review_topics_dailies_have_topic_mentions"
-			        }
-			      ]
+			      }
 			    },
 			    "reviews_daily_has_entity__measure_negative_from_newcomers_": {
 			      "Binding": {
@@ -13736,72 +14540,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "reviews_daily_has_topic_scanned_negative_review": {
-			      "Binding": {
-			        "ConceptualEntity": "Reviews Daily"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "reviews_daily": {
-			          "Target": {
-			            "Entity": "reviews_daily"
-			          }
-			        },
-			        "reviews_daily.topic_scanned_negative_review": {
-			          "Target": {
-			            "Entity": "reviews_daily.topic_scanned_negative_review"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "reviews_daily"
-			            },
-			            "Object": {
-			              "Role": "reviews_daily.topic_scanned_negative_review"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "reviews_dailies_have_topic_scanned_negative_reviews"
-			        }
-			      ]
-			    },
-			    "reviews_daily_has_topic_scanned_review": {
-			      "Binding": {
-			        "ConceptualEntity": "Reviews Daily"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "reviews_daily": {
-			          "Target": {
-			            "Entity": "reviews_daily"
-			          }
-			        },
-			        "reviews_daily.topic_scanned_review": {
-			          "Target": {
-			            "Entity": "reviews_daily.topic_scanned_review"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "reviews_daily"
-			            },
-			            "Object": {
-			              "Role": "reviews_daily.topic_scanned_review"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "reviews_dailies_have_topic_scanned_reviews"
-			        }
-			      ]
-			    },
 			    "reviews_daily_has_edited_review": {
 			      "Binding": {
 			        "ConceptualEntity": "Reviews Daily"
@@ -13832,39 +14570,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "reviews_dailies_have_edited_reviews"
-			        }
-			      ]
-			    },
-			    "reviews_daily_has_negative_review_under_2h_played": {
-			      "Binding": {
-			        "ConceptualEntity": "Reviews Daily"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "reviews_daily": {
-			          "Target": {
-			            "Entity": "reviews_daily"
-			          }
-			        },
-			        "reviews_daily.negative_review_under_2h_played": {
-			          "Target": {
-			            "Entity": "reviews_daily.negative_review_under_2h_played"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "reviews_daily"
-			            },
-			            "Object": {
-			              "Role": "reviews_daily.negative_review_under_2h_played"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "reviews_dailies_have_negative_review_under_2h_played"
 			        }
 			      ]
 			    },
@@ -13901,270 +14606,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "reviews_daily_has_steam_purchase_positive_review": {
-			      "Binding": {
-			        "ConceptualEntity": "Reviews Daily"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "reviews_daily": {
-			          "Target": {
-			            "Entity": "reviews_daily"
-			          }
-			        },
-			        "reviews_daily.steam_purchase_positive_review": {
-			          "Target": {
-			            "Entity": "reviews_daily.steam_purchase_positive_review"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "reviews_daily"
-			            },
-			            "Object": {
-			              "Role": "reviews_daily.steam_purchase_positive_review"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "reviews_dailies_have_steam_purchase_positive_reviews"
-			        }
-			      ]
-			    },
-			    "reviews_daily_has_steam_purchase_review": {
-			      "Binding": {
-			        "ConceptualEntity": "Reviews Daily"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "reviews_daily": {
-			          "Target": {
-			            "Entity": "reviews_daily"
-			          }
-			        },
-			        "reviews_daily.steam_purchase_review": {
-			          "Target": {
-			            "Entity": "reviews_daily.steam_purchase_review"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "reviews_daily"
-			            },
-			            "Object": {
-			              "Role": "reviews_daily.steam_purchase_review"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "reviews_dailies_have_steam_purchase_reviews"
-			        }
-			      ]
-			    },
-			    "reviews_daily_has_negative_review": {
-			      "Binding": {
-			        "ConceptualEntity": "Reviews Daily"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "reviews_daily": {
-			          "Target": {
-			            "Entity": "reviews_daily"
-			          }
-			        },
-			        "reviews_daily.negative_review": {
-			          "Target": {
-			            "Entity": "reviews_daily.negative_review"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "reviews_daily"
-			            },
-			            "Object": {
-			              "Role": "reviews_daily.negative_review"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "reviews_dailies_have_negative_reviews1"
-			        }
-			      ]
-			    },
-			    "reviews_daily_has_positive_review": {
-			      "Binding": {
-			        "ConceptualEntity": "Reviews Daily"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "reviews_daily": {
-			          "Target": {
-			            "Entity": "reviews_daily"
-			          }
-			        },
-			        "reviews_daily.positive_review": {
-			          "Target": {
-			            "Entity": "reviews_daily.positive_review"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "reviews_daily"
-			            },
-			            "Object": {
-			              "Role": "reviews_daily.positive_review"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "reviews_dailies_have_positive_reviews1"
-			        }
-			      ]
-			    },
-			    "reviews_daily_has_review": {
-			      "Binding": {
-			        "ConceptualEntity": "Reviews Daily"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "reviews_daily": {
-			          "Target": {
-			            "Entity": "reviews_daily"
-			          }
-			        },
-			        "reviews_daily.review": {
-			          "Target": {
-			            "Entity": "reviews_daily.review"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "reviews_daily"
-			            },
-			            "Object": {
-			              "Role": "reviews_daily.review"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "reviews_dailies_have_reviews1"
-			        }
-			      ]
-			    },
-			    "review_topics_daily_has_negative_review": {
-			      "Binding": {
-			        "ConceptualEntity": "Review Topics Daily"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "review_topics_daily": {
-			          "Target": {
-			            "Entity": "review_topics_daily"
-			          }
-			        },
-			        "review_topics_daily.negative_review": {
-			          "Target": {
-			            "Entity": "review_topics_daily.negative_review"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "review_topics_daily"
-			            },
-			            "Object": {
-			              "Role": "review_topics_daily.negative_review"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "review_topics_dailies_have_negative_reviews"
-			        }
-			      ]
-			    },
-			    "review_topics_daily_has_positive_review": {
-			      "Binding": {
-			        "ConceptualEntity": "Review Topics Daily"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "review_topics_daily": {
-			          "Target": {
-			            "Entity": "review_topics_daily"
-			          }
-			        },
-			        "review_topics_daily.positive_review": {
-			          "Target": {
-			            "Entity": "review_topics_daily.positive_review"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "review_topics_daily"
-			            },
-			            "Object": {
-			              "Role": "review_topics_daily.positive_review"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "review_topics_dailies_have_positive_reviews"
-			        }
-			      ]
-			    },
-			    "review_topics_daily_has_review": {
-			      "Binding": {
-			        "ConceptualEntity": "Review Topics Daily"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "review_topics_daily": {
-			          "Target": {
-			            "Entity": "review_topics_daily"
-			          }
-			        },
-			        "review_topics_daily.review": {
-			          "Target": {
-			            "Entity": "review_topics_daily.review"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "review_topics_daily"
-			            },
-			            "Object": {
-			              "Role": "review_topics_daily.review"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "review_topics_dailies_have_reviews"
-			        }
-			      ]
-			    },
 			    "players_daily_has_min_player": {
 			      "Binding": {
 			        "ConceptualEntity": "Players Daily"
@@ -14198,72 +14639,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "players_daily_has_peak_player": {
-			      "Binding": {
-			        "ConceptualEntity": "Players Daily"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "players_daily": {
-			          "Target": {
-			            "Entity": "players_daily"
-			          }
-			        },
-			        "players_daily.peak_player": {
-			          "Target": {
-			            "Entity": "players_daily.peak_player"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "players_daily"
-			            },
-			            "Object": {
-			              "Role": "players_daily.peak_player"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "players_dailies_have_peak_players1"
-			        }
-			      ]
-			    },
-			    "players_daily_has_avg_player": {
-			      "Binding": {
-			        "ConceptualEntity": "Players Daily"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "players_daily": {
-			          "Target": {
-			            "Entity": "players_daily"
-			          }
-			        },
-			        "players_daily.avg_player": {
-			          "Target": {
-			            "Entity": "players_daily.avg_player"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "players_daily"
-			            },
-			            "Object": {
-			              "Role": "players_daily.avg_player"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "players_dailies_have_avg_players"
-			        }
-			      ]
-			    },
 			    "players_daily_has_is_complete_day": {
 			      "Binding": {
 			        "ConceptualEntity": "Players Daily"
@@ -14294,39 +14669,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "players_dailies_have_is_complete_days"
-			        }
-			      ]
-			    },
-			    "players_daily_has_coverage_pct": {
-			      "Binding": {
-			        "ConceptualEntity": "Players Daily"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "players_daily": {
-			          "Target": {
-			            "Entity": "players_daily"
-			          }
-			        },
-			        "players_daily.coverage_pct": {
-			          "Target": {
-			            "Entity": "players_daily.coverage_pct"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "players_daily"
-			            },
-			            "Object": {
-			              "Role": "players_daily.coverage_pct"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "players_dailies_have_coverage_pcts"
 			        }
 			      ]
 			    },
@@ -14495,52 +14837,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "topic_has_topic": {
-			      "Binding": {
-			        "ConceptualEntity": "Topic"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "topic": {
-			          "Target": {
-			            "Entity": "topic"
-			          }
-			        },
-			        "topic.topic": {
-			          "Target": {
-			            "Entity": "topic.topic"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "topic"
-			            },
-			            "Object": {
-			              "Role": "topic.topic"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "topics_have_topics"
-			        },
-			        {
-			          "Name": {
-			            "Subject": {
-			              "Role": "topic"
-			            },
-			            "Name": {
-			              "Role": "topic.topic"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "topics_are_names_IDs_of_topics"
-			        }
-			      ]
-			    },
 			    "language_has_region": {
 			      "Binding": {
 			        "ConceptualEntity": "Language"
@@ -14650,52 +14946,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "language_names_are_names_IDs_of_languages"
-			        }
-			      ]
-			    },
-			    "language_has_language": {
-			      "Binding": {
-			        "ConceptualEntity": "Language"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "language": {
-			          "Target": {
-			            "Entity": "language"
-			          }
-			        },
-			        "language.language": {
-			          "Target": {
-			            "Entity": "language.language"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "language"
-			            },
-			            "Object": {
-			              "Role": "language.language"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "languages_have_languages"
-			        },
-			        {
-			          "Name": {
-			            "Subject": {
-			              "Role": "language"
-			            },
-			            "Name": {
-			              "Role": "language.language"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "languages_are_names_IDs_of_languages"
 			        }
 			      ]
 			    },
@@ -14874,39 +15124,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "games_are_names_IDs_of_games"
-			        }
-			      ]
-			    },
-			    "game_has_appid": {
-			      "Binding": {
-			        "ConceptualEntity": "Game"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "game": {
-			          "Target": {
-			            "Entity": "game"
-			          }
-			        },
-			        "game.appid": {
-			          "Target": {
-			            "Entity": "game.appid"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "game"
-			            },
-			            "Object": {
-			              "Role": "game.appid"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "games_have_appids"
 			        }
 			      ]
 			    },
@@ -15283,52 +15500,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "events_have_event_dates"
-			        }
-			      ]
-			    },
-			    "event_has_event_id": {
-			      "Binding": {
-			        "ConceptualEntity": "Event"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "event": {
-			          "Target": {
-			            "Entity": "event"
-			          }
-			        },
-			        "event.event_id": {
-			          "Target": {
-			            "Entity": "event.event_id"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "event"
-			            },
-			            "Object": {
-			              "Role": "event.event_id"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "events_have_event_ids"
-			        },
-			        {
-			          "Name": {
-			            "Subject": {
-			              "Role": "event"
-			            },
-			            "Name": {
-			              "Role": "event.event_id"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "event_ids_are_names_IDs_of_events"
 			        }
 			      ]
 			    },
@@ -15773,48 +15944,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "event_impact_is_evented_on_event_date": {
-			      "Binding": {
-			        "ConceptualEntity": "Event Impact"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "event_impact": {
-			          "Target": {
-			            "Entity": "event_impact"
-			          }
-			        },
-			        "event_impact.event_date": {
-			          "Target": {
-			            "Entity": "event_impact.event_date"
-			          }
-			        }
-			      },
-			      "SemanticSlots": {
-			        "When": {
-			          "Role": "event_impact.event_date"
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Verb": {
-			            "Verbs": [
-			              {
-			                "event": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "event_impact"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.9,
-			          "ID": "event_impacts_are_evented_on_event_dates"
-			        }
-			      ]
-			    },
 			    "event_is_ended_on_end_date": {
 			      "Binding": {
 			        "ConceptualEntity": "Event"
@@ -15946,52 +16075,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "some_dates_are_weekend_dates"
-			        }
-			      ]
-			    },
-			    "reviews_daily_has_language": {
-			      "Binding": {
-			        "ConceptualEntity": "Reviews Daily"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "reviews_daily": {
-			          "Target": {
-			            "Entity": "reviews_daily"
-			          }
-			        },
-			        "language": {
-			          "Target": {
-			            "Entity": "language"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "reviews_daily"
-			            },
-			            "Object": {
-			              "Role": "language"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "reviews_dailies_have_languages"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "language"
-			            },
-			            "Object": {
-			              "Role": "reviews_daily"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "languages_have_reviews_dailies"
 			        }
 			      ]
 			    },
