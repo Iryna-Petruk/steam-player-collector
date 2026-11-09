@@ -2,7 +2,7 @@
 table 'Time Window'
 	lineageTag: 7456839e-a69f-4bc5-85ee-7eeb07ebdbd5
 
-	/// Часове вікно для будь-якої вибраної міри. Міра [Recent Score % (30d)] і міри з папки Events повертаються без змін: у них власне вікно часу або немає зв'язку з календарем.
+	/// Часове вікно для будь-якої вибраної міри. Міра [Recent Score % (30d)], міри з папки Events і міри з папки Data quality повертаються без змін: у них власне вікно часу, немає зв'язку з календарем або вони описують самі дані, а не вибраний період.
 	calculationGroup
 		precedence: 10
 
@@ -11,7 +11,7 @@ table 'Time Window'
 
 			formatStringDefinition = SELECTEDMEASUREFORMATSTRING()
 
-		/// Міра за останні 30 днів від кінця вибраного періоду або від останньої дати з даними. Міри з власним вікном часу (Events, Recent Score % (30d)) не змінюються.
+		/// Міра за останні 30 днів від кінця вибраного періоду або від останньої дати з даними. Міри зі списку винятків (Events, Data quality, Recent Score % (30d)) не змінюються.
 		calculationItem 'Last 30 days' =
 				IF (
 				    ISSELECTEDMEASURE (
@@ -23,7 +23,11 @@ table 'Time Window'
 				        [Events Measured],
 				        [Median Reviews Uplift 2w],
 				        [Median Net Reviews Uplift 2w],
-				        [Avg Score Change 2w (pp)]
+				        [Avg Score Change 2w (pp)],
+				        [Avg Net Score Change 2w (pp)],
+				        [Major Events In Month],
+				        [Data Through],
+				        [Last Refreshed]
 				    ),
 				    SELECTEDMEASURE (),
 				    VAR _lastData =
@@ -36,7 +40,7 @@ table 'Time Window'
 
 			formatStringDefinition = SELECTEDMEASUREFORMATSTRING()
 
-		/// Міра за останні 12 місяців від кінця вибраного періоду або від останньої дати з даними. Міри з власним вікном часу (Events, Recent Score % (30d)) не змінюються.
+		/// Міра за останні 12 місяців від кінця вибраного періоду або від останньої дати з даними. Міри зі списку винятків (Events, Data quality, Recent Score % (30d)) не змінюються.
 		calculationItem 'Last 12 months' =
 				IF (
 				    ISSELECTEDMEASURE (
@@ -48,7 +52,11 @@ table 'Time Window'
 				        [Events Measured],
 				        [Median Reviews Uplift 2w],
 				        [Median Net Reviews Uplift 2w],
-				        [Avg Score Change 2w (pp)]
+				        [Avg Score Change 2w (pp)],
+				        [Avg Net Score Change 2w (pp)],
+				        [Major Events In Month],
+				        [Data Through],
+				        [Last Refreshed]
 				    ),
 				    SELECTEDMEASURE (),
 				    VAR _lastData =
@@ -61,7 +69,7 @@ table 'Time Window'
 
 			formatStringDefinition = SELECTEDMEASUREFORMATSTRING()
 
-		/// Міра за той самий період попереднього року. Міри з власним вікном часу (Events, Recent Score % (30d)) не змінюються.
+		/// Міра за той самий період попереднього року. Міри зі списку винятків (Events, Data quality, Recent Score % (30d)) не змінюються.
 		calculationItem 'Prior year' =
 				IF (
 				    ISSELECTEDMEASURE (
@@ -73,7 +81,11 @@ table 'Time Window'
 				        [Events Measured],
 				        [Median Reviews Uplift 2w],
 				        [Median Net Reviews Uplift 2w],
-				        [Avg Score Change 2w (pp)]
+				        [Avg Score Change 2w (pp)],
+				        [Avg Net Score Change 2w (pp)],
+				        [Major Events In Month],
+				        [Data Through],
+				        [Last Refreshed]
 				    ),
 				    SELECTEDMEASURE (),
 				    CALCULATE ( SELECTEDMEASURE (), SAMEPERIODLASTYEAR ( 'Date'[date] ) )
@@ -81,7 +93,7 @@ table 'Time Window'
 
 			formatStringDefinition = SELECTEDMEASUREFORMATSTRING()
 
-		/// Різниця між вибраним періодом і тим самим періодом попереднього року; порожньо, якщо бракує одного з двох значень. Міри з власним вікном часу (Events, Recent Score % (30d)) не змінюються.
+		/// Різниця між вибраним періодом і тим самим періодом попереднього року; порожньо, якщо бракує одного з двох значень. Міри зі списку винятків (Events, Data quality, Recent Score % (30d)) не змінюються.
 		calculationItem 'YoY change' =
 				IF (
 				    ISSELECTEDMEASURE (
@@ -93,7 +105,11 @@ table 'Time Window'
 				        [Events Measured],
 				        [Median Reviews Uplift 2w],
 				        [Median Net Reviews Uplift 2w],
-				        [Avg Score Change 2w (pp)]
+				        [Avg Score Change 2w (pp)],
+				        [Avg Net Score Change 2w (pp)],
+				        [Major Events In Month],
+				        [Data Through],
+				        [Last Refreshed]
 				    ),
 				    SELECTEDMEASURE (),
 				    VAR _cur = SELECTEDMEASURE ()

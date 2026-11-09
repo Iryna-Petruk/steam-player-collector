@@ -178,7 +178,9 @@ table 'Event Impact'
 	/// Зміна оцінки мінус та сама зміна в контрольних ігор, у відсоткових пунктах.
 	column net_score_change_2w_pp
 		dataType: decimal
+		isHidden
 		formatString: 0.0
+		isAvailableInMdx: false
 		lineageTag: 456077a0-3f6d-437b-9792-19ffb53bf450
 		summarizeBy: none
 		sourceColumn: net_score_change_2w_pp

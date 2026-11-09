@@ -57,8 +57,10 @@ the object in TMDL instead of living in this file.
 | `'_Measures'` | REDUCE_USAGE_OF_CALCULATED_TABLES, ENSURE_TABLES_HAVE_RELATIONSHIPS | A measure container is the standard pattern; it holds no data and needs no relationship. |
 | `'_Measures'[Value]` | UNNECESSARY_COLUMNS | The single placeholder column of that calculated table. It cannot be deleted. |
 | `'Security Region Access'` | ENSURE_TABLES_HAVE_RELATIONSHIPS | The RLS mapping table is read by DAX inside the role, not through a relationship. |
+| `'Refresh Info'` | ENSURE_TABLES_HAVE_RELATIONSHIPS | Technical table: refresh timestamp. One row from `DateTime.LocalNow()`, no source and no key, so there is nothing to relate it to. |
 | `'Event Window'[day_offset]`, `[series_role]`, `[window_phase]` | HIDE_FACT_TABLE_COLUMNS | Attributes report authors build the event charts from, so they stay visible. |
-| `[Avg Score Change 2w (pp)]` | INTEGER_FORMATTING | Percentage points read better with one decimal; `#,0` would hide the detail. |
+| `[Avg Score Change 2w (pp)]`, `[Avg Net Score Change 2w (pp)]` | INTEGER_FORMATTING | Percentage points read better with one decimal; `#,0` would hide the detail. |
+| `[Data Through]`, `[Last Refreshed]`, `[Major Events In Month]` | PROVIDE_FORMAT_STRING_FOR_MEASURES, INTEGER_FORMATTING | They return text, not a number, so a numeric format string has nothing to format. Both rules match on `FormatString` alone, with no data type check, so they flag every text measure. |
 | role `Regional access` | REMOVE_ROLES_WITH_NO_MEMBERS | A PBIP project has no members; they are assigned in the Power BI Service. |
 | table permissions `Language`, `Security Region Access` | CHECK_IF_DYNAMIC_ROW_LEVEL_SECURITY_(RLS)_IS_NECESSARY | Dynamic RLS is the requirement here, not an accident. |
 

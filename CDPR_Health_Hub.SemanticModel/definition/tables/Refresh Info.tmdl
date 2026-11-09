@@ -1,0 +1,25 @@
+/// Технічна таблиця з одним рядком: мітка часу оновлення моделі. Джерела не має - значення дає DateTime.LocalNow() у момент оновлення. Прихована: авторам звітів потрібна лише міра [Last Refreshed].
+table 'Refresh Info'
+	isHidden
+	lineageTag: 878a3a0b-bdf4-4518-a529-7f4b2c408afd
+
+	/// Локальний час завершення останнього оновлення моделі в Power BI Desktop.
+	column Refreshed
+		dataType: dateTime
+		isAvailableInMdx: false
+		lineageTag: f1f04a56-d0d9-4873-9f53-a31e23f5eb68
+		summarizeBy: none
+		sourceColumn: Refreshed
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Refresh Info' = m
+		mode: import
+		source =
+				let
+				  Source = #table(type table [Refreshed = datetime], {{DateTime.LocalNow()}})
+				in
+				  Source
+
+	annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["ENSURE_TABLES_HAVE_RELATIONSHIPS"]}
+

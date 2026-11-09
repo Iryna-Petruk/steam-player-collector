@@ -185,6 +185,55 @@ table _Measures
 
 		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["INTEGER_FORMATTING"]}
 
+	/// Середня зміна Steam Score за 2 тижні після події мінус зміна контрольних ігор у ті самі дні (п.п.)
+	measure 'Avg Net Score Change 2w (pp)' = AVERAGE('Event Impact'[net_score_change_2w_pp])
+		formatString: 0.0
+		displayFolder: Events
+		lineageTag: 19961e3c-0e42-497e-8ca9-b59314402efb
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["INTEGER_FORMATTING"]}
+
+	/// Назви великих подій гри в межах поточного періоду (для анотацій на лінії оцінки)
+	measure 'Major Events In Month' =
+			
+			VAR _games = VALUES ( Game[appid] )
+			RETURN
+			    CONCATENATEX (
+			        FILTER (
+			            ALL ( Event ),
+			            Event[magnitude] = "major"
+			                && NOT Event[is_platform_wide]
+			                && Event[appid] IN _games
+			                && Event[event_date] >= MIN ( 'Date'[date] )
+			                && Event[event_date] <= MAX ( 'Date'[date] )
+			        ),
+			        Event[event_name], " · ", Event[event_date], ASC
+			    )
+		displayFolder: Events
+		lineageTag: d01df8c7-5ba1-44c0-bcb5-7abfd8a0b99c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["PROVIDE_FORMAT_STRING_FOR_MEASURES","INTEGER_FORMATTING"]}
+
+	/// Останній повний день у даних (останній день у відгуках неповний, бо збирач працює вранці).
+	measure 'Data Through' =
+			VAR _last =
+			    CALCULATE ( MAX ( 'Reviews Daily'[date] ), REMOVEFILTERS () )
+			RETURN
+			    "Data through " & FORMAT ( _last - 1, "d MMMM yyyy" )
+		displayFolder: Data quality
+		lineageTag: 13af9705-b235-4235-bc5b-bef9b3c3d75f
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["PROVIDE_FORMAT_STRING_FOR_MEASURES","INTEGER_FORMATTING"]}
+
+	/// Коли модель востаннє оновлювали в Power BI Desktop.
+	measure 'Last Refreshed' = "Refreshed " & FORMAT ( MAX ( 'Refresh Info'[Refreshed] ), "d MMM yyyy, HH:mm" )
+		displayFolder: Data quality
+		lineageTag: 6bf82f03-80e5-4495-9c4c-ab72863a5389
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["PROVIDE_FORMAT_STRING_FOR_MEASURES","INTEGER_FORMATTING"]}
+
 	column Value
 		isHidden
 		isAvailableInMdx: false
