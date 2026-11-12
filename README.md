@@ -24,7 +24,7 @@ Effects are measured against the game's own 4 weeks before each event and, where
 | **Overview** | Score, recent score vs all time, review volume and the bugs share, per game; score and review volume over time with key events |
 | **Player Voice** | What players complain about, how that changed, which regions and markets are most critical, and how many negative reviews come from newcomers |
 | **What drives interest** | Which event types move the score and which bring players back; activity around any event vs the control group; weekly activity heat map |
-| **Event log** | Every measured event with activity and score change, gross and net; drill-through target from the event charts |
+| **Event log** | Hidden page, opened by drill-through from the event charts: every measured event with activity and score change, gross and net |
 | **About** | Purpose, KPI dictionary, data and method, limitations, colour rules |
 
 **Player Voice**
