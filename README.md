@@ -6,6 +6,8 @@ An end-to-end analytics project on public Steam data: automated collection, a te
 
 > Independent portfolio project based on public data. Not affiliated with or endorsed by CD PROJEKT or Valve. No company logos or game assets are used.
 
+**[Open the interactive report](https://app.powerbi.com/view?r=eyJrIjoiNTI5M2YzYTMtNDQ1ZS00MzZhLWJmYzQtYjg3ZDAyNjg4YjBkIiwidCI6ImRmODY3OWNkLWE4MGUtNDVkOC05OWFjLWM4M2VkN2ZmOTVhMCJ9)** — a published snapshot from 12 November 2026. Publish to web does not support row-level security, so the public copy has no security role; the full model with RLS and OLS is in this repository.
+
 ![Overview page: Steam score, recent score versus all time, review volume and the bugs share for each game, with Steam score by month and reviews per month over time](docs/img/overview.png)
 
 ## Key findings
