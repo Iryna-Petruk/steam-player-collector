@@ -5,7 +5,7 @@
     "game": "Baldur's Gate 3",
     "next_month": "2026-12",
     "topics_version": "r2-b9b7752b",
-    "watermark": 1794396022
+    "watermark": 1794483715
   },
   "1091500": {
     "backfill_done": true,
@@ -13,7 +13,7 @@
     "game": "Cyberpunk 2077",
     "next_month": "2026-11",
     "topics_version": "r2-b9b7752b",
-    "watermark": 1794396087
+    "watermark": 1794482516
   },
   "1174180": {
     "backfill_done": true,
@@ -21,7 +21,7 @@
     "game": "Red Dead Redemption 2",
     "next_month": "2026-12",
     "topics_version": "r2-b9b7752b",
-    "watermark": 1794395942
+    "watermark": 1794483092
   },
   "1245620": {
     "backfill_done": true,
@@ -29,7 +29,7 @@
     "game": "ELDEN RING",
     "next_month": "2026-12",
     "topics_version": "r2-b9b7752b",
-    "watermark": 1794395888
+    "watermark": 1794483685
   },
   "292030": {
     "backfill_done": true,
@@ -37,6 +37,6 @@
     "game": "The Witcher 3: Wild Hunt",
     "next_month": "2026-11",
     "topics_version": "r2-b9b7752b",
-    "watermark": 1794395260
+    "watermark": 1794481350
   }
 }
