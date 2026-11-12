@@ -1,0 +1,376 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "ed26e6646e6a54aa4087",
+  "position": {
+    "x": 1123,
+    "y": 159.24882629107981,
+    "z": 1000,
+    "height": 826.29107981220659,
+    "width": 757,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Event"
+                    }
+                  },
+                  "Property": "event_name"
+                }
+              },
+              "queryRef": "Event.event_name",
+              "nativeQueryRef": "event",
+              "displayName": "event"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Event"
+                    }
+                  },
+                  "Property": "event_date"
+                }
+              },
+              "queryRef": "Event.event_date",
+              "nativeQueryRef": "date",
+              "displayName": "date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Event"
+                    }
+                  },
+                  "Property": "event_type"
+                }
+              },
+              "queryRef": "Event.event_type",
+              "nativeQueryRef": "type",
+              "displayName": "type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Game"
+                    }
+                  },
+                  "Property": "Game Label"
+                }
+              },
+              "queryRef": "Game.Game Label",
+              "nativeQueryRef": "game",
+              "displayName": "game"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Event Impact"
+                    }
+                  },
+                  "Property": "steam_score_pre"
+                }
+              },
+              "queryRef": "Event Impact.steam_score_pre",
+              "nativeQueryRef": "before",
+              "displayName": "before"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Event Impact"
+                    }
+                  },
+                  "Property": "steam_score_2w"
+                }
+              },
+              "queryRef": "Event Impact.steam_score_2w",
+              "nativeQueryRef": "after",
+              "displayName": "after"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Event Impact"
+                    }
+                  },
+                  "Property": "net_score_change_2w_pp"
+                }
+              },
+              "queryRef": "Event Impact.net_score_change_2w_pp",
+              "nativeQueryRef": "net",
+              "displayName": "net"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Event"
+                  }
+                },
+                "Property": "event_date"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\n  \"data\": { \"name\": \"dataset\" },\n  \"transform\": [\n    { \"filter\": \"datum.type != ''platform_sale'' && isValid(datum.before) && isValid(datum.after)\" },\n    { \"calculate\": \"(datum.after - datum.before) * 100\", \"as\": \"change\" },\n    { \"calculate\": \"(datum.game == ''Cyberpunk 2077'' ? ''CP2077'' : ''TW3'') + '' · '' + datum.event + '' ('' + year(datum.date) + '')''\", \"as\": \"label\" },\n    { \"calculate\": \"datum.change < 0 ? ''fell'' : ''rose''\", \"as\": \"direction\" },\n    { \"calculate\": \"(datum.change >= 0 ? ''+'' : '''') + format(datum.change, ''.1f'') + '' pp''\", \"as\": \"change_text\" },\n    { \"calculate\": \"isValid(datum.net) ? (datum.net >= 0 ? ''+'' : '''') + format(datum.net, ''.1f'') + '' pp'' : ''pending (control data)''\", \"as\": \"net_text\" }\n  ],\n  \"encoding\": {\n    \"y\": {\n      \"field\": \"label\", \"type\": \"nominal\", \"title\": null,\n      \"sort\": { \"field\": \"change\", \"op\": \"min\", \"order\": \"ascending\" },\n      \"axis\": { \"domain\": false, \"ticks\": false, \"labelPadding\": 8,\n                \"labelFontSize\": 11, \"labelColor\": \"#1F2328\", \"labelLimit\": 320 }\n    },\n    \"tooltip\": [\n      { \"field\": \"event\", \"title\": \"Event\" },\n      { \"field\": \"game\", \"title\": \"Game\" },\n      { \"field\": \"date\", \"title\": \"Date\", \"type\": \"temporal\", \"format\": \"%d %b %Y\" },\n      { \"field\": \"before\", \"title\": \"Steam score, 4 weeks before\", \"format\": \".1%\" },\n      { \"field\": \"after\", \"title\": \"Steam score, first 2 weeks\", \"format\": \".1%\" },\n      { \"field\": \"change_text\", \"title\": \"Change\" },\n      { \"field\": \"net_text\", \"title\": \"Net of control games\" }\n    ]\n  },\n  \"layer\": [\n    {\n      \"mark\": { \"type\": \"rule\", \"strokeWidth\": 3 },\n      \"encoding\": {\n        \"x\": { \"field\": \"before\", \"type\": \"quantitative\", \"title\": null,\n               \"scale\": { \"zero\": false },\n               \"axis\": { \"format\": \".0%\", \"tickCount\": 6, \"domain\": false, \"ticks\": false,\n                         \"gridColor\": \"#EEEEEC\", \"labelColor\": \"#5F6368\", \"labelFontSize\": 11 } },\n        \"x2\": { \"field\": \"after\" },\n        \"color\": { \"field\": \"direction\", \"type\": \"nominal\", \"legend\": null,\n                   \"scale\": { \"domain\": [\"fell\", \"rose\"], \"range\": [\"#B3122E\", \"#5F6368\"] } }\n      }\n    },\n    {\n      \"mark\": { \"type\": \"circle\", \"size\": 70, \"color\": \"#C4C8CD\", \"opacity\": 1 },\n      \"encoding\": { \"x\": { \"field\": \"before\", \"type\": \"quantitative\" } }\n    },\n    {\n      \"mark\": { \"type\": \"circle\", \"size\": 110, \"opacity\": 1 },\n      \"encoding\": {\n        \"x\": { \"field\": \"after\", \"type\": \"quantitative\" },\n        \"color\": { \"field\": \"direction\", \"type\": \"nominal\", \"legend\": null,\n                   \"scale\": { \"domain\": [\"fell\", \"rose\"], \"range\": [\"#B3122E\", \"#5F6368\"] } }\n      }\n    },\n    {\n      \"transform\": [{ \"filter\": \"datum.direction == ''fell''\" }],\n      \"mark\": { \"type\": \"text\", \"align\": \"right\", \"dx\": -9, \"fontSize\": 11, \"fontWeight\": 600, \"color\": \"#B3122E\" },\n      \"encoding\": { \"x\": { \"field\": \"after\", \"type\": \"quantitative\" }, \"text\": { \"field\": \"change_text\" } }\n    },\n    {\n      \"transform\": [{ \"filter\": \"datum.direction == ''rose''\" }],\n      \"mark\": { \"type\": \"text\", \"align\": \"left\", \"dx\": 9, \"fontSize\": 11, \"fontWeight\": 600, \"color\": \"#5F6368\" },\n      \"encoding\": { \"x\": { \"field\": \"after\", \"type\": \"quantitative\" }, \"text\": { \"field\": \"change_text\" } }\n    }\n  ],\n  \"config\": { \"view\": { \"stroke\": null }, \"font\": \"Segoe UI\", \"background\": null }\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{}'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenuSelector": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            },
+            "selectionMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'simple'"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.3'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "denebMetaVersion": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2'"
+                }
+              }
+            },
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "736D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "725D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2.0.1.0'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "subTitle": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Grey = 4 weeks before · dot = first 2 weeks after · red = score fell · Steam sales excluded'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Steam score before and after each event'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "704d26c3ea37a31d13d9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Event Impact"
+              }
+            },
+            "Property": "reviews_uplift_2w_pct"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "e",
+              "Entity": "Event Impact",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "e"
+                              }
+                            },
+                            "Property": "reviews_uplift_2w_pct"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

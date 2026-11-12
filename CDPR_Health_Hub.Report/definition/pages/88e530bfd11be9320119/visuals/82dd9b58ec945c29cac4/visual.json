@@ -1,0 +1,283 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "82dd9b58ec945c29cac4",
+  "position": {
+    "x": 40,
+    "y": 321.05960264900665,
+    "z": 9000,
+    "height": 397.35099337748346,
+    "width": 1067,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Date"
+                    }
+                  },
+                  "Property": "year_month"
+                }
+              },
+              "queryRef": "Date.year_month",
+              "nativeQueryRef": "month",
+              "displayName": "month"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Game"
+                    }
+                  },
+                  "Property": "Game Label"
+                }
+              },
+              "queryRef": "Game.Game Label",
+              "nativeQueryRef": "game",
+              "displayName": "game"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Steam Score %"
+                }
+              },
+              "queryRef": "_Measures.Steam Score %",
+              "nativeQueryRef": "score",
+              "displayName": "score"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Reviews"
+                }
+              },
+              "queryRef": "_Measures.Reviews",
+              "nativeQueryRef": "reviews",
+              "displayName": "reviews"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Key Event In Month"
+                }
+              },
+              "queryRef": "_Measures.Key Event In Month",
+              "nativeQueryRef": "events",
+              "displayName": "events"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Date"
+                  }
+                },
+                "Property": "year_month"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\n  \"description\": \"Monthly Steam score per game, with major events marked and labelled on the line.\",\n  \"data\": {\n    \"name\": \"dataset\"\n  },\n  \"transform\": [\n    {\n      \"filter\": \"isValid(datum.score) && datum.reviews >= 300\"\n    },\n    {\n      \"calculate\": \"toDate(datum.month + ''-01'')\",\n      \"as\": \"month_date\"\n    },\n    {\n      \"calculate\": \"isValid(datum.events) && datum.events != '''' ? datum.events : null\",\n      \"as\": \"event_label\"\n    }\n  ],\n  \"encoding\": {\n    \"x\": {\n      \"field\": \"month_date\",\n      \"type\": \"temporal\",\n      \"title\": null,\n      \"axis\": {\n        \"format\": \"%Y\",\n        \"tickCount\": \"year\",\n        \"domain\": false,\n        \"ticks\": false,\n        \"gridColor\": \"#EEEEEC\",\n        \"labelColor\": \"#5F6368\"\n      }\n    },\n    \"y\": {\n      \"field\": \"score\",\n      \"type\": \"quantitative\",\n      \"title\": null,\n      \"scale\": {\n        \"zero\": false\n      },\n      \"axis\": {\n        \"format\": \".0%\",\n        \"tickCount\": 5,\n        \"domain\": false,\n        \"ticks\": false,\n        \"gridColor\": \"#EEEEEC\",\n        \"labelColor\": \"#5F6368\"\n      }\n    },\n    \"color\": {\n      \"field\": \"game\",\n      \"type\": \"nominal\",\n      \"scale\": {\n        \"domain\": [\n          \"Cyberpunk 2077\",\n          \"The Witcher 3\"\n        ],\n        \"range\": [\n          \"#A87400\",\n          \"#2F5D8C\"\n        ]\n      },\n      \"legend\": {\n        \"orient\": \"bottom\",\n        \"title\": null,\n        \"labelColor\": \"#5F6368\",\n        \"symbolType\": \"stroke\",\n        \"labelLimit\": 240\n      }\n    }\n  },\n  \"layer\": [\n    {\n      \"mark\": {\n        \"type\": \"line\",\n        \"strokeWidth\": 2,\n        \"interpolate\": \"linear\"\n      },\n      \"encoding\": {\n        \"tooltip\": [\n          {\n            \"field\": \"game\",\n            \"title\": \"Game\"\n          },\n          {\n            \"field\": \"month_date\",\n            \"type\": \"temporal\",\n            \"title\": \"Month\",\n            \"format\": \"%b %Y\"\n          },\n          {\n            \"field\": \"score\",\n            \"title\": \"Steam score\",\n            \"format\": \".1%\"\n          },\n          {\n            \"field\": \"reviews\",\n            \"title\": \"Reviews\",\n            \"format\": \",\"\n          }\n        ]\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"filter\": \"datum.event_label != null\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"circle\",\n        \"size\": 70,\n        \"fill\": \"#FFFFFF\",\n        \"strokeWidth\": 2,\n        \"opacity\": 1\n      },\n      \"encoding\": {\n        \"stroke\": {\n          \"field\": \"game\",\n          \"type\": \"nominal\",\n          \"scale\": {\n            \"domain\": [\n              \"Cyberpunk 2077\",\n              \"The Witcher 3\"\n            ],\n            \"range\": [\n              \"#A87400\",\n              \"#2F5D8C\"\n            ]\n          },\n          \"legend\": null\n        },\n        \"tooltip\": [\n          {\n            \"field\": \"game\",\n            \"title\": \"Game\"\n          },\n          {\n            \"field\": \"month_date\",\n            \"type\": \"temporal\",\n            \"title\": \"Month\",\n            \"format\": \"%b %Y\"\n          },\n          {\n            \"field\": \"event_label\",\n            \"title\": \"Major events\"\n          },\n          {\n            \"field\": \"score\",\n            \"title\": \"Steam score\",\n            \"format\": \".1%\"\n          }\n        ]\n      }\n    },\n    {\n      \"transform\": [\n        {\n          \"filter\": \"datum.event_label != null\"\n        }\n      ],\n      \"mark\": {\n        \"type\": \"text\",\n        \"align\": \"left\",\n        \"baseline\": \"bottom\",\n        \"angle\": 325,\n        \"dx\": 4,\n        \"dy\": -6,\n        \"fontSize\": 9,\n        \"limit\": 170\n      },\n      \"encoding\": {\n        \"text\": {\n          \"field\": \"event_label\"\n        }\n      }\n    }\n  ],\n  \"config\": {\n    \"view\": {\n      \"stroke\": null\n    },\n    \"font\": \"Segoe UI\",\n    \"background\": null\n  }\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{}'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenuSelector": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            },
+            "selectionMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'simple'"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.3'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "denebMetaVersion": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2'"
+                }
+              }
+            },
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "330D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "1035D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2.0.1.0'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Steam score by month (Steam purchases only)'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

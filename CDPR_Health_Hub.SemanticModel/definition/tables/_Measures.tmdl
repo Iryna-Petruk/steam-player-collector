@@ -234,6 +234,137 @@ table _Measures
 
 		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["PROVIDE_FORMAT_STRING_FOR_MEASURES","INTEGER_FORMATTING"]}
 
+	/// Наскільки Steam Score за останні 30 днів відрізняється від оцінки за всю історію гри, у відсоткових пунктах. Плюс = зараз думають краще, ніж усереднено за весь час. База порівняння береться без зрізу періоду; порожньо, якщо бракує одного з двох значень.
+	measure 'Recent vs All-time (pp)' =
+			VAR _recent = [Recent Score % (30d)]
+			VAR _allTime =
+			    CALCULATE ( [Steam Score %], REMOVEFILTERS ( 'Date' ) )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _recent ) && NOT ISBLANK ( _allTime ),
+			        ( _recent - _allTime ) * 100
+			    )
+		formatString: +0.0 "pp";-0.0 "pp";0.0 "pp"
+		displayFolder: Reviews
+		lineageTag: 3e90fc67-6359-44e9-b54b-2abef4396d13
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["INTEGER_FORMATTING"]}
+
+	/// Частка негативних відгуків, що згадують тему Bugs & crashes, від 1 січня до останньої дати з даними. Базова лінія для KPI-картки про баги: власне вікно часу, тому зріз періоду і зріз теми її не змінюють.
+	measure 'Bugs Share CY (to date)' =
+			VAR _lastData =
+			    CALCULATE ( MAX ( 'Reviews Daily'[date] ), REMOVEFILTERS () )
+			RETURN
+			    CALCULATE (
+			        [Topic Share of Negative %],
+			        REMOVEFILTERS ( 'Date' ),
+			        DATESBETWEEN ( 'Date'[date], DATE ( YEAR ( _lastData ), 1, 1 ), _lastData ),
+			        REMOVEFILTERS ( Topic ),
+			        Topic[topic] = "bugs"
+			    )
+		displayFolder: Topics
+		lineageTag: 8b5f8c3f-ce7d-4ebd-b50e-48eacd1507e3
+
+		formatStringDefinition =
+				VAR _year =
+				    YEAR ( CALCULATE ( MAX ( 'Reviews Daily'[date] ), REMOVEFILTERS () ) )
+				RETURN
+				    """" & FORMAT ( _year, "0" ) & ": ""#,0.0%"
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["INTEGER_FORMATTING"]}
+
+	/// Назва ключової події гри в межах поточного періоду: лише виходи, додатки та великі оновлення, і не більше однієї на гру за місяць - найраніша. Розріджена версія [Major Events In Month] для анотацій, де кілька подій на одній точці не вміщаються.
+	measure 'Key Event In Month' =
+			VAR _games = VALUES ( Game[appid] )
+			VAR _from = MIN ( 'Date'[date] )
+			VAR _to = MAX ( 'Date'[date] )
+			VAR _events =
+			    FILTER (
+			        ALL ( Event ),
+			        Event[event_type] IN { "release", "expansion", "major_update" }
+			            && NOT Event[is_platform_wide]
+			            && Event[appid] IN _games
+			            && Event[event_date] >= _from
+			            && Event[event_date] <= _to
+			    )
+			VAR _withMonth =
+			    ADDCOLUMNS (
+			        _events,
+			        "@month", DATE ( YEAR ( Event[event_date] ), MONTH ( Event[event_date] ), 1 )
+			    )
+			VAR _earliestPerGameMonth =
+			    FILTER (
+			        _withMonth,
+			        VAR _appid = Event[appid]
+			        VAR _month = [@month]
+			        VAR _group =
+			            FILTER ( _withMonth, Event[appid] = _appid && [@month] = _month )
+			        VAR _firstDate = MINX ( _group, Event[event_date] )
+			        VAR _firstId =
+			            MINX ( FILTER ( _group, Event[event_date] = _firstDate ), Event[event_id] )
+			        RETURN
+			            Event[event_id] = _firstId
+			    )
+			RETURN
+			    CONCATENATEX (
+			        _earliestPerGameMonth,
+			        Event[event_name], " · ", Event[event_date], ASC
+			    )
+		displayFolder: Events
+		lineageTag: d758eb17-70a2-4be9-8f55-90fe5eb1d48b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["PROVIDE_FORMAT_STRING_FOR_MEASURES","INTEGER_FORMATTING"]}
+
+	/// Колір тексту для [Recent vs All-time (pp)]: червоний, якщо оцінка за 30 днів нижча за історичну, інакше сірий. Підключається до картки як fontColor за значенням поля, бо правило у JSON візуала не записати.
+	measure 'Recent Delta Colour' = IF ( [Recent vs All-time (pp)] < 0, "#B3122E", "#5F6368" )
+		displayFolder: Formatting
+		lineageTag: cbe13713-1c52-4eed-ad95-f045c103fc6a
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["PROVIDE_FORMAT_STRING_FOR_MEASURES","INTEGER_FORMATTING"]}
+
+	/// Колір тексту для KPI-картки про баги: червоний, якщо частка багів у контексті картки більш ніж на 5 в.п. вища за [Bugs Share CY (to date)], інакше звичайний темний. Базова лінія має власне вікно часу, тому група обчислень Time Window зсуває лише поточне значення.
+	measure 'Bugs Card Colour' =
+			VAR _current = [Topic Share of Negative %]
+			VAR _baseline = [Bugs Share CY (to date)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _current )
+			            && NOT ISBLANK ( _baseline )
+			            && _current - _baseline > 0.05,
+			        "#B3122E",
+			        "#1F2328"
+			    )
+		displayFolder: Formatting
+		lineageTag: 5562ea0c-6b47-4943-a19c-394c818bf055
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["PROVIDE_FORMAT_STRING_FOR_MEASURES","INTEGER_FORMATTING"]}
+
+	/// Тема з найвищою [Topic Share of Negative %] у поточному контексті фільтрів і ця частка через " · ", напр. "Bugs & crashes · 34%". Тема "No topic found" не враховується; за однакових часток перемагає тема, перша за алфавітом підпису. Порожньо, якщо негативних відгуків, перевірених на теми, немає.
+	measure 'Main Complaint' =
+			VAR _topics =
+			    CALCULATETABLE ( VALUES ( Topic[topic_label] ), Topic[topic] <> "none" )
+			VAR _shares =
+			    ADDCOLUMNS ( _topics, "@share", CALCULATE ( [Topic Share of Negative %] ) )
+			VAR _top =
+			    TOPN (
+			        1,
+			        FILTER ( _shares, NOT ISBLANK ( [@share] ) ),
+			        [@share], DESC,
+			        Topic[topic_label], ASC
+			    )
+			VAR _label = MAXX ( _top, Topic[topic_label] )
+			VAR _share = MAXX ( _top, [@share] )
+			RETURN
+			    IF ( NOT ISBLANK ( _share ), _label & " · " & FORMAT ( _share, "0%" ) )
+		displayFolder: Topics
+		lineageTag: 4e42c645-e48d-4cac-a327-e27350b13c96
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["PROVIDE_FORMAT_STRING_FOR_MEASURES","INTEGER_FORMATTING"]}
+
 	column Value
 		isHidden
 		isAvailableInMdx: false

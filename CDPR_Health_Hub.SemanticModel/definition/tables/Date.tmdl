@@ -130,6 +130,19 @@ table Date
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Перший день місяця як дата, напр. 2026-11-01 з підписом Nov 2026. Вісь і групування по місяцях, що сортуються самі собою, без окремої колонки сортування.
+	column month_start = DATE ( 'Date'[year], 'Date'[month], 1 )
+		dataType: dateTime
+		formatString: MMM yyyy
+		lineageTag: c91c5616-6388-4831-8c96-e123db017ff6
+		summarizeBy: none
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["MONTHCOLUMN_FORMATSTRING","FIRST_LETTER_OF_OBJECTS_MUST_BE_CAPITALIZED"]}
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'marts dim_date' = m
 		mode: import
 		source =

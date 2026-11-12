@@ -62,6 +62,22 @@ table Game
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Підпис гри для візуалів: скорочено до «Cyberpunk 2077» і «The Witcher 3»; сортується за колонкою game.
+	column 'Game Label' =
+			SWITCH (
+			    Game[game],
+			    "Cyberpunk 2077", "Cyberpunk 2077",
+			    "The Witcher 3: Wild Hunt", "The Witcher 3",
+			    Game[game]
+			)
+		lineageTag: e8d06aae-8e8c-4a3e-b38e-6a334fb37233
+		summarizeBy: none
+		sortByColumn: game
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'marts dim_games' = m
 		mode: import
 		source =

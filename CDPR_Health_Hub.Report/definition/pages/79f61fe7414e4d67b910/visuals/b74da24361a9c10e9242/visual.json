@@ -1,0 +1,239 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "b74da24361a9c10e9242",
+  "position": {
+    "x": 40,
+    "y": 721.26094570928194,
+    "z": 9000,
+    "height": 269,
+    "width": 1067,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "deneb7E15AEF80B9E4D4F8E12924291ECE89A",
+    "query": {
+      "queryState": {
+        "dataset": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Date"
+                    }
+                  },
+                  "Property": "date"
+                }
+              },
+              "queryRef": "Date.date",
+              "nativeQueryRef": "date"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Reviews"
+                }
+              },
+              "queryRef": "_Measures.Reviews",
+              "nativeQueryRef": "reviews",
+              "displayName": "reviews"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Negative Reviews"
+                }
+              },
+              "queryRef": "_Measures.Negative Reviews",
+              "nativeQueryRef": "negative",
+              "displayName": "negative"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Date"
+                  }
+                },
+                "Property": "date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "vega": [
+        {
+          "properties": {
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vegaLite'"
+                }
+              }
+            },
+            "jsonSpec": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v5.json\",\n  \"description\": \"Reviews per week vs the typical (median) week of the same year. 1x = an ordinary week; darker = players suddenly talking more. Best with one game selected.\",\n  \"data\": {\n    \"name\": \"dataset\"\n  },\n  \"transform\": [\n    {\n      \"filter\": \"isValid(datum.reviews)\"\n    },\n    {\n      \"calculate\": \"toDate(datum.date)\",\n      \"as\": \"d\"\n    },\n    {\n      \"calculate\": \"year(datum.d)\",\n      \"as\": \"yr\"\n    },\n    {\n      \"calculate\": \"min(52, toNumber(timeFormat(datum.d, ''%U'')))\",\n      \"as\": \"wk\"\n    },\n    {\n      \"aggregate\": [\n        {\n          \"op\": \"sum\",\n          \"field\": \"reviews\",\n          \"as\": \"reviews\"\n        },\n        {\n          \"op\": \"sum\",\n          \"field\": \"negative\",\n          \"as\": \"negative\"\n        },\n        {\n          \"op\": \"min\",\n          \"field\": \"d\",\n          \"as\": \"week_start\"\n        }\n      ],\n      \"groupby\": [\n        \"yr\",\n        \"wk\"\n      ]\n    },\n    {\n      \"filter\": \"datum.reviews > 0\"\n    },\n    {\n      \"calculate\": \"datum.negative / datum.reviews\",\n      \"as\": \"neg_share\"\n    },\n    {\n      \"calculate\": \"toDate(datum.week_start)\",\n      \"as\": \"week_from\"\n    },\n    {\n      \"joinaggregate\": [\n        {\n          \"op\": \"median\",\n          \"field\": \"reviews\",\n          \"as\": \"median_week\"\n        }\n      ],\n      \"groupby\": [\n        \"yr\"\n      ]\n    },\n    {\n      \"calculate\": \"max(1, datum.reviews / datum.median_week)\",\n      \"as\": \"ratio\"\n    },\n    {\n      \"calculate\": \"min(8, datum.ratio)\",\n      \"as\": \"ratio_capped\"\n    }\n  ],\n  \"mark\": {\n    \"type\": \"rect\",\n    \"cornerRadius\": 1.5,\n    \"stroke\": \"#FFFFFF\",\n    \"strokeWidth\": 1\n  },\n  \"encoding\": {\n    \"x\": {\n      \"field\": \"wk\",\n      \"type\": \"ordinal\",\n      \"title\": null,\n      \"scale\": {\n        \"domain\": {\n          \"expr\": \"sequence(0, 53)\"\n        }\n      },\n      \"axis\": {\n        \"values\": [\n          0,\n          4,\n          9,\n          13,\n          17,\n          22,\n          26,\n          30,\n          35,\n          39,\n          43,\n          48\n        ],\n        \"labelExpr\": \"[''Jan'',''Feb'',''Mar'',''Apr'',''May'',''Jun'',''Jul'',''Aug'',''Sep'',''Oct'',''Nov'',''Dec''][indexof([0,4,9,13,17,22,26,30,35,39,43,48], datum.value)]\",\n        \"labelAngle\": 0,\n        \"domain\": false,\n        \"ticks\": false,\n        \"labelColor\": \"#5F6368\",\n        \"labelAlign\": \"left\"\n      }\n    },\n    \"y\": {\n      \"field\": \"yr\",\n      \"type\": \"ordinal\",\n      \"title\": null,\n      \"axis\": {\n        \"domain\": false,\n        \"ticks\": false,\n        \"labelColor\": \"#1F2328\",\n        \"labelPadding\": 6\n      }\n    },\n    \"color\": {\n      \"field\": \"ratio_capped\",\n      \"type\": \"quantitative\",\n      \"scale\": {\n        \"type\": \"log\",\n        \"domain\": [\n          1,\n          8\n        ],\n        \"range\": [\n          \"#EEF1F5\",\n          \"#8FA6BF\",\n          \"#2E3F55\"\n        ],\n        \"interpolate\": \"rgb\",\n        \"clamp\": true\n      },\n      \"legend\": null\n    },\n    \"tooltip\": [\n      {\n        \"field\": \"week_from\",\n        \"type\": \"temporal\",\n        \"title\": \"Week from\",\n        \"format\": \"%d %b %Y\"\n      },\n      {\n        \"field\": \"reviews\",\n        \"title\": \"Reviews\",\n        \"format\": \",\"\n      },\n      {\n        \"field\": \"ratio\",\n        \"title\": \"vs median week\",\n        \"format\": \".1f\"\n      },\n      {\n        \"field\": \"neg_share\",\n        \"title\": \"Negative share\",\n        \"format\": \".1%\"\n      }\n    ]\n  },\n  \"width\": \"container\",\n  \"config\": {\n    \"view\": {\n      \"stroke\": null\n    },\n    \"font\": \"Segoe UI\",\n    \"background\": null\n  },\n  \"height\": \"container\"\n}'"
+                }
+              }
+            },
+            "jsonConfig": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{}'"
+                }
+              }
+            },
+            "enableTooltips": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenu": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableContextMenuSelector": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableHighlight": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "selectionMaxDataPoints": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            },
+            "selectionMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'simple'"
+                }
+              }
+            },
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'6.4.3'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stateManagement": [
+        {
+          "properties": {
+            "denebMetaVersion": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2'"
+                }
+              }
+            },
+            "viewportHeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "179D"
+                }
+              }
+            },
+            "viewportWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "1035D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "developer": [
+        {
+          "properties": {
+            "version": {
+              "expr": {
+                "Literal": {
+                  "Value": "'2.0.1.0'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'When did players suddenly start talking?'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Weekly reviews vs the year’s median week · darker = up to 8× · select one game'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -59,8 +59,77 @@
             }
           ]
         },
-        "howCreated": "User"
+        "howCreated": "User",
+        "isHiddenInViewMode": true,
+        "isLockedInViewMode": true
       }
     ]
-  }
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'PlayerVoice_background_1920x1080.png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "PlayerVoice_background_1920x106437791581025385.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Normal'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "6c958506cc75725d9839",
+      "target": "07cbdce264cab6ace723",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6c958506cc75725d9839",
+      "target": "c663ebdbb99bac2007c2",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6c958506cc75725d9839",
+      "target": "65b9ea46c33905e90e2c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6c958506cc75725d9839",
+      "target": "163c4ccd138d880b92b9",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6c958506cc75725d9839",
+      "target": "7a75cce7eb35b400160a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "6c958506cc75725d9839",
+      "target": "80ee5db2115abc7622a0",
+      "type": "NoFilter"
+    }
+  ]
 }

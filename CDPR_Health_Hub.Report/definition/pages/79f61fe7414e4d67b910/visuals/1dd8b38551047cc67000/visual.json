@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "1dd8b38551047cc67000",
   "position": {
-    "x": 1552.3732904263879,
-    "y": 631.761866452132,
-    "z": 10006,
-    "height": 420.14481094127115,
-    "width": 356.81415929203541,
-    "tabOrder": 10006
+    "x": 1123,
+    "y": 324.48336252189137,
+    "z": 7000,
+    "height": 299.26444833625214,
+    "width": 757,
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -23,11 +23,11 @@
                       "Entity": "Event"
                     }
                   },
-                  "Property": "event_type"
+                  "Property": "event_type_label"
                 }
               },
-              "queryRef": "Event.event_type",
-              "nativeQueryRef": "event_type",
+              "queryRef": "Event.event_type_label",
+              "nativeQueryRef": "event_type_label",
               "active": true
             }
           ]
@@ -42,11 +42,25 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Avg Score Change 2w (pp)"
+                  "Property": "Median Reviews Uplift 2w"
                 }
               },
-              "queryRef": "_Measures.Avg Score Change 2w (pp)",
-              "nativeQueryRef": "Avg Score Change 2w (pp)"
+              "queryRef": "_Measures.Median Reviews Uplift 2w",
+              "nativeQueryRef": "Median Reviews Uplift 2w"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Median Net Reviews Uplift 2w"
+                }
+              },
+              "queryRef": "_Measures.Median Net Reviews Uplift 2w",
+              "nativeQueryRef": "Median Net Reviews Uplift 2w"
             }
           ]
         }
@@ -61,7 +75,7 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Avg Score Change 2w (pp)"
+                "Property": "Median Reviews Uplift 2w"
               }
             },
             "direction": "Descending"
@@ -78,54 +92,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "FillRule": {
-                      "Input": {
-                        "Measure": {
-                          "Expression": {
-                            "SourceRef": {
-                              "Entity": "_Measures"
-                            }
-                          },
-                          "Property": "Avg Score Change 2w (pp)"
-                        }
-                      },
-                      "FillRule": {
-                        "linearGradient3": {
-                          "min": {
-                            "color": {
-                              "Literal": {
-                                "Value": "'#B3122E'"
-                              }
-                            }
-                          },
-                          "mid": {
-                            "color": {
-                              "Literal": {
-                                "Value": "'#FFFFFF'"
-                              }
-                            },
-                            "value": {
-                              "Literal": {
-                                "Value": "0D"
-                              }
-                            }
-                          },
-                          "max": {
-                            "color": {
-                              "Literal": {
-                                "Value": "'#0E8A9A'"
-                              }
-                            }
-                          },
-                          "nullColoringStrategy": {
-                            "strategy": {
-                              "Literal": {
-                                "Value": "'noColor'"
-                              }
-                            }
-                          }
-                        }
-                      }
+                    "Literal": {
+                      "Value": "'#C4C8CD'"
                     }
                   }
                 }
@@ -133,13 +101,25 @@
             }
           },
           "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
+            "metadata": "_Measures.Median Reviews Uplift 2w"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1F2328'"
+                    }
+                  }
                 }
               }
-            ]
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Median Net Reviews Uplift 2w"
           }
         }
       ],
@@ -171,7 +151,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Typical score change (pp)'"
+                  "Value": "'Which events bring players back'"
                 }
               }
             }
@@ -191,7 +171,20 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'average, 2 weeks vs 4 weeks before'"
+                  "Value": "'Median, first 2 weeks vs 4 weeks before'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
