@@ -6,7 +6,7 @@ An end-to-end analytics project on public Steam data: automated collection, a te
 
 > Independent portfolio project based on public data. Not affiliated with or endorsed by CD PROJEKT or Valve. No company logos or game assets are used.
 
-<!-- Screenshots: docs/img/overview.png, player_voice.png, what_drives_interest.png, event_log.png -->
+![Overview page: Steam score, recent score versus all time, review volume and the bugs share for each game, with Steam score by month and reviews per month over time](docs/img/overview.png)
 
 ## Key findings
 
@@ -26,6 +26,18 @@ Effects are measured against the game's own 4 weeks before each event and, where
 | **What drives interest** | Which event types move the score and which bring players back; activity around any event vs the control group; weekly activity heat map |
 | **Event log** | Every measured event with activity and score change, gross and net; drill-through target from the event charts |
 | **About** | Purpose, KPI dictionary, data and method, limitations, colour rules |
+
+**Player Voice**
+
+![Player Voice page: negative review counts, share written by newcomers and the main complaint per game, how complaint topics changed by year, a region by topic matrix and Steam score by market](docs/img/player_voice.png)
+
+**What drives interest**
+
+![What drives interest page: score change per event as a dot plot by event type, median review activity by event type, a weekly review activity heat map and an indexed activity curve around events](docs/img/what_drives_interest.png)
+
+**Event log**
+
+![Event log page: a table of every measured event with activity uplift and score change, gross and net, beside a before and after Steam score chart for each event](docs/img/event_log.png)
 
 ## Architecture
 
