@@ -1,0 +1,285 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "88e530bfd11be9320119",
+  "displayName": "Overview",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ac2d09a129c80835008b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Game"
+              }
+            },
+            "Property": "role"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "g",
+              "Entity": "Game",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "g"
+                          }
+                        },
+                        "Property": "role"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'cdpr'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "isHiddenInViewMode": true,
+        "isLockedInViewMode": true
+      }
+    ]
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Overview_background_v3_1920x1080.png'"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "Overview_background_v3_1920x1023222584110160627.png"
+                  }
+                }
+              },
+              "scaling": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'Normal'"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "b2c6403b603bad0992a7",
+      "target": "4b7cced4eb1d0daa479d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b2c6403b603bad0992a7",
+      "target": "675e0bef00a138e60374",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b2c6403b603bad0992a7",
+      "target": "c3b692b6bcb044c1bd8d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b2c6403b603bad0992a7",
+      "target": "dd33662f8502bce93c1b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b2c6403b603bad0992a7",
+      "target": "ba26a40e3ce445095dd3",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b2c6403b603bad0992a7",
+      "target": "59a605195d00cd122867",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b2c6403b603bad0992a7",
+      "target": "467f44b9bdda90051424",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b2c6403b603bad0992a7",
+      "target": "81b02860ad04ad950672",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f937c0726c00046d9a1c",
+      "target": "81b02860ad04ad950672",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f937c0726c00046d9a1c",
+      "target": "467f44b9bdda90051424",
+      "type": "NoFilter"
+    },
+    {
+      "source": "52ad895abe1910b2724a",
+      "target": "4b7cced4eb1d0daa479d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "52ad895abe1910b2724a",
+      "target": "675e0bef00a138e60374",
+      "type": "NoFilter"
+    },
+    {
+      "source": "52ad895abe1910b2724a",
+      "target": "c3b692b6bcb044c1bd8d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "52ad895abe1910b2724a",
+      "target": "dd33662f8502bce93c1b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "52ad895abe1910b2724a",
+      "target": "ba26a40e3ce445095dd3",
+      "type": "NoFilter"
+    },
+    {
+      "source": "52ad895abe1910b2724a",
+      "target": "59a605195d00cd122867",
+      "type": "NoFilter"
+    },
+    {
+      "source": "52ad895abe1910b2724a",
+      "target": "81b02860ad04ad950672",
+      "type": "NoFilter"
+    },
+    {
+      "source": "52ad895abe1910b2724a",
+      "target": "467f44b9bdda90051424",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f937c0726c00046d9a1c",
+      "target": "4b7cced4eb1d0daa479d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f937c0726c00046d9a1c",
+      "target": "675e0bef00a138e60374",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f937c0726c00046d9a1c",
+      "target": "c3b692b6bcb044c1bd8d",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f937c0726c00046d9a1c",
+      "target": "dd33662f8502bce93c1b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f937c0726c00046d9a1c",
+      "target": "ba26a40e3ce445095dd3",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f937c0726c00046d9a1c",
+      "target": "59a605195d00cd122867",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b2c6403b603bad0992a7",
+      "target": "3f91a4c70b6d2e85104c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "52ad895abe1910b2724a",
+      "target": "3f91a4c70b6d2e85104c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f937c0726c00046d9a1c",
+      "target": "3f91a4c70b6d2e85104c",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b2c6403b603bad0992a7",
+      "target": "7c25e8b1430fa96d27e1",
+      "type": "NoFilter"
+    },
+    {
+      "source": "52ad895abe1910b2724a",
+      "target": "7c25e8b1430fa96d27e1",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f937c0726c00046d9a1c",
+      "target": "7c25e8b1430fa96d27e1",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b2c6403b603bad0992a7",
+      "target": "b84d16ea5c93027fb6a0",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f937c0726c00046d9a1c",
+      "target": "b84d16ea5c93027fb6a0",
+      "type": "NoFilter"
+    },
+    {
+      "source": "52ad895abe1910b2724a",
+      "target": "b84d16ea5c93027fb6a0",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b2c6403b603bad0992a7",
+      "target": "e570c3fb189a4d62058e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "f937c0726c00046d9a1c",
+      "target": "e570c3fb189a4d62058e",
+      "type": "NoFilter"
+    },
+    {
+      "source": "52ad895abe1910b2724a",
+      "target": "e570c3fb189a4d62058e",
+      "type": "NoFilter"
+    }
+  ]
+}

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "d5bf475e2be7e0c170b8",
   "position": {
-    "x": 20.080450522928402,
-    "y": 653.38696701528568,
-    "z": 5000,
-    "height": 398.51971037811751,
-    "width": 1207.9163314561545,
-    "tabOrder": 5000
+    "x": 40,
+    "y": 319.4701986754967,
+    "z": 3000,
+    "height": 387.81456953642385,
+    "width": 1067,
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "lineChart",
@@ -42,11 +42,11 @@
                       "Entity": "Game"
                     }
                   },
-                  "Property": "game"
+                  "Property": "Game Label"
                 }
               },
-              "queryRef": "Game.game",
-              "nativeQueryRef": "game"
+              "queryRef": "Game.Game Label",
+              "nativeQueryRef": "Game Label"
             }
           ]
         },
@@ -99,6 +99,154 @@
                 }
               }
             }
+          }
+        },
+        {
+          "properties": {
+            "strokeWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Topic"
+                          }
+                        },
+                        "Property": "topic_label"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Performance'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "strokeWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "1.5D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Topic"
+                          }
+                        },
+                        "Property": "topic_label"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Story & characters'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "strokeWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "1.5D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Topic"
+                          }
+                        },
+                        "Property": "topic_label"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Content & features'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "strokeWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "1.5D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Topic"
+                          }
+                        },
+                        "Property": "topic_label"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Price & value'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
           }
         }
       ],
@@ -171,7 +319,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#0E8A9A'"
+                      "Value": "'#D9752B'"
                     }
                   }
                 }
@@ -211,9 +359,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 6,
-                      "Percent": 0.4
+                    "Literal": {
+                      "Value": "'#5F6368'"
                     }
                   }
                 }
@@ -253,9 +400,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 5,
-                      "Percent": 0
+                    "Literal": {
+                      "Value": "'#8A9097'"
                     }
                   }
                 }
@@ -288,6 +434,47 @@
               }
             ]
           }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#B4B9BF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Topic"
+                          }
+                        },
+                        "Property": "topic_label"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Price & value'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
         }
       ]
     },
@@ -306,6 +493,26 @@
         }
       ],
       "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Share of negative reviews mentioning each topic, by year'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
         {
           "properties": {
             "show": {

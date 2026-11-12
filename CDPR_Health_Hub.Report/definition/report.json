@@ -11,7 +11,7 @@
       "type": "SharedResources"
     },
     "customTheme": {
-      "name": "Back-Catalogue_Health_Hub_(ind29022701428934694.json",
+      "name": "Back-Catalogue_Health_Hub_v2_(9925849942677384.json",
       "reportVersionAtImport": {
         "visual": "2.14.0",
         "report": "3.4.0",
@@ -48,6 +48,9 @@
       }
     ]
   },
+  "publicCustomVisuals": [
+    "deneb7E15AEF80B9E4D4F8E12924291ECE89A"
+  ],
   "resourcePackages": [
     {
       "name": "SharedResources",
@@ -65,14 +68,34 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "About_page_1920x10803753990853129878.png",
-          "path": "About_page_1920x10803753990853129878.png",
+          "name": "About_page_v3_1920x10805021259861420947.png",
+          "path": "About_page_v3_1920x10805021259861420947.png",
           "type": "Image"
         },
         {
-          "name": "Back-Catalogue_Health_Hub_(ind29022701428934694.json",
-          "path": "Back-Catalogue_Health_Hub_(ind29022701428934694.json",
+          "name": "Back-Catalogue_Health_Hub_v2_(9925849942677384.json",
+          "path": "Back-Catalogue_Health_Hub_v2_(9925849942677384.json",
           "type": "CustomTheme"
+        },
+        {
+          "name": "EventLog_background_1920x1080003008021012396944.png",
+          "path": "EventLog_background_1920x1080003008021012396944.png",
+          "type": "Image"
+        },
+        {
+          "name": "Overview_background_v3_1920x1023222584110160627.png",
+          "path": "Overview_background_v3_1920x1023222584110160627.png",
+          "type": "Image"
+        },
+        {
+          "name": "PlayerVoice_background_1920x106437791581025385.png",
+          "path": "PlayerVoice_background_1920x106437791581025385.png",
+          "type": "Image"
+        },
+        {
+          "name": "WhatDrives_background_1920x1089233740888889853.png",
+          "path": "WhatDrives_background_1920x1089233740888889853.png",
+          "type": "Image"
         }
       ]
     }

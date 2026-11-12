@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "100248db14457704bd03",
   "position": {
-    "x": 1274.3362831858408,
-    "y": 426.3234111021722,
-    "z": 7000,
-    "height": 625.583266291231,
-    "width": 624.03861625100569,
-    "tabOrder": 7000
+    "x": 1123,
+    "y": 589.20634920634916,
+    "z": 5000,
+    "height": 424,
+    "width": 757,
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -23,12 +23,13 @@
                       "Entity": "Game"
                     }
                   },
-                  "Property": "game"
+                  "Property": "Game Label"
                 }
               },
-              "queryRef": "Game.game",
-              "nativeQueryRef": "game",
-              "active": true
+              "queryRef": "Game.Game Label",
+              "nativeQueryRef": " 1",
+              "active": true,
+              "displayName": " "
             }
           ]
         },
@@ -46,8 +47,9 @@
                 }
               },
               "queryRef": "Language.market",
-              "nativeQueryRef": "market",
-              "active": true
+              "nativeQueryRef": " ",
+              "active": true,
+              "displayName": " "
             }
           ]
         },
@@ -94,13 +96,12 @@
                     "Entity": "_Measures"
                   }
                 },
-                "Property": "Steam Score %"
+                "Property": "Reviews"
               }
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "objects": {
@@ -174,7 +175,101 @@
                   "Value": "false"
                 }
               }
+            },
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'growToFit'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "172.12661002110215D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Language.market"
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Steam Score %"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Reviews"
           }
         }
       ]
@@ -206,7 +301,20 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'markets with 1,000+ reviews'"
+                  "Value": "'Top 10 markets by reviews'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -219,45 +327,98 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "98b21e994207ec3601b7",
+        "name": "8d1d9755a498d7d0b844",
         "field": {
-          "Measure": {
+          "Column": {
             "Expression": {
               "SourceRef": {
-                "Entity": "_Measures"
+                "Entity": "Language"
               }
             },
-            "Property": "Reviews"
+            "Property": "market"
           }
         },
-        "type": "Advanced",
+        "type": "TopN",
         "filter": {
           "Version": 2,
           "From": [
             {
-              "Name": "_",
-              "Entity": "_Measures",
+              "Name": "subquery",
+              "Expression": {
+                "Subquery": {
+                  "Query": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "l",
+                        "Entity": "Language",
+                        "Type": 0
+                      },
+                      {
+                        "Name": "_",
+                        "Entity": "_Measures",
+                        "Type": 0
+                      }
+                    ],
+                    "Select": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "l"
+                            }
+                          },
+                          "Property": "market"
+                        },
+                        "Name": "field"
+                      }
+                    ],
+                    "OrderBy": [
+                      {
+                        "Direction": 2,
+                        "Expression": {
+                          "Measure": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "_"
+                              }
+                            },
+                            "Property": "Reviews"
+                          }
+                        }
+                      }
+                    ],
+                    "Top": 10
+                  }
+                }
+              },
+              "Type": 2
+            },
+            {
+              "Name": "l",
+              "Entity": "Language",
               "Type": 0
             }
           ],
           "Where": [
             {
               "Condition": {
-                "Comparison": {
-                  "ComparisonKind": 1,
-                  "Left": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Source": "_"
-                        }
-                      },
-                      "Property": "Reviews"
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "l"
+                          }
+                        },
+                        "Property": "market"
+                      }
                     }
-                  },
-                  "Right": {
-                    "Literal": {
-                      "Value": "1000L"
+                  ],
+                  "Table": {
+                    "SourceRef": {
+                      "Source": "subquery"
                     }
                   }
                 }

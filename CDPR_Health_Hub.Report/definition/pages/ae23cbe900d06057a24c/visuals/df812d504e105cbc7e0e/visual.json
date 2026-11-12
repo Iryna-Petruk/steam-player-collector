@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "df812d504e105cbc7e0e",
   "position": {
-    "x": 285.76025744167339,
-    "y": 169.91150442477877,
-    "z": 10000,
-    "height": 432.50201126307326,
-    "width": 892.80772325020121,
-    "tabOrder": 10000
+    "x": 40,
+    "y": 721.58940397351,
+    "z": 6000,
+    "height": 274,
+    "width": 1067,
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "lineChart",
@@ -42,11 +42,11 @@
                       "Entity": "Game"
                     }
                   },
-                  "Property": "game"
+                  "Property": "Game Label"
                 }
               },
-              "queryRef": "Game.game",
-              "nativeQueryRef": "game"
+              "queryRef": "Game.Game Label",
+              "nativeQueryRef": "Game Label"
             }
           ]
         },
@@ -110,7 +110,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Negative reviews from players with <2h played'"
+                  "Value": "'Negative reviews from newcomers'"
                 }
               }
             }
@@ -118,6 +118,26 @@
         }
       ],
       "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Written with less than 2 hours played'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
         {
           "properties": {
             "show": {

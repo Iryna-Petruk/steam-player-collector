@@ -121,6 +121,55 @@ table Event
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Порядок показу типів подій у візуалах: 1 Release, 2 Major update, 3 Patch, 4 Expansion, 5 Transmedia, 6 Platform sale, 7 Announcement, 8 Related release, 9 Other. Службова колонка сортування для event_type_label; прихована, окремо у звіті не використовується.
+	column event_type_sort =
+			SWITCH (
+				'Event'[event_type],
+				"release", 1,
+				"major_update", 2,
+				"patch", 3,
+				"expansion", 4,
+				"transmedia", 5,
+				"platform_sale", 6,
+				"announcement", 7,
+				"related_release", 8,
+				"other", 9,
+				9
+			)
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 45b6254b-3465-46fc-844c-eb30250ff680
+		summarizeBy: none
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["FIRST_LETTER_OF_OBJECTS_MUST_BE_CAPITALIZED"]}
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Підпис типу події для показу у звіті: Release, Major update, Patch, Expansion, Transmedia, Platform sale, Announcement, Related release, Other. Сортується колонкою event_type_sort у цьому порядку. Перелік повторює тест dbt accepted_values для stg_events.event_type і EVENT_TYPES у collector/validate_events.py — змінювати треба разом із ними; будь-яке інше значення отримує підпис Other.
+	column event_type_label =
+			SWITCH (
+				'Event'[event_type],
+				"release", "Release",
+				"major_update", "Major update",
+				"patch", "Patch",
+				"expansion", "Expansion",
+				"transmedia", "Transmedia",
+				"platform_sale", "Platform sale",
+				"announcement", "Announcement",
+				"related_release", "Related release",
+				"other", "Other",
+				"Other"
+			)
+		dataType: string
+		lineageTag: 1fe7cd3d-9151-467e-b8d4-09f7374351c1
+		summarizeBy: none
+		sortByColumn: event_type_sort
+
+		annotation BestPracticeAnalyzer_IgnoreRules = {"RuleIDs":["FIRST_LETTER_OF_OBJECTS_MUST_BE_CAPITALIZED"]}
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'marts dim_events' = m
 		mode: import
 		source =
