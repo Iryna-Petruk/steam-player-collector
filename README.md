@@ -53,7 +53,7 @@ Steam Web API ──► GitHub Actions ──► CSV in Git ──► PostgreSQL
 | Layer | What it does |
 | --- | --- |
 | Collection | Hourly concurrent players and full review history for 5 games (2 CDPR + 3 control). Review text and author IDs are never stored: topics (bugs, performance, price, story, content) are tagged by a versioned keyword dictionary in 10 languages while the text is in memory. |
-| Warehouse | Idempotent loader (SHA-256 per file), dbt layers raw → staging → intermediate → marts; 80+ data tests including reconciliation of every review, grain checks and a counter wrap-around guard. |
+| Warehouse | Idempotent loader (SHA-256 per file), dbt layers raw → staging → intermediate → marts; 63 data tests including reconciliation of every review, grain checks and a counter wrap-around guard. |
 | Event study | `fct_event_window` (every event on a −28…+55 day axis) and `fct_event_impact` (uplift vs 4 weeks before and difference-in-differences vs the control group); NULL when the data cannot support a number. |
 | Semantic model | Star schema with 14 tables and 13 single-direction relationships; 34 measures in display folders, every object described; a `Time Window` calculation group (last 30 days, last 12 months, prior year, YoY); measures reconciled against SQL to the last digit. |
 | Security | Dynamic RLS on region from a tested, version-controlled access table; OLS hides technical collection columns; a read-only database role for Power BI. |
@@ -68,7 +68,7 @@ Steam Web API ──► GitHub Actions ──► CSV in Git ──► PostgreSQL
 | SQL (PostgreSQL) and data modelling | dbt models, window functions, generated date spines, event windows, control-group comparisons |
 | Git workflow | Power BI project as PBIP/TMDL/PBIR, feature branches and pull requests with squash merge, BPA as a CI check, scheduled collection in GitHub Actions |
 | Shared KPIs and standards | KPI dictionary in the report, measure descriptions, theme as a file, a written colour rule (games have fixed colours; red only marks a problem) |
-| Data quality | 80+ dbt tests, DAX vs SQL reconciliation, topic dictionary checked by hand, a full report and model inventory (`docs/report_inventory.md`) |
+| Data quality | 63 dbt tests, DAX vs SQL reconciliation, topic dictionary checked by hand, a full report and model inventory (`docs/report_inventory.md`) |
 | Report design | Five pages on one grid, drill-through, custom Vega-Lite visuals (Deneb) for event distributions, before/after charts and a weekly heat map |
 
 ## Data at a glance
